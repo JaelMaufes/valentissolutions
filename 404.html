@@ -11,10 +11,24 @@
     <meta property="og:url" content="https://sovalentis.com/" />
     <link rel="canonical" href="https://sovalentis.com/" />
     <title>Valentis Solutions — Aquisição local que gera oportunidades</title>
+    <!-- Google tag (Google Ads: AW-8676808223) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-8676808223"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-8676808223');
+      document.addEventListener('click', function (event) {
+        var link = event.target.closest && event.target.closest('a[href*="wa.me"]');
+        if (link && typeof gtag === 'function') {
+          gtag('event', 'whatsapp_click', { event_category: 'lead', link_url: link.href });
+        }
+      });
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-C8fw04co.js"></script>
+    <script type="module" crossorigin src="/assets/index-CIGu_AVD.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BNYRAb2N.css">
     <script src="/__manus__/debug-collector.js" defer></script>
   </head>
