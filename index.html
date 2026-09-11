@@ -11,17 +11,22 @@
     <meta property="og:url" content="https://sovalentis.com/" />
     <link rel="canonical" href="https://sovalentis.com/" />
     <title>Valentis Solutions — Aquisição local que gera oportunidades</title>
-    <!-- Google tag (Google Ads: AW-8676808223) -->
+    <!-- Google tags (Google Ads account and WhatsApp conversion) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-8676808223"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'AW-8676808223');
+      gtag('config', 'AW-18420668540');
       document.addEventListener('click', function (event) {
         var link = event.target.closest && event.target.closest('a[href*="wa.me"]');
         if (link && typeof gtag === 'function') {
-          gtag('event', 'whatsapp_click', { event_category: 'lead', link_url: link.href });
+          gtag('event', 'whatsapp_click', {
+            event_category: 'lead',
+            link_url: link.href,
+            send_to: 'AW-18420668540/8DpCCNaQtvQcEPyw1M9E'
+          });
         }
       });
     </script>
