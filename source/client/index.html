@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A Valentis Solutions ajuda negócios locais a atrair oportunidades e organizar a operação com tráfego pago, sistemas personalizados e diagnóstico estratégico." />
+    <meta name="theme-color" content="#1b1533" />
+    <meta property="og:title" content="Valentis Solutions — Soluções para atrair, organizar e crescer" />
+    <meta property="og:description" content="Tráfego pago, sistemas personalizados e diagnóstico para negócios locais." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sovalentis.com/" />
+    <meta property="og:image" content="https://sovalentis.com/valentis-icon.png" />
+    <link rel="canonical" href="https://sovalentis.com/" />
+    <link rel="icon" type="image/png" href="/valentis-icon.png" />
+    <link rel="apple-touch-icon" href="/valentis-icon.png" />
+    <title>Valentis Solutions — Soluções para atrair, organizar e crescer</title>
+    <!-- Google tag (Google Ads: AW-8676808223) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-8676808223"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-8676808223');
+      document.addEventListener('click', function (event) {
+        var link = event.target.closest && event.target.closest('a[href*="wa.me"]');
+        if (link && typeof gtag === 'function') {
+          gtag('event', 'whatsapp_click', { event_category: 'lead', link_url: link.href });
+        }
+      });
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+  </body>
+</html>

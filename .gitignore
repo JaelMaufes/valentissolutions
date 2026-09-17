@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment and local secrets
+.env
+.env.*
+*.local
+
+# Caches and logs
+.cache/
+logs/
+*.log
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Manus internal metadata
+.manus/
+.manus-logs/
