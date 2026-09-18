@@ -170,7 +170,7 @@
   .legal-note { display: flex; gap: .8rem; margin-top: 3rem; border: 1px solid #e5def4; border-radius: 1rem; background: #f7f4fd; padding: 1.1rem 1.2rem; color: #6845c8; }
   .legal-note p { margin: 0; font-size: .82rem; line-height: 1.65; color: #746d80; }
   .legal-document a { color: #6845c8; font-weight: 800; }
-  .brand-logo-link { display: inline-flex; align-items: center; width: 174px; }
+  .brand-logo-link { display: inline-flex; align-items: center; width: 87px; }
   .brand-logo-image { display: block; width: 100%; height: auto; object-fit: contain; }
   @media (max-width: 640px) { .legal-hero-icon { height: 48px; width: 48px; }.legal-document h2 { margin-top: 2.1rem; font-size: 1.1rem; }.legal-document p { font-size: .88rem; line-height: 1.7; } }
 }
