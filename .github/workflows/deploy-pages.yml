@@ -1,0 +1,121 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and validate artifact
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: source
+    steps:
+      - name: Checkout triggering commit
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: source/pnpm-lock.yaml
+
+      - name: Install dependencies from frozen lockfile
+        run: pnpm install --frozen-lockfile
+
+      - name: Build from source
+        run: pnpm build
+
+      - name: Create and validate publication artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          artifact_dir="dist/public"
+
+          test -d "$artifact_dir"
+          test -f "$artifact_dir/index.html"
+          test -f "$artifact_dir/CNAME"
+          test "$(tr -d '\r\n' < "$artifact_dir/CNAME")" = "sovalentis.com"
+          test -f "$artifact_dir/robots.txt"
+          test -f "$artifact_dir/sitemap.xml"
+          test -f "$artifact_dir/valentis-icon.png"
+
+          cp "$artifact_dir/index.html" "$artifact_dir/404.html"
+
+          for html in "$artifact_dir/index.html" "$artifact_dir/404.html"; do
+            refs=$(grep -oE 'assets/[^" ]+\.(css|js|png|jpg|jpeg|svg|webp)' "$html" | sort -u || true)
+            test -n "$refs"
+            while IFS= read -r ref; do
+              test -f "$artifact_dir/$ref"
+            done <<< "$refs"
+            if grep -Eq '(^|["'"'"' ])(/tmp/|source/|node_modules/)' "$html"; then
+              echo "Forbidden path in $html"
+              exit 1
+            fi
+          done
+
+          if grep -RIlE '(^|["'"'"' =])(/tmp/|source/|node_modules/)' "$artifact_dir" --include='*.html'; then
+            echo "Forbidden runtime path reference found in HTML"
+            exit 1
+          fi
+
+          index_refs=$(grep -oE 'assets/[^" ]+\.(css|js|png|jpg|jpeg|svg|webp)' "$artifact_dir/index.html" | sort -u)
+          fallback_refs=$(grep -oE 'assets/[^" ]+\.(css|js|png|jpg|jpeg|svg|webp)' "$artifact_dir/404.html" | sort -u)
+          test "$index_refs" = "$fallback_refs"
+
+          if grep -RIlE 'index-(AqihDZYy|CSpmFGGp)\.(css|js)' "$artifact_dir"; then
+            echo "Legacy bundle reference found"
+            exit 1
+          fi
+
+          if find "$artifact_dir" -type f \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' \) -print -quit | grep -q .; then
+            echo "Forbidden secret-like file found"
+            exit 1
+          fi
+
+          test "$(find "$artifact_dir" -type f -name 'index.html' | wc -l)" = "1"
+          test "$(find "$artifact_dir" -type f -name '404.html' | wc -l)" = "1"
+          ! find "$artifact_dir" -type d \( -name node_modules -o -name dist \) -print -quit | grep -q .
+          echo "Validated artifact: $artifact_dir"
+          find "$artifact_dir" -maxdepth 3 -type f -printf '%P\n' | sort
+
+      - name: Upload only the generated artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: source/dist/public
+
+  deploy:
+    name: Deploy Pages artifact
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy generated artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
