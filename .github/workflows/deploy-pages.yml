@@ -46,6 +46,8 @@ jobs:
 
       - name: Build from source
         run: pnpm build
+        env:
+          VITE_STATIC_FORMS_API_KEY: ${{ secrets.VITE_STATIC_FORMS_API_KEY }}
 
       - name: Create and validate publication artifact
         shell: bash
