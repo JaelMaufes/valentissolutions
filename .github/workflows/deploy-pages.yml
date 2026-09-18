@@ -63,7 +63,21 @@ jobs:
 
           cp "$artifact_dir/index.html" "$artifact_dir/404.html"
 
-          for html in "$artifact_dir/index.html" "$artifact_dir/404.html"; do
+          routes=(diagnostico servicos planos sistemas sobre privacidade termos)
+          for route in "${routes[@]}"; do
+            mkdir -p "$artifact_dir/$route"
+            cp "$artifact_dir/index.html" "$artifact_dir/$route/index.html"
+          done
+
+          html_files=(
+            "$artifact_dir/index.html"
+            "$artifact_dir/404.html"
+          )
+          for route in "${routes[@]}"; do
+            html_files+=("$artifact_dir/$route/index.html")
+          done
+
+          for html in "${html_files[@]}"; do
             refs=$(grep -oE 'assets/[^" ]+\.(css|js|png|jpg|jpeg|svg|webp)' "$html" | sort -u || true)
             test -n "$refs"
             while IFS= read -r ref; do
@@ -75,6 +89,10 @@ jobs:
             fi
           done
 
+          for route in "${routes[@]}"; do
+            cmp "$artifact_dir/index.html" "$artifact_dir/$route/index.html"
+          done
+
           if grep -RIlE '(^|["'"'"' =])(/tmp/|source/|node_modules/)' "$artifact_dir" --include='*.html'; then
             echo "Forbidden runtime path reference found in HTML"
             exit 1
@@ -83,6 +101,10 @@ jobs:
           index_refs=$(grep -oE 'assets/[^" ]+\.(css|js|png|jpg|jpeg|svg|webp)' "$artifact_dir/index.html" | sort -u)
           fallback_refs=$(grep -oE 'assets/[^" ]+\.(css|js|png|jpg|jpeg|svg|webp)' "$artifact_dir/404.html" | sort -u)
           test "$index_refs" = "$fallback_refs"
+          for route in "${routes[@]}"; do
+            route_refs=$(grep -oE 'assets/[^" ]+\.(css|js|png|jpg|jpeg|svg|webp)' "$artifact_dir/$route/index.html" | sort -u)
+            test "$index_refs" = "$route_refs"
+          done
 
           if grep -RIlE 'index-(AqihDZYy|CSpmFGGp)\.(css|js)' "$artifact_dir"; then
             echo "Legacy bundle reference found"
@@ -94,7 +116,7 @@ jobs:
             exit 1
           fi
 
-          test "$(find "$artifact_dir" -type f -name 'index.html' | wc -l)" = "1"
+          test "$(find "$artifact_dir" -type f -name 'index.html' | wc -l)" = "8"
           test "$(find "$artifact_dir" -type f -name '404.html' | wc -l)" = "1"
           ! find "$artifact_dir" -type d \( -name node_modules -o -name dist \) -print -quit | grep -q .
           echo "Validated artifact: $artifact_dir"
