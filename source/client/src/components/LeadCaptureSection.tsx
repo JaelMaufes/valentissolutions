@@ -102,9 +102,9 @@ export default function LeadCaptureSection() {
               <label className="lead-honeypot" aria-hidden="true">Nome do site<input tabIndex={-1} autoComplete="off" name="company_website_confirm" value={values.honeypot} onChange={event => update("honeypot", event.target.value)} /></label>
               <label className="lead-consent"><input type="checkbox" name="consent" checked={values.consent} onChange={event => update("consent", event.target.checked)} aria-invalid={Boolean(errors.consent)} /><span>Autorizo a Valentis Solutions a utilizar os dados informados para entrar em contato comigo sobre minha solicitação e entender o cenário do meu negócio, conforme a <a href="/privacidade">Política de Privacidade</a>.</span></label>
               {errors.consent && <small className="lead-consent-error">{errors.consent}</small>}
-              {state === "error" && <div className="lead-feedback lead-feedback-error" role="alert">Não foi possível concluir o envio. O provedor recusou a submissão ou a configuração ainda não foi autorizada. Nenhum recebimento foi confirmado. Fale pelo WhatsApp ou tente novamente mais tarde.</div>}
-              <button type="submit" className="button button-primary" disabled={state === "sending"}>{state === "sending" ? "Validando envio..." : <><Send size={16} />Quero receber contato</>}</button>
-              <p className="lead-form-note">A integração de produção está bloqueada até a configuração autorizada do provedor.</p>
+              {state === "error" && <div className="lead-feedback lead-feedback-error" role="alert">Não conseguimos enviar suas informações agora. Confira os campos e tente novamente ou fale conosco pelo WhatsApp.</div>}
+              <button type="submit" className="button button-primary" disabled={state === "sending"}>{state === "sending" ? "Enviando suas informações..." : <><Send size={16} />Enviar meus dados</>}</button>
+              <p className="lead-form-note">Seus dados serão encaminhados com segurança para a equipe da Valentis, conforme a Política de Privacidade.</p>
             </form>}
           </div>
         </div>
