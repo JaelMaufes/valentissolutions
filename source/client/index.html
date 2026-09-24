@@ -14,17 +14,23 @@
     <link rel="icon" type="image/png" href="/valentis-icon.png" />
     <link rel="apple-touch-icon" href="/valentis-icon.png" />
     <title>Valentis Solutions — Soluções para atrair, organizar e crescer</title>
-    <!-- Google tag (Google Ads: AW-8676808223) -->
+    <!-- Google tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-8676808223"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      // Google Ads — tag atual
       gtag('config', 'AW-8676808223');
+      // Google Ads — nova tag
+      gtag('config', 'AW-18420668540');
       document.addEventListener('click', function (event) {
         var link = event.target.closest && event.target.closest('a[href*="wa.me"]');
         if (link && typeof gtag === 'function') {
-          gtag('event', 'whatsapp_click', { event_category: 'lead', link_url: link.href });
+          gtag('event', 'whatsapp_click', {
+            event_category: 'lead',
+            link_url: link.href
+          });
         }
       });
     </script>
