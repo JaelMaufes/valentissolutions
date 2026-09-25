@@ -109,16 +109,53 @@ export default function LeadCaptureSection() {
             {state === "success" ? <div className="lead-feedback lead-feedback-success" role="status"><Check size={20} /><div><strong>Recebemos suas informações.</strong><p>A equipe da Valentis entrará em contato no horário indicado. Se preferir atendimento imediato, você também pode falar pelo WhatsApp.</p></div></div> :
               <form onSubmit={handleSubmit} noValidate>
                 <div className="lead-form-fields">
-                  <label>Nome *<input id="lead-name" name="name" value={values.name} onChange={event => update("name", event.target.value)} maxLength={80} autoComplete="name" aria-invalid={Boolean(errors.name)} />{errors.name && <small className="lead-field-error">{errors.name}</small>}</label>
-                  <label>Empresa<input name="company" value={values.company} onChange={event => update("company", event.target.value)} maxLength={120} autoComplete="organization" /></label>
-                  <label>WhatsApp ou telefone *<input name="phone" type="tel" value={values.phone} onChange={event => update("phone", event.target.value)} maxLength={30} autoComplete="tel" aria-invalid={Boolean(errors.phone)} />{errors.phone && <small className="lead-field-error">{errors.phone}</small>}</label>
-                  <label>Site ou Instagram<input name="website" value={values.website} onChange={event => update("website", event.target.value)} maxLength={160} autoComplete="url" /></label>
-                  <label>Principal desafio *<select name="challenge" value={values.challenge} onChange={event => update("challenge", event.target.value)} aria-invalid={Boolean(errors.challenge)}><option value="" disabled />Quero atrair mais clientes<option value="Quero atrair mais clientes">Quero atrair mais clientes</option><option value="Preciso melhorar meus anúncios">Preciso melhorar meus anúncios</option><option value="Quero entender meus gargalos">Quero entender meus gargalos</option><option value="Preciso organizar processos">Preciso organizar processos</option><option value="Ainda não sei exatamente o que preciso">Ainda não sei exatamente o que preciso</option></select>{errors.challenge && <small className="lead-field-error">{errors.challenge}</small>}</label>
-                  <label>Melhor horário para contato *<select name="contactTime" value={values.contactTime} onChange={event => update("contactTime", event.target.value)} aria-invalid={Boolean(errors.contactTime)}><option value="" disabled /><option value="Horário comercial">Horário comercial</option><option value="Manhã">Manhã</option><option value="Tarde">Tarde</option><option value="Noite">Noite</option></select>{errors.contactTime && <small className="lead-field-error">{errors.contactTime}</small>}</label>
-                  <label className="lead-full-field">Observações<textarea name="notes" value={values.notes} onChange={event => update("notes", event.target.value)} maxLength={500} rows={3} /></label>
+                  <label>
+                    Nome *
+                    <input id="lead-name" name="name" value={values.name} onChange={event => update("name", event.target.value)} maxLength={80} autoComplete="name" aria-invalid={Boolean(errors.name)} />
+                    {errors.name && <small className="lead-field-error">{errors.name}</small>}
+                  </label>
+                  <label>
+                    Empresa
+                    <input name="company" value={values.company} onChange={event => update("company", event.target.value)} maxLength={120} autoComplete="organization" />
+                  </label>
+                  <label>
+                    WhatsApp ou telefone *
+                    <input name="phone" type="tel" value={values.phone} onChange={event => update("phone", event.target.value)} maxLength={30} autoComplete="tel" aria-invalid={Boolean(errors.phone)} />
+                    {errors.phone && <small className="lead-field-error">{errors.phone}</small>}
+                  </label>
+                  <label>
+                    Site ou Instagram
+                    <input name="website" value={values.website} onChange={event => update("website", event.target.value)} maxLength={160} autoComplete="url" />
+                  </label>
+                  <label>
+                    Principal desafio *
+                    <select name="challenge" value={values.challenge} onChange={event => update("challenge", event.target.value)} aria-invalid={Boolean(errors.challenge)}>
+                      <option value="" disabled />
+                      {challenges.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                    {errors.challenge && <small className="lead-field-error">{errors.challenge}</small>}
+                  </label>
+                  <label>
+                    Melhor horário para contato *
+                    <select name="contactTime" value={values.contactTime} onChange={event => update("contactTime", event.target.value)} aria-invalid={Boolean(errors.contactTime)}>
+                      <option value="" disabled />
+                      {contactTimes.map(t => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                    {errors.contactTime && <small className="lead-field-error">{errors.contactTime}</small>}
+                  </label>
+                  <label className="lead-full-field">
+                    Observações
+                    <textarea name="notes" value={values.notes} onChange={event => update("notes", event.target.value)} maxLength={500} rows={3} />
+                  </label>
                 </div>
-                <label className="lead-honeypot" aria-hidden="true">Nome do site<input tabIndex={-1} autoComplete="off" name="company_website_confirm" value={values.honeypot} onChange={event => update("honeypot", event.target.value)} /></label>
-                <label className="lead-consent"><input type="checkbox" name="consent" checked={values.consent} onChange={event => update("consent", event.target.checked)} aria-invalid={Boolean(errors.consent)} /><span>Autorizo contato pela Valentis Solutions.</span></label>
+                <label className="lead-honeypot" aria-hidden="true">
+                  Nome do site
+                  <input tabIndex={-1} autoComplete="off" name="company_website_confirm" value={values.honeypot} onChange={event => update("honeypot", event.target.value)} />
+                </label>
+                <label className="lead-consent">
+                  <input type="checkbox" name="consent" checked={values.consent} onChange={event => update("consent", event.target.checked)} aria-invalid={Boolean(errors.consent)} />
+                  <span>Autorizo contato pela Valentis Solutions.</span>
+                </label>
                 {errors.consent && <small className="lead-consent-error">{errors.consent}</small>}
                 {state === "error" && <div className="lead-feedback lead-feedback-error" role="alert">Não conseguimos enviar suas informações agora. Confira os campos e tente novamente ou fale conosco pelo WhatsApp.</div>}
                 <button type="submit" className="button button-primary" disabled={state === "sending"}>{state === "sending" ? "Enviando suas informações..." : <><Send size={16} />Enviar meus dados</>}</button>
