@@ -14,56 +14,51 @@
     <link rel="icon" type="image/png" href="/valentis-icon.png" />
     <link rel="apple-touch-icon" href="/valentis-icon.png" />
     <title>Valentis Solutions — Soluções para atrair, organizar e crescer</title>
-    <!-- Google tag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-8676808223"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18420668540"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'AW-8676808223');
+
       gtag('config', 'AW-18420668540');
 
+      // Função para rastrear o Envio de Formulário
       function gtag_report_conversion_form(url) {
         var callback = function () {
-          if (typeof url !== 'undefined' && url) {
+          if (typeof(url) != 'undefined') {
             window.location = url;
           }
         };
-
         gtag('event', 'conversion', {
-          'send_to': 'AW-18420668540/-ZIcCNm1joUdEPyw1M9E',
-          'value': 1.0,
-          'currency': 'BRL',
-          'event_callback': callback,
+            'send_to': 'AW-18420668540/-ZIcCNm1joUdEPyw1M9E',
+            'value': 1.0,
+            'currency': 'BRL',
+            'event_callback': callback
         });
-
         return false;
       }
 
+      // Função para rastrear o Clique no WhatsApp
       function gtag_report_conversion_whatsapp(url) {
         var callback = function () {
-          if (typeof url !== 'undefined' && url) {
+          if (typeof(url) != 'undefined') {
             window.location = url;
           }
         };
-
         gtag('event', 'conversion', {
-          'send_to': 'AW-18420668540/S235CPqlioUdEPyw1M9E',
-          'value': 1.0,
-          'currency': 'BRL',
-          'event_callback': callback,
+            'send_to': 'AW-18420668540/S235CPqlioUdEPyw1M9E',
+            'value': 1.0,
+            'currency': 'BRL',
+            'event_callback': callback
         });
-
         return false;
       }
 
       document.addEventListener('click', function (event) {
         var link = event.target.closest && event.target.closest('a[href*="wa.me"]');
         if (link && typeof gtag === 'function') {
-          gtag('event', 'whatsapp_click', {
-            event_category: 'lead',
-            link_url: link.href,
-          });
+          gtag('event', 'whatsapp_click', { event_category: 'lead', link_url: link.href });
         }
       });
     </script>
