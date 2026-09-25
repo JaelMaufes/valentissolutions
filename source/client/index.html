@@ -20,9 +20,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'AW-18420668540');
-
       // Função para rastrear o Envio de Formulário
       function gtag_report_conversion_form(url) {
         var callback = function () {
@@ -38,7 +36,6 @@
         });
         return false;
       }
-
       // Função para rastrear o Clique no WhatsApp
       function gtag_report_conversion_whatsapp(url) {
         var callback = function () {
@@ -54,7 +51,6 @@
         });
         return false;
       }
-
       document.addEventListener('click', function (event) {
         var link = event.target.closest && event.target.closest('a[href*="wa.me"]');
         if (link && typeof gtag === 'function') {
