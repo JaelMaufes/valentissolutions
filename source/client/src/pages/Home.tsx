@@ -7,10 +7,10 @@ const fronts = [
     eyebrow: "Aquisição",
     title: "Tráfego pago",
     description: "Campanhas, páginas e acompanhamento para transformar atenção local em oportunidades comerciais.",
-    href: "/servicos",
+    href: "/trafego-pago",
     icon: Target,
     tone: "front-card-blue",
-    label: "Conhecer serviços",
+    label: "Conhecer tráfego pago",
   },
   {
     eyebrow: "Operação",
@@ -25,7 +25,7 @@ const fronts = [
     eyebrow: "Direcionamento",
     title: "Diagnóstico inicial",
     description: "Uma leitura objetiva do seu cenário para identificar o próximo gargalo e a solução mais coerente.",
-    href: "/diagnostico",
+    href: "/trafego-pago#diagnostico",
     icon: Compass,
     tone: "front-card-pink",
     label: "Fazer diagnóstico",
@@ -50,7 +50,7 @@ export default function Home() {
               <div className="eyebrow mb-6"><span className="eyebrow-dot" />Valentis Solutions · Maringá e região</div>
               <h1 className="display-title max-w-4xl">Soluções para <span className="gradient-text">atrair, organizar e crescer.</span></h1>
               <p className="hero-copy mt-6 max-w-2xl">Ajudamos negócios locais a encontrar oportunidades e estruturar a operação que acontece depois que elas chegam — com estratégia, tecnologia e clareza.</p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link className="button button-primary" href="/diagnostico">Fazer diagnóstico inicial <ArrowRight size={17} /></Link><a className="button button-secondary" href="#frentes">Explorar soluções <ArrowRight size={17} /></a></div>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link className="button button-primary" href="/trafego-pago#diagnostico">Fazer diagnóstico inicial <ArrowRight size={17} /></Link><a className="button button-secondary" href="#frentes">Explorar soluções <ArrowRight size={17} /></a></div>
               <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold text-[#69647a]"><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0" />Atendimento direto</span><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0" />Escopo claro</span><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0" />Linguagem sem complicação</span></div>
             </div>
             <div className="hero-hub reveal reveal-delay-2" aria-label="Visão geral das soluções Valentis">
@@ -70,7 +70,7 @@ export default function Home() {
 
         <section className="section-pad bg-[#f3f0fc]"><div className="container grid items-center gap-10 lg:grid-cols-[.85fr_1.15fr]"><div><p className="eyebrow"><span className="eyebrow-dot" />Quando conversar conosco</p><h2 className="section-title mt-4">Você não precisa chegar com a solução pronta.</h2><p className="section-lead mt-5">Se existe um gargalo na aquisição, no atendimento ou na organização da operação, podemos começar por uma conversa objetiva.</p><a className="button button-dark mt-8" href={whatsappUrl("Olá! Quero entender qual frente da Valentis pode fazer sentido para o meu negócio.")}>Conversar sobre meu cenário <ArrowRight size={17} /></a></div><div className="fit-grid"><div className="fit-card"><MessageCircle size={20} /><h3>Você precisa gerar mais contatos</h3><p>Estruturamos campanhas e páginas para melhorar a qualidade das oportunidades.</p></div><div className="fit-card"><Code2 size={20} /><h3>Você perdeu o controle da operação</h3><p>Desenhamos sistemas simples para reduzir planilhas soltas e retrabalho.</p></div><div className="fit-card"><Target size={20} /><h3>Você não sabe por onde começar</h3><p>O diagnóstico organiza o problema antes de indicar um investimento.</p></div><div className="fit-card"><Sparkles size={20} /><h3>Você quer evoluir com critério</h3><p>Decisões melhores vêm de escopo, acompanhamento e prioridades claras.</p></div></div></div></section>
 
-        <section className="cta-section"><div className="container relative grid items-center gap-9 py-16 md:grid-cols-[1fr_auto]"><div><p className="eyebrow eyebrow-light"><span className="eyebrow-dot" />Próximo passo</p><h2 className="mt-4 max-w-2xl text-3xl font-black tracking-[-0.04em] text-white md:text-5xl">Comece entendendo o que sua empresa precisa agora.</h2><p className="mt-5 max-w-xl leading-7 text-white/70">Faça o diagnóstico inicial ou fale diretamente com a Valentis.</p></div><Link className="button button-white" href="/diagnostico">Fazer diagnóstico <ArrowRight size={17} /></Link></div></section>
+        <section className="cta-section"><div className="container relative grid items-center gap-9 py-16 md:grid-cols-[1fr_auto]"><div><p className="eyebrow eyebrow-light"><span className="eyebrow-dot" />Próximo passo</p><h2 className="mt-4 max-w-2xl text-3xl font-black tracking-[-0.04em] text-white md:text-5xl">Comece entendendo o que sua empresa precisa agora.</h2><p className="mt-5 max-w-xl leading-7 text-white/70">Faça o diagnóstico inicial ou fale diretamente com a Valentis.</p></div><Link className="button button-white" href="/trafego-pago#diagnostico">Fazer diagnóstico <ArrowRight size={17} /></Link></div></section>
       </main><Footer />
     </div>
   );

@@ -3,6 +3,7 @@ import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import Plans from "@/pages/Plans";
 import Diagnostic from "@/pages/Diagnostic";
+import TrafegoPago from "@/pages/TrafegoPago";
 import Systems from "@/pages/Systems";
 import About from "@/pages/About";
 import { Privacy, Terms } from "@/pages/Legal";
@@ -17,6 +18,7 @@ function Router() {
     <WouterRouter base="/">
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/trafego-pago" component={TrafegoPago} />
         <Route path="/servicos" component={Services} />
         <Route path="/planos" component={Plans} />
         <Route path="/diagnostico" component={Diagnostic} />

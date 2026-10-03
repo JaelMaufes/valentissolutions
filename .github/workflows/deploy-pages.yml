@@ -65,7 +65,7 @@ jobs:
 
           cp "$artifact_dir/index.html" "$artifact_dir/404.html"
 
-          routes=(diagnostico servicos planos sistemas sobre privacidade termos)
+          routes=(trafego-pago diagnostico servicos planos sistemas sobre privacidade termos)
           for route in "${routes[@]}"; do
             mkdir -p "$artifact_dir/$route"
             cp "$artifact_dir/index.html" "$artifact_dir/$route/index.html"
@@ -118,7 +118,7 @@ jobs:
             exit 1
           fi
 
-          test "$(find "$artifact_dir" -type f -name 'index.html' | wc -l)" = "8"
+          test "$(find "$artifact_dir" -type f -name 'index.html' | wc -l)" = "9"
           test "$(find "$artifact_dir" -type f -name '404.html' | wc -l)" = "1"
           ! find "$artifact_dir" -type d \( -name node_modules -o -name dist \) -print -quit | grep -q .
           echo "Validated artifact: $artifact_dir"
