@@ -251,3 +251,40 @@
 @layer components {
   .lead-honeypot { position: absolute !important; left: -10000px !important; height: 1px !important; width: 1px !important; overflow: hidden !important; opacity: 0 !important; }
 }
+
+/* ===== Ritmo vertical mais compacto (2026-10) ===== */
+@layer components {
+  .section-pad { padding-block: clamp(3rem, 6vw, 5rem); }
+  .process-card, .process-grid-three .process-card { min-height: 0; padding: 1.35rem; }
+  .process-icon { margin-top: 1.1rem; }
+  .process-card h3 { margin-top: .9rem; }
+  .fit-card { padding: 1.25rem; }
+  .fit-card h3 { margin-top: .8rem; }
+  .diagnostic-shell, .result-shell { margin-bottom: 0; }
+  .lp-trafego .section-title { font-size: clamp(2rem, 3.6vw, 3.3rem); }
+  .lp-trafego .display-title { font-size: clamp(2.6rem, 6vw, 5rem); }
+
+  /* Oferta de entrada: Sprint de Validação */
+  .sprint-offer { display: grid; gap: 1.75rem; align-items: center; grid-template-columns: 1.1fr 1fr; border: 1px solid #d8d0ee; border-radius: 1.6rem; background: linear-gradient(145deg,#fff,#f6f2ff); padding: clamp(1.4rem, 4vw, 2.5rem); box-shadow: 0 20px 60px rgba(66,46,120,.08); position: relative; overflow: hidden; }
+  .sprint-offer::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background-image: linear-gradient(110deg,#11d9ff,#327cf4 34%,#7135e8 68%,#f000cf); }
+  .sprint-list { display: grid; gap: .85rem; border-radius: 1.1rem; background: #fff; border: 1px solid #ece7f8; padding: 1.25rem 1.35rem; }
+
+  /* Caminho depois do Sprint */
+  .path-grid { display: grid; gap: .75rem; grid-template-columns: repeat(3,1fr); counter-reset: path; }
+  .path-step { display: flex; gap: .9rem; align-items: flex-start; border: 1px solid #e7e0f3; border-radius: 1rem; background: rgba(255,255,255,.75); padding: 1.1rem; }
+  .path-icon { display: flex; flex-shrink: 0; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: .75rem; color: #6845c8; background: #f0ebff; }
+  .path-label { font-size: .65rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: #7c4fe0; }
+  .path-step h4 { margin-top: .15rem; font-weight: 900; color: #2e2347; }
+  .path-step p:not(.path-label) { margin-top: .3rem; font-size: .84rem; line-height: 1.6; color: #70697d; }
+
+  @media (max-width: 900px) {
+    .sprint-offer, .path-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .process-card, .process-grid-three .process-card { display: grid; grid-template-columns: 42px 1fr; column-gap: .9rem; align-items: start; padding: 1.1rem 1.2rem; }
+    .process-index { position: absolute; top: 1rem; right: 1.1rem; }
+    .process-icon { grid-row: span 2; width: 42px; height: 42px; margin-top: 0; }
+    .process-card h3 { margin-top: .1rem; }
+    .process-card p { margin-top: .25rem; }
+  }
+}
