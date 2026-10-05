@@ -1,6 +1,7 @@
-import { ArrowRight, BarChart3, Check, Code2, Compass, Layers3, MessageCircle, Sparkles, Target, TrendingUp, Workflow } from "lucide-react";
+import { ArrowRight, Check, Code2, Compass, MessageCircle, Sparkles, Target, TrendingUp, Workflow } from "lucide-react";
 import { Link } from "wouter";
 import { Footer, Header, CheckLine, whatsappUrl } from "@/components/MarketingLayout";
+import BrandHub from "@/components/BrandHub";
 
 const fronts = [
   {
@@ -51,14 +52,9 @@ export default function Home() {
               <h1 className="display-title max-w-4xl">Soluções para <span className="gradient-text">atrair, organizar e crescer.</span></h1>
               <p className="hero-copy mt-6 max-w-2xl">Ajudamos negócios locais a encontrar oportunidades e estruturar a operação que acontece depois que elas chegam — com estratégia, tecnologia e clareza.</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link className="button button-primary" href="/trafego-pago#diagnostico">Fazer diagnóstico inicial <ArrowRight size={17} /></Link><a className="button button-secondary" href="#frentes">Explorar soluções <ArrowRight size={17} /></a></div>
-              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold text-[#69647a]"><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0" />Atendimento direto</span><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0" />Escopo claro</span><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0" />Linguagem sem complicação</span></div>
+              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold text-[#69647a]"><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0]" />Atendimento direto</span><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0]" />Escopo claro</span><span className="flex items-center gap-2"><Check size={15} className="text-[#7c4fe0]" />Linguagem sem complicação</span></div>
             </div>
-            <div className="hero-hub reveal reveal-delay-2" aria-label="Visão geral das soluções Valentis Solutions">
-              <img className="brand-parallax-icon hub-icon" src="/valentis-icon.png" alt="" aria-hidden="true" />
-              <div className="hub-ring hub-ring-one" /><div className="hub-ring hub-ring-two" />
-              <div className="hub-center"><Sparkles size={24} /><strong>Valentis Solutions</strong><span>soluções conectadas</span></div>
-              <div className="hub-node hub-node-one"><BarChart3 size={17} /><span>Atrair</span></div><div className="hub-node hub-node-two"><Layers3 size={17} /><span>Organizar</span></div><div className="hub-node hub-node-three"><TrendingUp size={17} /><span>Evoluir</span></div>
-            </div>
+            <div className="reveal reveal-delay-2"><BrandHub /></div>
           </div>
         </section>
 

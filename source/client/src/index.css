@@ -288,3 +288,47 @@
     .process-card p { margin-top: .25rem; }
   }
 }
+
+/* ===== Hub da marca (página inicial): cubo no centro, frentes em órbita ===== */
+@layer components {
+  .brand-hub { --hub: min(500px, 84vw); --mx: 0; --my: 0; position: relative; width: var(--hub); height: var(--hub); margin-inline: auto; isolation: isolate; }
+  .bh-layer, .bh-orbit { position: absolute; inset: 0; transition: translate .5s cubic-bezier(.2,.8,.2,1); }
+  .bh-back { translate: calc(var(--mx) * -8px) calc(var(--my) * -8px); }
+  .bh-orbit { z-index: 2; translate: calc(var(--mx) * 5px) calc(var(--my) * 5px); animation: bh-spin 70s linear infinite; }
+  .bh-front { z-index: 3; display: flex; align-items: center; justify-content: center; pointer-events: none; translate: calc(var(--mx) * 16px) calc(var(--my) * 12px); }
+
+  .bh-glow { position: absolute; left: 50%; top: 50%; width: 62%; height: 62%; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle, rgba(113,53,232,.30) 0%, rgba(17,217,255,.16) 38%, rgba(240,0,207,.06) 58%, transparent 70%); filter: blur(6px); animation: bh-breathe 6s ease-in-out infinite; }
+  .bh-ring { position: absolute; left: 50%; top: 50%; translate: -50% -50%; border-radius: 50%; }
+  .bh-ring-inner { width: 54%; height: 54%; border: 1px solid rgba(124,79,224,.22); background: radial-gradient(circle, rgba(255,255,255,.85), rgba(240,234,255,.35) 70%); box-shadow: inset 0 0 40px rgba(124,79,224,.08); }
+  .bh-ring-outer { width: 72%; height: 72%; border: 1.5px dashed rgba(113,53,232,.28); animation: bh-spin 90s linear infinite reverse; }
+  .brand-hub::before { content: ""; position: absolute; left: 50%; top: 50%; width: 94%; height: 94%; translate: -50% -50%; border-radius: 50%; border: 1px solid rgba(124,79,224,.12); z-index: 0; }
+
+  .bh-links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .bh-link { stroke-width: .55; stroke-linecap: round; stroke-dasharray: 1.4 2.2; opacity: .75; animation: bh-flow 1.6s linear infinite; }
+
+  .bh-particle { position: absolute; left: 50%; top: 50%; width: var(--pz); height: var(--pz); margin: calc(var(--pz) / -2); border-radius: 50%; background: linear-gradient(135deg,#11d9ff,#7135e8); box-shadow: 0 0 10px rgba(113,53,232,.55); animation: bh-particle var(--ps) linear infinite; animation-delay: var(--pd); }
+
+  .bh-node-pos { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: rotate(var(--a)) translateX(calc(var(--hub) * .36)) rotate(calc(var(--a) * -1)); }
+  .bh-node { position: absolute; left: 0; top: 0; translate: -50% -50%; display: flex; align-items: center; gap: .45rem; white-space: nowrap; border: 1px solid rgba(255,255,255,.95); border-radius: 999px; background: rgba(255,255,255,.9); padding: .6rem .95rem; font-size: .76rem; font-weight: 900; color: #3d2f5f; box-shadow: 0 12px 28px rgba(69,49,130,.16), 0 0 0 4px rgba(124,79,224,.06); backdrop-filter: blur(10px); animation: bh-spin 70s linear infinite reverse; }
+  .bh-node svg { color: #6845c8; }
+
+  .bh-cube-wrap { position: relative; width: 36%; animation: bh-float 6s ease-in-out infinite; }
+  .bh-cube { display: block; width: 100%; height: auto; filter: drop-shadow(0 18px 26px rgba(73,43,168,.28)); }
+  .bh-shadow { position: absolute; left: 18%; right: 18%; bottom: -26%; height: 9%; border-radius: 50%; background: radial-gradient(ellipse, rgba(59,46,107,.28), transparent 70%); animation: bh-shadow 6s ease-in-out infinite; }
+
+  @keyframes bh-spin { to { rotate: 360deg; } }
+  @keyframes bh-flow { to { stroke-dashoffset: -3.6; } }
+  @keyframes bh-breathe { 0%, 100% { opacity: .75; scale: .96; } 50% { opacity: 1; scale: 1.05; } }
+  @keyframes bh-float { 0%, 100% { translate: 0 -5px; rotate: -2deg; } 50% { translate: 0 9px; rotate: 2deg; } }
+  @keyframes bh-shadow { 0%, 100% { scale: .82; opacity: .55; } 50% { scale: 1.05; opacity: .9; } }
+  @keyframes bh-particle { from { transform: rotate(0deg) translateX(calc(var(--hub) * var(--pr))); } to { transform: rotate(360deg) translateX(calc(var(--hub) * var(--pr))); } }
+
+  @media (max-width: 640px) {
+    .brand-hub { --hub: min(340px, 88vw); }
+    .bh-node { padding: .5rem .75rem; font-size: .7rem; }
+    .bh-node-pos { transform: rotate(var(--a)) translateX(calc(var(--hub) * .345)) rotate(calc(var(--a) * -1)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bh-orbit, .bh-node, .bh-ring-outer, .bh-link, .bh-particle, .bh-glow, .bh-cube-wrap, .bh-shadow { animation: none !important; }
+  }
+}
