@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check, CircleHelp, MessageCircle, RotateCcw, Sparkles, Target } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, MessageCircle, RotateCcw, Sparkles, Target } from "lucide-react";
 import { trackLeadEvent, whatsappUrl } from "@/lib/leadIntegration";
 
 type Answers = { segment: string; objective: string; bottleneck: string; maturity: string; budget: string };
@@ -14,13 +14,13 @@ const steps: { key: keyof Answers; title: string; question: string; hint?: strin
 ];
 
 function recommendation(a: Answers) {
-  if (a.bottleneck === "As pessoas chegam, mas não avançam") return { title: "Seu primeiro gargalo parece estar na conversão.", service: "Gestão de anúncios + landing page e copy", plan: "Gestão mensal — Plano Validar ou Crescer", why: "Antes de aumentar a verba, vale revisar a mensagem, a página e o próximo passo oferecido ao contato." };
-  if (a.bottleneck === "Minha comunicação não diferencia a oferta") return { title: "Seu primeiro gargalo parece estar na mensagem.", service: "Gestão de anúncios + copy e criativos", plan: "Gestão mensal — Plano Validar", why: "Uma oferta bem apresentada ajuda o anúncio a atrair pessoas com mais intenção, não apenas mais cliques." };
-  if (a.maturity === "Tenho uma operação ativa e quero evoluir" && a.budget === "Acima de R$ 5.000 por mês") return { title: "Seu cenário pede uma operação conectada.", service: "Gestão multi-plataforma + organização dos leads", plan: "Gestão mensal — Plano Escalar", why: "Com verba e operação ativas, o ganho está em conectar mídia, página e atendimento para não perder oportunidades no caminho." };
-  if (a.bottleneck === "Não sei onde a verba está sendo desperdiçada" || a.maturity === "Já anuncio, mas sem clareza dos dados") return { title: "Seu primeiro gargalo parece estar na leitura dos dados.", service: "Auditoria + gestão de anúncios", plan: "Gestão mensal — Plano Crescer", why: "O próximo passo é organizar rastreamento, indicadores e decisões antes de ampliar campanhas." };
-  if (a.objective === "Aumentar o movimento em uma região") return { title: "Seu cenário pede uma estratégia de presença local.", service: "Google Ads + Meta Ads com segmentação regional", plan: "Gestão mensal — Plano Crescer", why: "A combinação de intenção de busca e alcance local cria mais pontos de contato com quem está perto de você." };
-  if (a.maturity === "Ainda não anunciei" || a.budget === "Ainda não defini") return { title: "O melhor começo é validar antes de escalar.", service: "Diagnóstico + campanha piloto", plan: "Sprint de Validação", why: "Em 15 dias, sem renovação automática, você testa o caminho com uma campanha piloto e recebe um plano de ação por escrito." };
-  return { title: "Seu primeiro passo é estruturar a aquisição.", service: "Gestão de anúncios no Google e na Meta", plan: "Gestão mensal — Plano Validar", why: "Uma primeira operação bem estruturada permite aprender com a verba e descobrir quais oportunidades têm mais qualidade." };
+  if (a.bottleneck === "As pessoas chegam, mas não avançam") return { title: "Seu primeiro gargalo parece estar na conversão.", service: "Gestão de anúncios + landing page e copy", plan: "Gestão mensal — Plano Validar ou Crescer", why: "Se as pessoas chegam mas não avançam, mais verba só leva mais gente ao mesmo ponto de saída. O ganho mais rápido está na mensagem e na página." };
+  if (a.bottleneck === "Minha comunicação não diferencia a oferta") return { title: "Seu primeiro gargalo parece estar na mensagem.", service: "Gestão de anúncios + copy e criativos", plan: "Gestão mensal — Plano Validar", why: "Quando a oferta parece igual à dos concorrentes, o anúncio atrai curiosos, não clientes. Uma mensagem clara filtra quem tem intenção de comprar." };
+  if (a.maturity === "Tenho uma operação ativa e quero evoluir" && a.budget === "Acima de R$ 5.000 por mês") return { title: "Seu cenário pede uma operação conectada.", service: "Gestão multi-plataforma + organização dos leads", plan: "Gestão mensal — Plano Escalar", why: "Com verba e operação ativas, cada contato perdido entre o anúncio e o atendimento custa caro. Conectar as pontas rende mais do que aumentar o investimento." };
+  if (a.bottleneck === "Não sei onde a verba está sendo desperdiçada" || a.maturity === "Já anuncio, mas sem clareza dos dados") return { title: "Seu primeiro gargalo parece estar na leitura dos dados.", service: "Auditoria + gestão de anúncios", plan: "Gestão mensal — Plano Crescer", why: "Sem dados confiáveis, não dá para saber qual campanha traz cliente e qual só consome verba. Organizar a leitura vem antes de ampliar." };
+  if (a.objective === "Aumentar o movimento em uma região") return { title: "Seu cenário pede uma estratégia de presença local.", service: "Google Ads + Meta Ads com segmentação regional", plan: "Gestão mensal — Plano Crescer", why: "Para movimentar uma região, o caminho é aparecer para quem já busca no Google e para quem está por perto no Instagram e no Facebook." };
+  if (a.maturity === "Ainda não anunciei" || a.budget === "Ainda não defini") return { title: "O melhor começo é validar antes de escalar.", service: "Diagnóstico + campanha piloto", plan: "Sprint de Validação", why: "Antes de assumir um compromisso mensal, vale testar com uma campanha piloto e decidir com dados reais do seu mercado." };
+  return { title: "Seu primeiro passo é estruturar a aquisição.", service: "Gestão de anúncios no Google e na Meta", plan: "Gestão mensal — Plano Validar", why: "Uma operação bem estruturada desde o início aprende mais rápido com a verba e mostra cedo quais contatos têm mais qualidade." };
 }
 
 export default function TrafficDiagnostic() {
@@ -54,9 +54,8 @@ export default function TrafficDiagnostic() {
       <h3 className="mt-4 max-w-2xl text-3xl font-black tracking-[-.04em] md:text-5xl">{result.title}</h3>
       <p className="mt-5 max-w-2xl text-lg leading-8 text-[#625c70]">{result.why}</p>
       <div className="result-grid mt-7"><div><span>Caminho indicado</span><strong>{result.service}</strong></div><div><span>Ponto de partida sugerido</span><strong>{result.plan}</strong></div></div>
-      <div className="mt-6 rounded-2xl border border-[#e5defc] bg-[#faf8ff] p-5 text-sm leading-6 text-[#5c566d]"><div className="flex gap-3"><CircleHelp className="mt-0.5 shrink-0 text-[#7c4fe0]" size={19} /><p>Essa recomendação parte apenas das suas respostas. Na conversa, avaliamos oferta, região, verba e capacidade de atendimento antes de indicar qualquer contratação.</p></div></div>
       <div className="mt-7 flex flex-col gap-3 sm:flex-row"><a className="button button-primary" target="_blank" rel="noopener noreferrer" href={whatsappUrl(msg)} onClick={() => trackLeadEvent("whatsapp_diagnostico_trafego")}><MessageCircle size={17} />Receber orientação no WhatsApp</a><button type="button" className="button button-secondary" onClick={reset}><RotateCcw size={16} />Refazer diagnóstico</button></div>
     </div>}
-    <div className="mt-5 flex items-start gap-3 text-xs leading-5 text-[#898296]"><Target size={15} className="mt-0.5 shrink-0 text-[#7c4fe0]" /><p>Suas respostas só são enviadas quando você clica no botão do WhatsApp. O diagnóstico é uma triagem e não representa promessa de resultado.</p></div>
+    <div className="mt-5 flex items-start gap-3 text-xs leading-5 text-[#898296]"><Target size={15} className="mt-0.5 shrink-0 text-[#7c4fe0]" /><p>Recomendação baseada apenas nas suas respostas; na conversa avaliamos oferta, região, verba e atendimento. Nada é enviado até você clicar no botão do WhatsApp.</p></div>
   </div>;
 }
