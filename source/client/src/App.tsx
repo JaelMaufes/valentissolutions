@@ -1,4 +1,5 @@
-import { Route, Router as WouterRouter, Switch } from "wouter";
+import { useEffect } from "react";
+import { Route, Router as WouterRouter, Switch, useLocation } from "wouter";
 import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import Plans from "@/pages/Plans";
@@ -13,9 +14,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
+// Navegação interna volta ao topo (exceto quando o link aponta para uma âncora)
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => { if (!window.location.hash) window.scrollTo(0, 0); }, [location]);
+  return null;
+}
+
 function Router() {
   return (
     <WouterRouter base="/">
+      <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/trafego-pago" component={TrafegoPago} />

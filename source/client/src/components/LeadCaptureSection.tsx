@@ -79,7 +79,7 @@ export default function LeadCaptureSection() {
         <div className="lead-capture-heading">
           <div>
             <p className="eyebrow"><span className="eyebrow-dot" />Próximo passo</p>
-            <h2 id="lead-capture-title" className="section-title mt-4">Escolha como prefere falar <span className="gradient-text">com a Valentis.</span></h2>
+            <h2 id="lead-capture-title" className="section-title mt-4">Escolha como prefere falar <span className="gradient-text">com a Valentis Solutions.</span></h2>
           </div>
           <p className="section-lead">Você decide o canal. O WhatsApp é imediato; o formulário organiza as informações para uma conversa no melhor horário.</p>
         </div>
@@ -90,7 +90,7 @@ export default function LeadCaptureSection() {
             <h3>Fale conosco pelo WhatsApp.</h3>
             <p>Se você já sabe o que precisa ou prefere conversar agora, esse é o caminho mais rápido.</p>
             <a className="button button-white mt-7" 
-              href={whatsappUrl("Olá! Quero falar com a Valentis.")} 
+              href={whatsappUrl("Olá! Quero falar com a Valentis Solutions.")} 
               target="_blank" 
               rel="noopener noreferrer"
               onClick={() => {
@@ -102,8 +102,8 @@ export default function LeadCaptureSection() {
           </aside>
           <div className="lead-form-card">
             <div className="flex items-start justify-between gap-4"><div><p className="eyebrow">Prefere receber contato depois?</p><h3>Deixe seus dados e indique o melhor horário.</h3></div><ShieldCheck size={28} className="text-[#6366f1] shrink-0" /></div>
-            <p className="lead-form-support">Não pode falar pelo WhatsApp agora? Deixe seus dados e a Valentis entrará em contato no melhor horário para entender seu cenário e indicar o próximo passo.</p>
-            {state === "success" ? <div className="lead-feedback lead-feedback-success" role="status"><Check size={20} /><div><strong>Recebemos suas informações.</strong><p>A equipe da Valentis entrará em contato no horário indicado. Se preferir atendimento imediato, você também pode falar pelo WhatsApp.</p></div></div> : <form className="lead-form" onSubmit={handleSubmit} noValidate>
+            <p className="lead-form-support">Não pode falar pelo WhatsApp agora? Deixe seus dados e a Valentis Solutions entrará em contato no melhor horário para entender seu cenário e indicar o próximo passo.</p>
+            {state === "success" ? <div className="lead-feedback lead-feedback-success" role="status"><Check size={20} /><div><strong>Recebemos suas informações.</strong><p>A equipe da Valentis Solutions entrará em contato no horário indicado. Se preferir atendimento imediato, você também pode falar pelo WhatsApp.</p></div></div> : <form className="lead-form" onSubmit={handleSubmit} noValidate>
               <div className="lead-form-fields">
                 <label>Nome *<input id="lead-name" name="name" value={values.name} onChange={event => update("name", event.target.value)} maxLength={80} autoComplete="name" aria-invalid={Boolean(errors.name)} />{errors.name && <small>{errors.name}</small>}</label>
                 <label>Empresa<input name="company" value={values.company} onChange={event => update("company", event.target.value)} maxLength={120} autoComplete="organization" /></label>
@@ -118,7 +118,7 @@ export default function LeadCaptureSection() {
               {errors.consent && <small className="lead-consent-error">{errors.consent}</small>}
               {state === "error" && <div className="lead-feedback lead-feedback-error" role="alert">Não conseguimos enviar suas informações agora. Confira os campos e tente novamente ou fale conosco pelo WhatsApp.</div>}
               <button type="submit" className="button button-primary" disabled={state === "sending"}>{state === "sending" ? "Enviando suas informações..." : <><Send size={16} />Enviar meus dados</>}</button>
-              <p className="lead-form-note">Seus dados serão encaminhados com segurança para a equipe da Valentis, conforme a Política de Privacidade.</p>
+              <p className="lead-form-note">Seus dados serão encaminhados com segurança para a equipe da Valentis Solutions, conforme a Política de Privacidade.</p>
             </form>}
           </div>
         </div>
