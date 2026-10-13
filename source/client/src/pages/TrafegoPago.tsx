@@ -90,7 +90,7 @@ export default function TrafegoPago() {
                 <Anchor to="diagnostico" className="button button-primary">Fazer diagnóstico gratuito <ArrowRight size={17} /></Anchor>
                 <a className="button button-secondary" target="_blank" rel="noopener noreferrer" href={whatsappUrl(waMsg)} onClick={() => trackLeadEvent("whatsapp_trafego_hero")}>Falar no WhatsApp <MessageCircle size={17} /></a>
               </div>
-              <p className="mt-5 text-sm text-[#69647a]">Prefere testar antes? <Anchor to="sprint" className="font-bold text-[#6845c8] underline-offset-4 hover:underline">Conheça o Sprint de Validação de 15 dias</Anchor>.</p>
+              <p className="mt-5 text-sm text-[#69647a]">Prefere testar antes? <Anchor to="sprint" className="font-bold text-[#315EFA] underline-offset-4 hover:underline">Conheça o Sprint de Validação de 15 dias</Anchor>.</p>
             </div>
           </div>
         </section>
@@ -141,8 +141,8 @@ export default function TrafegoPago() {
         <section className="section-pad bg-white"><div className="container max-w-4xl">
           <p className="eyebrow"><span className="eyebrow-dot" />Perguntas frequentes</p>
           <h2 className="section-title mt-3">Antes de <span className="gradient-text">decidir.</span></h2>
-          <div className="mt-7 grid gap-2.5">{faq.map(({ q, a }) => <details key={q} className="group rounded-2xl border border-[#ece7f8] bg-[#fbfaff] px-5 py-4 open:bg-white"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-[#2c2640]">{q}<span className="text-xl leading-none text-[#7c4fe0] transition-transform group-open:rotate-45">+</span></summary><p className="mt-2 text-sm leading-7 text-[#5c566d]">{a}</p></details>)}</div>
-          <p className="mt-6 text-sm text-[#69647a]">Quer ver o escopo detalhado de cada nível da gestão mensal? <Link href="/planos" className="font-bold text-[#6845c8] underline-offset-4 hover:underline">Conheça os planos</Link>.</p>
+          <div className="mt-7 grid gap-2.5">{faq.map(({ q, a }) => <details key={q} className="group rounded-2xl border border-[#ece7f8] bg-[#fbfaff] px-5 py-4 open:bg-white"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-[#2c2640]">{q}<span className="text-xl leading-none text-[#6A19F9] transition-transform group-open:rotate-45">+</span></summary><p className="mt-2 text-sm leading-7 text-[#5c566d]">{a}</p></details>)}</div>
+          <p className="mt-6 text-sm text-[#69647a]">Quer ver o escopo detalhado de cada nível da gestão mensal? <Link href="/planos" className="font-bold text-[#315EFA] underline-offset-4 hover:underline">Conheça os planos</Link>.</p>
         </div></section>
 
         <section className="cta-section"><div className="container relative grid items-center gap-7 py-12 md:grid-cols-[1fr_auto]">
