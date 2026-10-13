@@ -74,7 +74,7 @@ export default function BrandHub() {
 
       <div className="bh-layer bh-front" aria-hidden="true">
         <div className="bh-cube-wrap">
-          <img className="bh-cube" src="/assets/valentis-cube.webp" alt="" width={640} height={606} decoding="async" />
+          <img className="bh-cube" src="/assets/marca/valentis-solutions-simbolo-cor.svg" alt="" width={246} height={233} decoding="async" />
           <div className="bh-shadow" />
         </div>
       </div>

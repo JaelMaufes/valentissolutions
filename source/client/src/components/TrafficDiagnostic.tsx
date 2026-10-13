@@ -56,6 +56,6 @@ export default function TrafficDiagnostic() {
       <div className="result-grid mt-7"><div><span>Caminho indicado</span><strong>{result.service}</strong></div><div><span>Ponto de partida sugerido</span><strong>{result.plan}</strong></div></div>
       <div className="mt-7 flex flex-col gap-3 sm:flex-row"><a className="button button-primary" target="_blank" rel="noopener noreferrer" href={whatsappUrl(msg)} onClick={() => trackLeadEvent("whatsapp_diagnostico_trafego")}><MessageCircle size={17} />Receber orientação no WhatsApp</a><button type="button" className="button button-secondary" onClick={reset}><RotateCcw size={16} />Refazer diagnóstico</button></div>
     </div>}
-    <div className="mt-5 flex items-start gap-3 text-xs leading-5 text-[#898296]"><Target size={15} className="mt-0.5 shrink-0 text-[#7c4fe0]" /><p>Recomendação baseada apenas nas suas respostas; na conversa avaliamos oferta, região, verba e atendimento. Nada é enviado até você clicar no botão do WhatsApp.</p></div>
+    <div className="mt-5 flex items-start gap-3 text-xs leading-5 text-[#898296]"><Target size={15} className="mt-0.5 shrink-0 text-[#6A19F9]" /><p>Recomendação baseada apenas nas suas respostas; na conversa avaliamos oferta, região, verba e atendimento. Nada é enviado até você clicar no botão do WhatsApp.</p></div>
   </div>;
 }
