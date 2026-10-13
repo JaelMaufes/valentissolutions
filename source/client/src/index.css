@@ -336,6 +336,7 @@
 /* =====================================================================
    Família Valentis Solutions + Anille
    - Valentis Solutions: kit da marca (logo claro/escuro, símbolo cubo, favicon e ícones em /assets/marca/).
+     Topo e rodapé são escuros: usam o logo na versão "escuro" (palavra em branco).
      Azul do logotipo #315EFA, ciano #01D2F3, moldura do magenta #F500C6 ao azul #3E4DF9, noite #080417.
    - Faixas escuras na noite da Valentis Solutions (#080417).
    - Vitrine do Sistema Anille na identidade da marca Anille (canvas "Logo Anille"):
@@ -388,3 +389,10 @@
   .anille-logo { height: 42px; }
   .anille-btn { flex: 1 1 100%; justify-content: center; }
 }
+
+/* Topo e rodapé escuros: logo do kit na versão para fundo escuro e textos com contraste */
+.site-header nav a { color: #D8D4F0; }
+.site-header nav a:hover { color: #01D2F3; }
+footer .grid a, footer .grid span { color: #D8D4F0; }
+footer .grid a:hover { color: #01D2F3; }
+footer p { color: #B9B3D9; }

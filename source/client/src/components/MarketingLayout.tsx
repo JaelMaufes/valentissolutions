@@ -8,7 +8,7 @@ import { ANILLE_URL } from "@/components/AnilleShowcase";
 
 export { WHATSAPP, whatsappUrl, ANILLE_URL };
 
-export function Logo() { return <Link href="/" className="brand-logo-link" aria-label="Valentis Solutions — página inicial"><img className="brand-logo-image" src="/assets/marca/valentis-solutions-claro.svg" width={939} height={441} alt="Valentis Solutions" /></Link>; }
+export function Logo() { return <Link href="/" className="brand-logo-link" aria-label="Valentis Solutions — página inicial"><img className="brand-logo-image" src="/assets/marca/valentis-solutions-escuro.svg" width={939} height={441} alt="Valentis Solutions" /></Link>; }
 
 const externo = (href: string) => href.startsWith("http");
 const navItems = [{ href: "/", label: "Início" }, { href: "/trafego-pago", label: "Tráfego pago" }, { href: "/servicos", label: "Serviços" }, { href: "/sistemas", label: "Sistemas" }, { href: ANILLE_URL, label: "Anille" }, { href: "/sobre", label: "Sobre nós" }];
