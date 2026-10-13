@@ -38,8 +38,8 @@ export default function AnilleShowcase({ id = "anille", compacto = false }: { id
         </div>
         {!compacto && (
           <figure className="anille-telas">
-            <img className="anille-tela" src="/assets/anille/inicio-desk-escuro.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Tela Início do Sistema Anille com cobranças, retornos de leads e ordens de serviço do dia" />
-            <img className="anille-tela-cel" src="/assets/anille/inicio-cel-escuro.webp" width="780" height="1688" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+            <img className="anille-tela" src="/assets/anille/inicio-desk-claro.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Tela Início do Sistema Anille com cobranças, retornos de leads e ordens de serviço do dia" />
+            <img className="anille-tela-cel" src="/assets/anille/inicio-cel-claro.webp" width="780" height="1688" loading="lazy" decoding="async" alt="" aria-hidden="true" />
             <figcaption>Dados fictícios.</figcaption>
           </figure>
         )}
