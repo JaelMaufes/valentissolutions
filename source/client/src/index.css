@@ -395,4 +395,7 @@
 .site-header nav a:hover { color: #01D2F3; }
 footer .grid a, footer .grid span { color: #D8D4F0; }
 footer .grid a:hover { color: #01D2F3; }
-footer p { color: #B9B3D9; }
+footer p:not(.eyebrow) { color: #B9B3D9; }
+footer .eyebrow { color: #01D2F3; }
+.site-header .button-ghost { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .32); }
+.site-header .button-ghost:hover { border-color: #01D2F3; color: #fff; }
