@@ -23,3 +23,9 @@ jobs:
       - run: pnpm build
       - name: Conferir o link do Anille no resultado
         run: grep -rq "anille.sovalentis.com" dist/public/assets/
+      - name: Guardar o site compilado para conferência (3 dias)
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-compilado
+          path: source/dist/public
+          retention-days: 3

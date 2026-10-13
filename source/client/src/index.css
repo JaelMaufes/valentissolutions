@@ -332,3 +332,57 @@
     .bh-orbit, .bh-node, .bh-ring-outer, .bh-link, .bh-particle, .bh-glow, .bh-cube-wrap, .bh-shadow { animation: none !important; }
   }
 }
+
+/* =====================================================================
+   Família Valentis Solutions + Anille
+   - Faixas escuras na "noite" comum às duas marcas (#07051A).
+   - Vitrine do Sistema Anille na identidade da marca Anille (canvas "Logo Anille"):
+     Noite #07051A, Magenta #FF2FD2, Violeta #6A1BFF, Azul #3B5BFF, Ciano #00E5FF, Tinta #120C33;
+     Outfit SemiBold nos títulos, Noto Serif em caixa alta espaçada no descritor.
+   ===================================================================== */
+.trust-strip { background: #07051A; }
+.cta-section { background: linear-gradient(115deg, #07051A 0%, #150d3d 58%, #3a1fa8 100%); }
+
+.front-card-anille { background: #07051A; border-color: #07051A; color: #F2F0FF; }
+.front-card-anille h3 { color: #fff; }
+.front-card-anille .front-eyebrow { color: #19D3F0; }
+.front-card-anille .front-description { color: #A9A3CF; }
+.front-card-anille .front-icon { background: linear-gradient(135deg, #FF2FD2, #6A1BFF 55%, #3B5BFF); color: #fff; }
+.front-card-anille .front-arrow, .front-card-anille .front-link { color: #19D3F0; }
+.front-card-anille:hover { box-shadow: 0 22px 42px rgba(106, 27, 255, .35); }
+
+.anille-vitrine { position: relative; overflow: hidden; background: #07051A; color: #F2F0FF; padding: clamp(64px, 8vw, 112px) 0; }
+.anille-vitrine::before, .anille-vitrine::after { content: ""; position: absolute; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF2FD2, #6A1BFF 50%, #00E5FF); }
+.anille-vitrine::before { top: 0; } .anille-vitrine::after { bottom: 0; }
+.anille-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(36px, 6vw, 80px); align-items: center; }
+.anille-logo { display: block; height: 52px; width: auto; }
+.anille-descritor { margin-top: 14px; font-family: "Noto Serif", Georgia, serif; font-size: .76rem; letter-spacing: .3em; text-transform: uppercase; color: #19D3F0; }
+.anille-titulo { margin-top: 28px; font-family: "Outfit", "DM Sans", sans-serif; font-weight: 600; font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.02; letter-spacing: -.035em; color: #fff; max-width: 13ch; }
+.anille-copy { margin-top: 18px; max-width: 46ch; font-size: 1.06rem; line-height: 1.7; color: #A9A3CF; }
+.anille-modulos { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+.anille-modulos li { border: 1px solid rgba(255, 255, 255, .14); border-radius: 999px; padding: 6px 13px; font-size: .84rem; font-weight: 600; color: #D3CFEE; }
+.anille-acoes { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+.anille-btn { display: inline-flex; align-items: center; gap: .55rem; min-height: 48px; padding: 0 22px; border-radius: 999px; font-weight: 700; font-size: .95rem; transition: filter .15s, border-color .15s; }
+.anille-btn-pri { background: linear-gradient(120deg, #C41DDB 0%, #6A1BFF 50%, #3B5BFF 100%); color: #fff; box-shadow: 0 10px 22px -12px rgba(106, 27, 255, .75); }
+.anille-btn-pri:hover { filter: brightness(1.08); }
+.anille-btn-sec { border: 1.5px solid rgba(255, 255, 255, .32); color: #fff; }
+.anille-btn-sec:hover { border-color: #19D3F0; }
+.anille-btn:focus-visible { outline: 3px solid #19D3F0; outline-offset: 2px; }
+.anille-destaques { margin-top: 22px; display: grid; gap: 8px; font-size: .9rem; color: #A9A3CF; }
+.anille-destaques li { display: flex; align-items: center; gap: 8px; }
+.anille-destaques svg { color: #19D3F0; flex: none; }
+.anille-telas { position: relative; margin: 0 clamp(24px, 6vw, 72px) 0 0; }
+.anille-tela { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .9); }
+.anille-tela-cel { position: absolute; right: calc(-1 * clamp(24px, 6vw, 72px)); bottom: -28px; width: 25%; height: auto; border-radius: 18px; border: 5px solid #000; box-shadow: 0 24px 40px -20px rgba(0, 0, 0, .9); }
+.anille-telas figcaption { margin-top: 40px; font-size: .78rem; color: #8F89B8; }
+.anille-vitrine-compacta { padding: clamp(48px, 6vw, 80px) 0; }
+.anille-vitrine-compacta .anille-grid { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+  .anille-grid { grid-template-columns: 1fr; }
+  .anille-telas { margin-right: 0; }
+  .anille-tela-cel { right: 8px; width: 28%; }
+}
+@media (max-width: 520px) {
+  .anille-logo { height: 42px; }
+  .anille-btn { flex: 1 1 100%; justify-content: center; }
+}
