@@ -391,11 +391,84 @@
 }
 
 /* Topo e rodapé escuros: logo do kit na versão para fundo escuro e textos com contraste */
-.site-header nav a { color: #D8D4F0; }
-.site-header nav a:hover { color: #01D2F3; }
 footer .grid a, footer .grid span { color: #D8D4F0; }
 footer .grid a:hover { color: #01D2F3; }
 footer p:not(.eyebrow) { color: #B9B3D9; }
 footer .eyebrow { color: #01D2F3; }
 .site-header .button-ghost { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .32); }
 .site-header .button-ghost:hover { border-color: #01D2F3; color: #fff; }
+
+/* =====================================================================
+   Menu do topo (14/10): navegação em cápsula, página atual marcada, atalho do Anille
+   com o símbolo da marca e menu do celular em tela cheia. Linha inferior nas cores do kit.
+   ===================================================================== */
+.site-header { border-bottom: 0; background: rgba(8, 4, 23, .86); box-shadow: none; backdrop-filter: blur(18px) saturate(1.4); transition: background .2s ease, box-shadow .2s ease; }
+.site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, #F500C6, #6A19F9 40%, #3E4DF9 70%, #01D2F3); opacity: .9; pointer-events: none; }
+.site-header-rolou, .site-header-aberto { background: rgba(8, 4, 23, .97); box-shadow: 0 12px 30px rgba(8, 4, 23, .35); }
+.site-header-in { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; min-height: 76px; transition: min-height .2s ease; }
+.site-header-rolou .site-header-in { min-height: 64px; }
+.site-header-acoes { display: flex; align-items: center; gap: .5rem; }
+.site-header .brand-logo-link { flex: none; width: 150px; }
+
+.nav-principal { display: none; }
+@media (min-width: 1024px) {
+  .nav-principal { display: flex; align-items: center; gap: .15rem; padding: .3rem; border: 1px solid rgba(255, 255, 255, .1); border-radius: 999px; background: rgba(255, 255, 255, .04); }
+}
+.site-header .nav-link { position: relative; padding: .55rem .9rem; border-radius: 999px; font-size: .86rem; font-weight: 700; color: #D8D4F0; transition: color .15s ease, background .15s ease; }
+.site-header .nav-link:hover { color: #fff; background: rgba(255, 255, 255, .08); }
+.site-header .nav-link[aria-current="page"] { color: #fff; background: rgba(255, 255, 255, .1); }
+.site-header .nav-link[aria-current="page"]::after { content: ""; position: absolute; left: 50%; bottom: 4px; width: 18px; height: 2px; translate: -50% 0; border-radius: 2px; background: linear-gradient(90deg, #F500C6, #3E4DF9); }
+.site-header .nav-anille { display: inline-flex; align-items: center; gap: .45rem; margin-left: .2rem; padding: .42rem .8rem .42rem .55rem; border: 1.5px solid transparent; border-radius: 999px; font-family: "Outfit", "DM Sans", sans-serif; font-weight: 600; font-size: .95rem; letter-spacing: -.02em; color: #fff;
+  background: linear-gradient(#07051A, #07051A) padding-box, linear-gradient(120deg, #FF2FD2, #6A1BFF 50%, #00E5FF) border-box; transition: box-shadow .2s ease; }
+.site-header .nav-anille:hover { color: #fff; box-shadow: 0 0 0 4px rgba(106, 27, 255, .28); }
+.site-header .nav-anille > svg:last-child { color: #19D3F0; }
+.nav-anille-simbolo { width: 18px; height: 18px; flex: none; }
+.site-header :is(.nav-link, .nav-anille):focus-visible { outline: 3px solid #01D2F3; outline-offset: 2px; }
+
+.mobile-menu { position: absolute; left: 0; right: 0; top: 100%; max-height: calc(100dvh - 64px); overflow-y: auto; border-top: 0; background: #0b0720; box-shadow: 0 30px 40px rgba(8, 4, 23, .45); padding: 0; }
+.mobile-menu-in { display: grid; gap: .35rem; padding-block: 1rem 1.75rem; }
+.mobile-menu .mobile-link { display: flex; align-items: center; justify-content: space-between; padding: 1rem .95rem; border: 1px solid transparent; border-radius: .9rem; font-size: 1.05rem; font-weight: 800; color: #F6F3FF; }
+.mobile-menu .mobile-link:hover { background: rgba(255, 255, 255, .05); }
+.mobile-menu .mobile-link[aria-current="page"] { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .12); box-shadow: inset 3px 0 0 #F500C6; }
+.mobile-menu .mobile-link svg { color: #01D2F3; }
+.mobile-menu .mobile-anille { margin-top: .6rem; display: grid; grid-template-columns: 1fr auto; gap: .55rem 1rem; align-items: center; padding: 1.1rem 1.15rem; border: 1.5px solid transparent; border-radius: 1rem;
+  background: linear-gradient(#07051A, #07051A) padding-box, linear-gradient(120deg, #FF2FD2, #6A1BFF 50%, #00E5FF) border-box; }
+.mobile-anille img { display: block; height: 30px; width: auto; }
+.mobile-anille span { grid-column: 1; font-size: .86rem; line-height: 1.5; color: #A9A3CF; }
+.mobile-anille svg { grid-column: 2; grid-row: 1 / span 2; color: #19D3F0; }
+.mobile-menu .mobile-cta { margin-top: .8rem; width: 100%; min-height: 52px; justify-content: center; border-bottom: 0; padding: 0 1rem; font-size: .95rem; color: #fff; }
+.mobile-menu .mobile-cta svg { color: #fff; }
+
+/* =====================================================================
+   Separador entre seções (14/10): linha nas cores do kit da Valentis Solutions, aberta
+   no meio para o símbolo. Não entra na vitrine do Anille (tem as linhas da marca Anille)
+   nem na faixa de chamada final.
+   ===================================================================== */
+main > section { position: relative; }
+main > section:not(:first-child):not(.anille-vitrine):not(.cta-section)::before,
+main > section:not(:first-child):not(.anille-vitrine):not(.cta-section)::after { content: ""; position: absolute; top: 0; left: 50%; z-index: 2; pointer-events: none; }
+main > section:not(:first-child):not(.anille-vitrine):not(.cta-section)::before { width: min(1160px, calc(100% - 2.5rem)); height: 2px; transform: translate(-50%, -50%);
+  background: linear-gradient(90deg, transparent 0, rgba(245, 0, 198, .55) 18%, rgba(106, 25, 249, .6) calc(50% - 28px), transparent calc(50% - 28px),
+    transparent calc(50% + 28px), rgba(62, 77, 249, .6) calc(50% + 28px), rgba(1, 210, 243, .55) 82%, transparent 100%); }
+main > section:not(:first-child):not(.anille-vitrine):not(.cta-section)::after { width: 28px; height: 27px; transform: translate(-50%, -50%); background: url("/assets/marca/valentis-solutions-simbolo-cor.svg") center / contain no-repeat; filter: drop-shadow(0 4px 8px rgba(106, 25, 249, .25)); }
+main > .anille-vitrine + section::before, main > .anille-vitrine + section::after { content: none; }
+
+/* =====================================================================
+   Hub da marca maior (14/10) e o Sistema Anille em órbita, com o logo oficial e link.
+   ===================================================================== */
+.brand-hub { --hub: min(600px, 92vw); }
+@media (min-width: 1024px) and (max-width: 1239px) { .brand-hub { --hub: min(600px, 46vw); } }
+@media (max-width: 640px) { .brand-hub { --hub: min(400px, 94vw); } .bh-node-pos { --r: .345; } }
+.bh-cube-wrap { width: 40%; }
+.bh-node-pos { transform: rotate(var(--a)) translateX(calc(var(--hub) * var(--r, .36))) rotate(calc(var(--a) * -1)); }
+.bh-anille-pos { --r: .43 !important; z-index: 4; }
+.bh-link-anille { stroke-width: .7; opacity: .9; }
+.bh-anille { position: absolute; left: 0; top: 0; translate: -50% -50%; display: block; padding: max(9px, calc(var(--hub) * .02)) max(14px, calc(var(--hub) * .032)); border: 2px solid transparent; border-radius: 999px;
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(120deg, #FF2FD2, #6A1BFF 50%, #00E5FF) border-box;
+  box-shadow: 0 16px 34px rgba(106, 27, 255, .28), 0 0 0 6px rgba(255, 47, 210, .08); animation: bh-spin 70s linear infinite reverse; transition: scale .2s ease, box-shadow .2s ease; }
+.bh-anille img { display: block; height: max(28px, calc(var(--hub) * .075)); width: auto; }
+.bh-anille:hover, .bh-anille:focus-visible { scale: 1.08; box-shadow: 0 20px 40px rgba(106, 27, 255, .4), 0 0 0 8px rgba(0, 229, 255, .14); }
+.bh-anille:focus-visible { outline: 3px solid #3B4FF0; outline-offset: 3px; }
+.brand-hub:has(.bh-anille:hover, .bh-anille:focus-visible) :is(.bh-orbit, .bh-node, .bh-anille) { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .bh-anille { animation: none !important; } }
+
