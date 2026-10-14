@@ -402,13 +402,14 @@ footer .eyebrow { color: #01D2F3; }
    Menu do topo (14/10): navegação em cápsula, página atual marcada, atalho do Anille
    com o símbolo da marca e menu do celular em tela cheia. Linha inferior nas cores do kit.
    ===================================================================== */
-.site-header { border-bottom: 0; background: rgba(8, 4, 23, .86); box-shadow: none; backdrop-filter: blur(18px) saturate(1.4); transition: background .2s ease, box-shadow .2s ease; }
+.site-header { border-bottom: 0; background: rgba(8, 4, 23, .95); box-shadow: none; backdrop-filter: blur(18px) saturate(1.4); transition: background .2s ease, box-shadow .2s ease; }
 .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, #F500C6, #6A19F9 40%, #3E4DF9 70%, #01D2F3); opacity: .9; pointer-events: none; }
 .site-header-rolou, .site-header-aberto { background: rgba(8, 4, 23, .97); box-shadow: 0 12px 30px rgba(8, 4, 23, .35); }
 .site-header-in { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; min-height: 76px; transition: min-height .2s ease; }
 .site-header-rolou .site-header-in { min-height: 64px; }
 .site-header-acoes { display: flex; align-items: center; gap: .5rem; }
-.site-header .brand-logo-link { flex: none; width: 150px; }
+.site-header .brand-logo-link { flex: none; width: 128px; transition: width .2s ease; }
+.site-header-rolou .brand-logo-link { width: 112px; }
 
 .nav-principal { display: none; }
 @media (min-width: 1024px) {
@@ -445,13 +446,12 @@ footer .eyebrow { color: #01D2F3; }
    nem na faixa de chamada final.
    ===================================================================== */
 main > section { position: relative; }
-main > section:not(:first-child):not(.anille-vitrine):not(.cta-section)::before,
-main > section:not(:first-child):not(.anille-vitrine):not(.cta-section)::after { content: ""; position: absolute; top: 0; left: 50%; z-index: 2; pointer-events: none; }
-main > section:not(:first-child):not(.anille-vitrine):not(.cta-section)::before { width: min(1160px, calc(100% - 2.5rem)); height: 2px; transform: translate(-50%, -50%);
+main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.anille-vitrine + section)::before,
+main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.anille-vitrine + section)::after { content: ""; position: absolute; top: 0; left: 50%; z-index: 2; pointer-events: none; }
+main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.anille-vitrine + section)::before { width: min(1160px, calc(100% - 2.5rem)); height: 2px; transform: translate(-50%, -50%);
   background: linear-gradient(90deg, transparent 0, rgba(245, 0, 198, .55) 18%, rgba(106, 25, 249, .6) calc(50% - 28px), transparent calc(50% - 28px),
     transparent calc(50% + 28px), rgba(62, 77, 249, .6) calc(50% + 28px), rgba(1, 210, 243, .55) 82%, transparent 100%); }
-main > section:not(:first-child):not(.anille-vitrine):not(.cta-section)::after { width: 28px; height: 27px; transform: translate(-50%, -50%); background: url("/assets/marca/valentis-solutions-simbolo-cor.svg") center / contain no-repeat; filter: drop-shadow(0 4px 8px rgba(106, 25, 249, .25)); }
-main > .anille-vitrine + section::before, main > .anille-vitrine + section::after { content: none; }
+main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.anille-vitrine + section)::after { width: 28px; height: 27px; transform: translate(-50%, -50%); background: url("/assets/marca/valentis-solutions-simbolo-cor.svg") center / contain no-repeat; filter: drop-shadow(0 4px 8px rgba(106, 25, 249, .25)); }
 
 /* =====================================================================
    Hub da marca maior (14/10) e o Sistema Anille em órbita, com o logo oficial e link.
@@ -463,10 +463,10 @@ main > .anille-vitrine + section::before, main > .anille-vitrine + section::afte
 .bh-node-pos { transform: rotate(var(--a)) translateX(calc(var(--hub) * var(--r, .36))) rotate(calc(var(--a) * -1)); }
 .bh-anille-pos { --r: .43 !important; z-index: 4; }
 .bh-link-anille { stroke-width: .7; opacity: .9; }
-.bh-anille { position: absolute; left: 0; top: 0; translate: -50% -50%; display: block; padding: max(9px, calc(var(--hub) * .02)) max(14px, calc(var(--hub) * .032)); border: 2px solid transparent; border-radius: 999px;
+.bh-anille { position: absolute; left: 0; top: 0; translate: -50% -50%; display: block; width: max-content; white-space: nowrap; padding: max(9px, calc(var(--hub) * .02)) max(14px, calc(var(--hub) * .032)); border: 2px solid transparent; border-radius: 999px;
   background: linear-gradient(#fff, #fff) padding-box, linear-gradient(120deg, #FF2FD2, #6A1BFF 50%, #00E5FF) border-box;
   box-shadow: 0 16px 34px rgba(106, 27, 255, .28), 0 0 0 6px rgba(255, 47, 210, .08); animation: bh-spin 70s linear infinite reverse; transition: scale .2s ease, box-shadow .2s ease; }
-.bh-anille img { display: block; height: max(28px, calc(var(--hub) * .075)); width: auto; }
+.bh-anille img { display: block; height: max(28px, calc(var(--hub) * .075)); width: auto; max-width: none; }
 .bh-anille:hover, .bh-anille:focus-visible { scale: 1.08; box-shadow: 0 20px 40px rgba(106, 27, 255, .4), 0 0 0 8px rgba(0, 229, 255, .14); }
 .bh-anille:focus-visible { outline: 3px solid #3B4FF0; outline-offset: 3px; }
 .brand-hub:has(.bh-anille:hover, .bh-anille:focus-visible) :is(.bh-orbit, .bh-node, .bh-anille) { animation-play-state: paused; }
