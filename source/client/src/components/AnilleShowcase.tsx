@@ -12,7 +12,7 @@ const destaques = [
   "No computador e no celular",
 ];
 
-const modulos = ["Leads e funil", "Contratos e cobranças", "Nota fiscal de serviço", "Projetos e ordens de serviço", "Lucro por cliente"];
+const modulos = ["Leads e funil", "Contratos e cobranças", "Nota fiscal de serviço", "Contas a pagar e fluxo de caixa", "Projetos e ordens de serviço", "Lucro por cliente"];
 
 export default function AnilleShowcase({ id = "anille", compacto = false }: { id?: string; compacto?: boolean }) {
   return (

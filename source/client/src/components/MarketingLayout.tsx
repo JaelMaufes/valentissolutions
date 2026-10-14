@@ -1,6 +1,6 @@
 import { ArrowUp, ArrowUpRight, Check, MapPin, Menu, MessageCircle, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import LeadCaptureSection from "@/components/LeadCaptureSection";
 import LeadFloatingCta from "@/components/LeadFloatingCta";
 import { WHATSAPP, whatsappUrl } from "@/lib/leadIntegration";
@@ -11,12 +11,52 @@ export { WHATSAPP, whatsappUrl, ANILLE_URL };
 export function Logo() { return <Link href="/" className="brand-logo-link" aria-label="Valentis Solutions — página inicial"><img className="brand-logo-image" src="/assets/marca/valentis-solutions-escuro.svg" width={939} height={441} alt="Valentis Solutions" /></Link>; }
 
 const externo = (href: string) => href.startsWith("http");
-const navItems = [{ href: "/", label: "Início" }, { href: "/trafego-pago", label: "Tráfego pago" }, { href: "/servicos", label: "Serviços" }, { href: "/sistemas", label: "Sistemas" }, { href: ANILLE_URL, label: "Anille" }, { href: "/sobre", label: "Sobre nós" }];
+const navItems = [{ href: "/", label: "Início" }, { href: "/trafego-pago", label: "Tráfego pago" }, { href: "/servicos", label: "Serviços" }, { href: "/sistemas", label: "Sistemas" }, { href: "/sobre", label: "Sobre nós" }];
+
+/* Símbolo cubo-A do Anille (canvas "Logo Anille"), para o atalho do menu. */
+export function AnilleSimbolo({ className = "", id = "m" }: { className?: string; id?: string }) {
+  return <svg className={className} viewBox="-92 -104 184 184" aria-hidden="true" focusable="false"><defs><linearGradient id={`as${id}t`} x1="-60" y1="-90" x2="60" y2="-10" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#FF2FD2" /><stop offset="1" stopColor="#FF5CE8" /></linearGradient><linearGradient id={`as${id}l`} x1="-86" y1="-50" x2="-10" y2="80" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#5E8BFF" /><stop offset="1" stopColor="#2A9BFF" /></linearGradient><linearGradient id={`as${id}r`} x1="10" y1="-20" x2="80" y2="70" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#6A1BFF" /><stop offset=".55" stopColor="#3B5BFF" /><stop offset="1" stopColor="#00E5FF" /></linearGradient></defs><polygon points="0,-100 86.6,-50 0,0 -86.6,-50" fill={`url(#as${id}t)`} /><polygon points="-86.6,-50 0,0 0,35 -42,75.75 -86.6,50" fill={`url(#as${id}l)`} /><polygon points="0,0 86.6,-50 86.6,50 42,75.75 0,35" fill={`url(#as${id}r)`} /></svg>;
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [rolou, setRolou] = useState(false);
+  const [location] = useLocation();
+  const ativo = (href: string) => (href === "/" ? location === "/" : location.startsWith(href));
   useEffect(() => { const close = () => setOpen(false); window.addEventListener("resize", close); return () => window.removeEventListener("resize", close); }, []);
-  return <><header className="site-header"><div className="container flex min-h-[76px] items-center justify-between"><Logo /><nav className="hidden items-center gap-6 text-sm font-semibold text-[#5c5871] lg:flex" aria-label="Navegação principal">{navItems.map(item => externo(item.href) ? <a key={item.href} href={item.href} className="transition-colors hover:text-[#3b2e6b]">{item.label}</a> : <Link key={item.href} href={item.href} className="transition-colors hover:text-[#3b2e6b]">{item.label}</Link>)}</nav><div className="flex items-center gap-2"><a target="_blank" rel="noopener noreferrer" className="button button-small button-ghost hidden sm:inline-flex" href={whatsappUrl("Olá! Quero entender como a Valentis Solutions pode ajudar meu negócio.")}>Falar com a Valentis Solutions <ArrowUpRight size={15} /></a><button type="button" aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} className="menu-toggle lg:hidden" onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button></div></div>{open && <nav className="mobile-menu lg:hidden" aria-label="Navegação mobile">{navItems.map(item => externo(item.href) ? <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}<ArrowUpRight size={16} /></a> : <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}<ArrowUpRight size={16} /></Link>)}<a target="_blank" rel="noopener noreferrer" href={whatsappUrl("Olá! Quero falar com a Valentis Solutions.")} onClick={() => setOpen(false)}>Falar com a Valentis Solutions <MessageCircle size={16} /></a></nav>}</header><LeadFloatingCta /><BackToTop /></>;
+  useEffect(() => { const onScroll = () => setRolou(window.scrollY > 8); onScroll(); window.addEventListener("scroll", onScroll, { passive: true }); return () => window.removeEventListener("scroll", onScroll); }, []);
+  useEffect(() => { setOpen(false); }, [location]);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const antes = document.body.style.overflow; document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = antes; window.removeEventListener("keydown", onKey); };
+  }, [open]);
+  return <><header className={`site-header ${rolou ? "site-header-rolou" : ""} ${open ? "site-header-aberto" : ""}`}>
+    <div className="container site-header-in">
+      <Logo />
+      <nav className="nav-principal" aria-label="Navegação principal">
+        {navItems.map(item => <Link key={item.href} href={item.href} className="nav-link" aria-current={ativo(item.href) ? "page" : undefined}>{item.label}</Link>)}
+        <a href={ANILLE_URL} className="nav-anille" aria-label="Sistema Anille (abre o site do Anille)"><AnilleSimbolo className="nav-anille-simbolo" id="d" /><span>Anille</span><ArrowUpRight size={14} aria-hidden="true" /></a>
+      </nav>
+      <div className="site-header-acoes">
+        <a target="_blank" rel="noopener noreferrer" className="button button-small button-ghost hidden sm:inline-flex" href={whatsappUrl("Olá! Quero entender como a Valentis Solutions pode ajudar meu negócio.")}>Falar com a Valentis Solutions <ArrowUpRight size={15} /></a>
+        <button type="button" aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} aria-controls="menu-celular" className="menu-toggle lg:hidden" onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
+      </div>
+    </div>
+    {open && <nav id="menu-celular" className="mobile-menu lg:hidden" aria-label="Navegação no celular">
+      <div className="container mobile-menu-in">
+        {navItems.map(item => <Link key={item.href} href={item.href} className="mobile-link" aria-current={ativo(item.href) ? "page" : undefined} onClick={() => setOpen(false)}>{item.label}<ArrowUpRight size={16} aria-hidden="true" /></Link>)}
+        <a href={ANILLE_URL} className="mobile-anille" onClick={() => setOpen(false)}>
+          <img src="/assets/anille/anille-logo-branco.svg" width="797" height="280" alt="Sistema Anille" />
+          <span>Gestão por assinatura para empresas de serviço. Teste grátis por 14 dias.</span>
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </a>
+        <a target="_blank" rel="noopener noreferrer" className="button button-primary mobile-cta" href={whatsappUrl("Olá! Quero falar com a Valentis Solutions.")} onClick={() => setOpen(false)}>Falar com a Valentis Solutions <MessageCircle size={17} /></a>
+      </div>
+    </nav>}
+  </header><LeadFloatingCta /><BackToTop /></>;
 }
 
 function BackToTop() { const [visible, setVisible] = useState(false); useEffect(() => { const onScroll = () => setVisible(window.scrollY > 480); onScroll(); window.addEventListener("scroll", onScroll, { passive: true }); return () => window.removeEventListener("scroll", onScroll); }, []); return <button type="button" aria-label="Voltar ao topo" title="Voltar ao topo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className={`back-to-top ${visible ? "back-to-top-visible" : ""}`}><ArrowUp size={18} strokeWidth={2.5} /></button>; }

@@ -55,7 +55,7 @@ export default function Home() {
       <main>
         <section className="hero-section relative overflow-hidden">
           <div className="hero-orb hero-orb-one" /><div className="hero-orb hero-orb-two" />
-          <div className="container relative grid items-center gap-12 py-20 lg:grid-cols-[1fr_.8fr] lg:py-28">
+          <div className="container relative grid items-center gap-12 py-20 lg:grid-cols-[1fr_1fr] lg:py-24">
             <div className="reveal">
               <div className="eyebrow mb-6"><span className="eyebrow-dot" />Valentis Solutions · Maringá, PR, para todo o Brasil</div>
               <h1 className="display-title max-w-4xl">Soluções para <span className="gradient-text">atrair, organizar e crescer.</span></h1>
