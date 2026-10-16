@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { ArrowRight, ArrowUpRight, Check, ListChecks, MessageCircle, PackageCheck, QrCode, RefreshCw, Send, ShieldCheck, Smartphone, Truck, UserPlus } from "lucide-react";
 import { CheckLine, Footer, Header } from "@/components/MarketingLayout";
 import { trackLeadEvent, whatsappUrl } from "@/lib/leadIntegration";
-import { APROXIMA_AJUSTE, APROXIMA_EXEMPLO, APROXIMA_PLANOS, comprarUrl, precoBRL } from "@/lib/aproxima";
+import { APROXIMA_AJUSTE, APROXIMA_EXEMPLO, APROXIMA_PLANOS, comprarUrl, precoBRL, precoDe, useLinksVenda } from "@/lib/aproxima";
 
 const passos = [
   { icon: Send, title: "Você compra e manda seus dados", text: "Depois do pagamento, envie pelo WhatsApp seu logo ou foto, WhatsApp, serviços e links." },
@@ -32,7 +32,7 @@ const faq = [
   { q: "Funciona com capinha?", a: "Sim. O adesivo é anti-metal: vai colado na parte de trás da capinha e funciona inclusive em capas com ímã." },
   { q: "Como é a entrega?", a: "Em Maringá e Sarandi, entregamos em mãos e gravamos o adesivo na sua frente. Para outras cidades, enviamos pelos Correios com frete incluso." },
   { q: "E se eu me arrepender?", a: "Você tem 7 dias depois de receber para desistir, com reembolso total. Se o adesivo apresentar defeito em até 12 meses, trocamos sem custo." },
-  { q: "Quais formas de pagamento?", a: "Pix ou cartão, pelo link de pagamento seguro. Para equipes maiores que 5 pessoas, fale com a gente pelo WhatsApp." },
+  { q: "Quais formas de pagamento?", a: "Pix, boleto ou cartão, na página de pagamento segura do Asaas. Para equipes maiores que 5 pessoas, fale com a gente pelo WhatsApp." },
 ];
 
 const waMsg = "Olá! Vi a página do Aproxima e quero tirar uma dúvida sobre o cartão por aproximação.";
@@ -49,6 +49,7 @@ export default function Aproxima() {
   }, []);
 
   const individual = APROXIMA_PLANOS[0];
+  const links = useLinksVenda();
 
   return (
     <div className="min-h-screen bg-[#fbfaff] text-[#23202e]">
@@ -62,7 +63,7 @@ export default function Aproxima() {
               <h1 className="display-title">Seu contato no celular do cliente <span className="gradient-text">com um toque.</span></h1>
               <p className="hero-copy mt-5 max-w-2xl">Um adesivo NFC no seu celular abre a página da sua empresa: WhatsApp, serviços, redes e o botão Salvar contato. Sem aplicativo e sem mensalidade.</p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <a className="button button-primary" href={comprarUrl(individual)} target="_blank" rel="noopener noreferrer" onClick={() => trackLeadEvent("aproxima_comprar_hero")}>Comprar agora por {precoBRL(individual.preco)} <ArrowRight size={17} /></a>
+                <a className="button button-primary" href={comprarUrl(individual, links)} target="_blank" rel="noopener noreferrer" onClick={() => trackLeadEvent("aproxima_comprar_hero")}>Comprar agora por {precoBRL(precoDe(individual, links))} <ArrowRight size={17} /></a>
                 <a className="button button-secondary" href={APROXIMA_EXEMPLO} target="_blank" rel="noopener noreferrer" onClick={() => trackLeadEvent("aproxima_ver_exemplo")}>Ver uma página de exemplo <ArrowUpRight size={17} /></a>
               </div>
               <ul className="aprox-garantias mt-6">
@@ -99,9 +100,9 @@ export default function Aproxima() {
                 {plano.destaque && <span className="aprox-selo">{plano.destaque}</span>}
                 <h3>{plano.nome}</h3>
                 <p className="aprox-resumo">{plano.resumo}</p>
-                <p className="aprox-preco"><strong>{precoBRL(plano.preco)}</strong><span>pagamento único</span></p>
+                <p className="aprox-preco"><strong>{precoBRL(precoDe(plano, links))}</strong><span>pagamento único</span></p>
                 <ul>{plano.itens.map(i => <CheckLine key={i}>{i}</CheckLine>)}</ul>
-                <a className="button button-primary aprox-comprar" href={comprarUrl(plano)} target="_blank" rel="noopener noreferrer" onClick={() => trackLeadEvent(`aproxima_comprar_${plano.id}`)}>Comprar agora <ArrowRight size={17} /></a>
+                <a className="button button-primary aprox-comprar" href={comprarUrl(plano, links)} target="_blank" rel="noopener noreferrer" onClick={() => trackLeadEvent(`aproxima_comprar_${plano.id}`)}>Comprar agora <ArrowRight size={17} /></a>
               </article>
             ))}
           </div>
