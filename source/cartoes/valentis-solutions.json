@@ -1,0 +1,51 @@
+{
+  "slug": "valentis-solutions",
+  "titulo": "Valentis Solutions",
+  "descricao": "Atrair, organizar e personalizar. Tráfego pago, Sistema Anille e sistemas sob medida, de Maringá para todo o Brasil.",
+  "logo": { "src": "/assets/marca/valentis-solutions-escuro.svg", "largura": 939, "altura": 441, "alt": "Valentis Solutions" },
+  "cidade": "Maringá, PR",
+  "contato": {
+    "nome": "Valentis Solutions",
+    "empresa": "Valentis Solutions",
+    "whatsapp": "5544998985343",
+    "mensagem_whatsapp": "Olá! Encostei no cartão da Valentis Solutions e quero conversar.",
+    "telefone": "+55 44 99898-5343",
+    "email": "contato@sovalentis.com",
+    "site": "https://sovalentis.com"
+  },
+  "itens": [
+    {
+      "tipo": "destaque",
+      "logo": { "src": "/assets/anille/anille-logo-branco.svg", "largura": 797, "altura": 280, "alt": "Sistema Anille" },
+      "rotulo": "Conheça o Anille",
+      "titulo": "Sistema de Gestão, do funil ao lucro.",
+      "texto": "Leads, contratos, cobranças, ordens de serviço e resultado num só lugar.",
+      "selo": "Teste grátis por 14 dias, sem cartão",
+      "link": "https://anille.sovalentis.com",
+      "botao": "Conhecer o Anille"
+    },
+    {
+      "tipo": "servico",
+      "icone": "codigo",
+      "titulo": "Sistemas e apps sob medida",
+      "texto": "Do processo da sua empresa para um sistema que funciona do jeito que ela trabalha.",
+      "link": "https://sovalentis.com/sistemas"
+    },
+    {
+      "tipo": "servico",
+      "icone": "alvo",
+      "titulo": "Gestão de tráfego pago",
+      "texto": "Google Ads e Meta Ads para trazer contatos de quem procura o que você vende.",
+      "link": "https://sovalentis.com/trafego-pago"
+    },
+    {
+      "tipo": "servico",
+      "icone": "nfc",
+      "titulo": "Aproxima: cartão por aproximação",
+      "texto": "Um adesivo no celular que abre a página da sua empresa com um toque, como esta. A partir de R$\u00a079,90, sem mensalidade.",
+      "link": "https://sovalentis.com/aproxima",
+      "botao": "Quero o meu"
+    }
+  ],
+  "rodape_aproxima": false
+}
