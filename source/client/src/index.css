@@ -473,3 +473,45 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .brand-hub:has(.bh-anille:hover, .bh-anille:focus-visible) :is(.bh-orbit, .bh-node, .bh-anille) { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .bh-anille { animation: none !important; } }
 
+
+/* =====================================================================
+   Aproxima (16/10): cartão por aproximação, página de venda em /aproxima.
+   Cores do kit da Valentis Solutions. As páginas dos clientes (/c/<slug>/) são estáticas,
+   geradas por source/scripts/cartoes/gerar.py.
+   ===================================================================== */
+.aprox-garantias { display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; font-size: .86rem; font-weight: 700; color: #4e4961; }
+.aprox-garantias li { display: inline-flex; align-items: center; gap: .4rem; }
+.aprox-garantias svg { color: #315EFA; }
+.aprox-visual { position: relative; margin: 0 auto; width: min(320px, 82vw); }
+.aprox-celular { overflow: hidden; aspect-ratio: 9 / 18.5; border: 9px solid #080417; border-radius: 2.4rem; background: #080417; box-shadow: 0 40px 70px -30px rgba(33, 24, 61, .55), 0 0 0 1.5px #2b2150; }
+.aprox-celular img { display: block; width: 100%; height: auto; }
+.aprox-adesivo { position: absolute; left: -26px; bottom: 22%; display: flex; width: 64px; height: 64px; align-items: center; justify-content: center; border-radius: 50%; color: #fff;
+  background: linear-gradient(135deg, #F500C6, #6A19F9 55%, #315EFA); box-shadow: 0 14px 28px rgba(106, 25, 249, .4); }
+.aprox-ondas { position: absolute; inset: -10px; border-radius: 50%; border: 2px solid rgba(1, 210, 243, .6); animation: aprox-onda 2.2s ease-out infinite; }
+@keyframes aprox-onda { from { transform: scale(.85); opacity: 1; } to { transform: scale(1.5); opacity: 0; } }
+.aprox-visual figcaption { margin-top: 1rem; text-align: center; font-size: .8rem; color: #6c6678; }
+.aprox-planos { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+.aprox-plano { position: relative; display: flex; flex-direction: column; border: 1px solid #e3dcf3; border-radius: 1.4rem; background: #fff; padding: 1.6rem; }
+.aprox-plano h3 { font-size: 1.35rem; font-weight: 900; letter-spacing: -.03em; color: #20183b; }
+.aprox-resumo { margin-top: .35rem; min-height: 3em; font-size: .9rem; line-height: 1.5; color: #6c6678; }
+.aprox-preco { margin-top: 1.1rem; display: flex; align-items: baseline; gap: .55rem; flex-wrap: wrap; }
+.aprox-preco strong { font-size: 2.3rem; font-weight: 900; letter-spacing: -.05em; color: #20183b; font-variant-numeric: tabular-nums; }
+.aprox-preco span { font-size: .8rem; font-weight: 700; color: #8a8597; }
+.aprox-plano ul { margin-top: 1.1rem; display: grid; gap: .6rem; flex: 1; }
+.aprox-comprar { margin-top: 1.4rem; width: 100%; min-height: 50px; font-size: .92rem; }
+.aprox-plano-destaque { border: 1.5px solid transparent; background: linear-gradient(#fff, #fff) padding-box, linear-gradient(120deg, #F500C6, #6A19F9 45%, #3E4DF9 75%, #01D2F3) border-box; box-shadow: 0 24px 50px -24px rgba(106, 25, 249, .45); }
+.aprox-selo { position: absolute; top: -.75rem; left: 1.6rem; padding: .3rem .75rem; border-radius: 999px; background: #080417; color: #01D2F3; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.aprox-compat { display: grid; gap: .75rem; }
+.aprox-compat > div { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: .25rem 1rem; padding-bottom: .75rem; border-bottom: 1px solid #ece7f8; }
+.aprox-compat dt { font-weight: 800; color: #2c2640; }
+.aprox-compat dd { margin: 0; font-size: .92rem; line-height: 1.55; color: #5c566d; }
+.aprox-entrega { border: 1px solid #ece7f8; border-radius: 1.4rem; background: #faf8ff; padding: clamp(1.3rem, 3vw, 2rem); }
+.aprox-entrega li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: .85rem; align-items: start; }
+.aprox-entrega li > svg { margin-top: .15rem; color: #315EFA; }
+.aprox-entrega strong { display: block; color: #2c2640; }
+.aprox-entrega span { display: block; margin-top: .1rem; font-size: .9rem; line-height: 1.55; color: #5c566d; }
+.aprox-btn-claro { color: #fff; border: 1px solid rgba(255, 255, 255, .35); background: transparent; }
+.aprox-btn-claro:hover { border-color: #01D2F3; }
+@media (max-width: 1023px) { .aprox-planos { grid-template-columns: 1fr; max-width: 520px; } .aprox-resumo { min-height: 0; } }
+@media (max-width: 640px) { .aprox-compat > div { grid-template-columns: 1fr; } .aprox-adesivo { left: -10px; width: 54px; height: 54px; } }
+@media (prefers-reduced-motion: reduce) { .aprox-ondas { animation: none; } }

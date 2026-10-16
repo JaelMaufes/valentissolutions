@@ -7,6 +7,7 @@ import Diagnostic from "@/pages/Diagnostic";
 import TrafegoPago from "@/pages/TrafegoPago";
 import Systems from "@/pages/Systems";
 import About from "@/pages/About";
+import Aproxima from "@/pages/Aproxima";
 import { Privacy, Terms } from "@/pages/Legal";
 import NotFound from "@/pages/NotFound";
 import { Toaster } from "@/components/ui/sonner";
@@ -33,6 +34,7 @@ function Router() {
         <Route path="/diagnostico" component={Diagnostic} />
         <Route path="/sistemas" component={Systems} />
         <Route path="/sobre" component={About} />
+        <Route path="/aproxima" component={Aproxima} />
         <Route path="/privacidade" component={Privacy} />
         <Route path="/termos" component={Terms} />
         <Route path="/404" component={NotFound} />
