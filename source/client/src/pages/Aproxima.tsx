@@ -32,7 +32,7 @@ const faq = [
   { q: "Funciona com capinha?", a: "Sim. O adesivo é anti-metal: vai colado na parte de trás da capinha e funciona inclusive em capas com ímã." },
   { q: "Como é a entrega?", a: "Em Maringá e Sarandi, entregamos em mãos e gravamos o adesivo na sua frente. Para outras cidades, enviamos pelos Correios com frete incluso." },
   { q: "E se eu me arrepender?", a: "Você tem 7 dias depois de receber para desistir, com reembolso total. Se o adesivo apresentar defeito em até 12 meses, trocamos sem custo." },
-  { q: "Quais formas de pagamento?", a: "Pix, boleto ou cartão, na página de pagamento segura do Asaas. Para equipes maiores que 5 pessoas, fale com a gente pelo WhatsApp." },
+  { q: "Quais formas de pagamento?", a: "Pix, boleto ou cartão, na página de pagamento segura. Para equipes maiores que 5 pessoas, fale com a gente pelo WhatsApp." },
 ];
 
 const waMsg = "Olá! Vi a página do Aproxima e quero tirar uma dúvida sobre o cartão por aproximação.";
