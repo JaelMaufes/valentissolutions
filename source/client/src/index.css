@@ -515,3 +515,12 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 @media (max-width: 1023px) { .aprox-planos { grid-template-columns: 1fr; max-width: 520px; } .aprox-resumo { min-height: 0; } }
 @media (max-width: 640px) { .aprox-compat > div { grid-template-columns: 1fr; } .aprox-adesivo { left: -10px; width: 54px; height: 54px; } }
 @media (prefers-reduced-motion: reduce) { .aprox-ondas { animation: none; } }
+
+/* Menu com o Aproxima (20/10): itens numa linha só; entre 1024 e 1279 px o botão "Falar com a Valentis Solutions"
+   sai do topo (o WhatsApp continua no botão flutuante e no menu) para o menu não quebrar em duas linhas. */
+.site-header .nav-link, .site-header .nav-anille, .site-header-acoes .button { white-space: nowrap; }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .site-header-in { gap: .75rem; }
+  .site-header .nav-link { padding: .55rem .62rem; font-size: .84rem; }
+  .site-header-acoes .button-ghost { display: none !important; }
+}
