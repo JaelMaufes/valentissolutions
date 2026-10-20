@@ -52,7 +52,7 @@ export const APROXIMA_PLANOS: PlanoAproxima[] = [
 ];
 
 export const APROXIMA_AJUSTE = 19.9;
-export const APROXIMA_EXEMPLO = "/c/valentis-solutions";
+export const APROXIMA_EXEMPLO = "https://c.sovalentis.com/valentis-solutions";
 
 export type LinkVenda = { url: string; valor: number };
 export type LinksVenda = Record<string, LinkVenda>;

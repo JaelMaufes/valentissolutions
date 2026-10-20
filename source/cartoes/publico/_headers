@@ -1,0 +1,8 @@
+# Contato para salvar na agenda (iPhone abre a ficha direto com este tipo).
+/*/contato.vcf
+  Content-Type: text/vcard; charset=utf-8
+  Content-Disposition: inline; filename="contato.vcf"
+# Página do cartão: sempre a versão mais recente (o cliente pode ter acabado de editar).
+/*
+  Cache-Control: public, max-age=300
+  X-Content-Type-Options: nosniff
