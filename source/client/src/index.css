@@ -476,8 +476,8 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 
 /* =====================================================================
    Aproxima (16/10): cartão por aproximação, página de venda em /aproxima.
-   Cores do kit da Valentis Solutions. As páginas dos clientes (/c/<slug>/) são estáticas,
-   geradas por source/scripts/cartoes/gerar.py.
+   Cores do kit da Valentis Solutions. As páginas dos clientes ficam em c.sovalentis.com/<slug>
+   (Cloudflare Pages, pasta source/cartoes/publico), geradas por source/scripts/cartoes/gerar.py.
    ===================================================================== */
 .aprox-garantias { display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; font-size: .86rem; font-weight: 700; color: #4e4961; }
 .aprox-garantias li { display: inline-flex; align-items: center; gap: .4rem; }

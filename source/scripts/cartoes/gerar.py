@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Gera as páginas do Aproxima (cartão por aproximação) a partir de source/cartoes/*.json.
 
-Para cada cartão cria, em source/client/public/c/<slug>/:
+Para cada cartão cria, em source/cartoes/publico/<slug>/ (publicado em https://c.sovalentis.com/<slug>):
   index.html   página que abre ao encostar o celular no adesivo (sem dependências)
   contato.vcf  botão "Salvar contato"
   qr.svg       QR code da página, para quem não tem NFC
@@ -23,9 +23,15 @@ from reportlab.graphics.barcode.qr import QrCodeWidget
 
 RAIZ = Path(__file__).resolve().parents[2]  # .../source
 ORIGEM = RAIZ / "cartoes"
-DESTINO = RAIZ / "client" / "public" / "c"
-SITE = "https://sovalentis.com"
+DESTINO = ORIGEM / "publico"           # Cloudflare Pages do c.sovalentis.com publica esta pasta como está
+SITE = "https://sovalentis.com"         # site da Valentis Solutions (marca, Aproxima)
+CARTOES = "https://c.sovalentis.com"    # endereço gravado nos adesivos: c.sovalentis.com/<slug>
 APROXIMA = f"{SITE}/aproxima"
+
+
+def url_img(src: str) -> str:
+    """Imagens do kit da marca (/assets/...) vêm do sovalentis.com; as do cliente (/img/...) ficam em publico/img/."""
+    return f"{SITE}{src}" if str(src).startswith("/assets/") else str(src)
 
 e = lambda s: html.escape(str(s or ""), quote=True)  # noqa: E731
 
@@ -170,16 +176,16 @@ if(navigator.clipboard){navigator.clipboard.writeText(u).then(ok,function(){wind
 
 def pagina(d: dict) -> tuple[str, str]:
     slug = d["slug"]
-    url = f"{SITE}/c/{slug}"
+    url = f"{CARTOES}/{slug}"
     c = d["contato"]
     titulo = d["titulo"]
 
     if d.get("logo"):
         lg = d["logo"]
-        cab = f'<img class="logo" src="{e(lg["src"])}" width="{lg["largura"]}" height="{lg["altura"]}" alt="{e(lg["alt"])}">'
+        cab = f'<img class="logo" src="{e(url_img(lg["src"]))}" width="{lg["largura"]}" height="{lg["altura"]}" alt="{e(lg["alt"])}">'
         nome_html = f'<h1 class="sr">{e(titulo)}</h1>'
     else:
-        cab = (f'<img class="foto" src="{e(d["foto"])}" width="96" height="96" alt="">' if d.get("foto") else "")
+        cab = (f'<img class="foto" src="{e(url_img(d["foto"]))}" width="96" height="96" alt="">' if d.get("foto") else "")
         nome_html = f'<h1 class="nome">{e(titulo)}</h1>'
 
     cidade = f'<div class="cidade">{icone("mapa")}{e(d["cidade"])}</div>' if d.get("cidade") else ""
@@ -213,7 +219,7 @@ def pagina(d: dict) -> tuple[str, str]:
         if it["tipo"] == "destaque":
             lg = it["logo"]
             blocos.append(
-                f'<a class="anille" href="{e(it["link"])}"><img src="{e(lg["src"])}" width="{lg["largura"]}" height="{lg["altura"]}" alt="{e(lg["alt"])}">'
+                f'<a class="anille" href="{e(it["link"])}"><img src="{e(url_img(lg["src"]))}" width="{lg["largura"]}" height="{lg["altura"]}" alt="{e(lg["alt"])}">'
                 f'<p class="r">{e(it.get("rotulo"))}</p><h2>{e(it["titulo"])}</h2><p>{e(it.get("texto"))}</p>'
                 + (f'<span class="selo">{e(it["selo"])}</span>' if it.get("selo") else "")
                 + f'<span class="btn">{e(it.get("botao", "Saiba mais"))}{icone("seta")}</span></a>')
@@ -247,9 +253,9 @@ def pagina(d: dict) -> tuple[str, str]:
 <meta property="og:title" content="{e(titulo)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}{e(d.get("og", "/assets/marca/og-valentis-solutions.png"))}">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/assets/marca/apple-touch-icon.png">
+<meta property="og:image" content="{e(url_img(d.get("og", "/assets/marca/og-valentis-solutions.png")))}">
+<link rel="icon" href="{SITE}/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="{SITE}/assets/marca/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;800&family=Noto+Serif&family=Outfit:wght@600&display=swap">
@@ -262,14 +268,14 @@ def pagina(d: dict) -> tuple[str, str]:
 {nome_html}
 <p class="desc">{e(desc)}</p>
 {cidade}
-<a class="salvar" href="/c/{slug}/contato.vcf">{icone("salvar")}Salvar contato</a>
+<a class="salvar" href="/{slug}/contato.vcf">{icone("salvar")}Salvar contato</a>
 </header>
 <nav class="acoes" aria-label="Contato">
 {chr(10).join(acoes)}
 </nav>
 {chr(10).join(blocos)}
 <section class="qr" aria-label="QR code">
-<img src="/c/{slug}/qr.svg" width="112" height="112" alt="QR code desta página">
+<img src="/{slug}/qr.svg" width="112" height="112" alt="QR code desta página">
 <div><h2>Mostre para quem não tem NFC</h2><p>A câmera do celular lê o código e abre esta mesma página.</p>
 <button type="button" class="compartilhar" id="compartilhar" data-url="{url}" data-titulo="{e(titulo)}">{icone("compartilhar")} Compartilhar</button></div>
 </section>
@@ -288,7 +294,9 @@ def gerar(arquivo: Path) -> None:
     slug = d["slug"]
     if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", slug):
         raise SystemExit(f"{arquivo.name}: slug inválido '{slug}' (use letras minúsculas, números e hífen)")
-    url = f"{SITE}/c/{slug}"
+    if slug in {"img", "editar", "assets", "admin", "api"}:
+        raise SystemExit(f"{arquivo.name}: '{slug}' é reservado; escolha outro slug")
+    url = f"{CARTOES}/{slug}"
     pasta = DESTINO / slug
     pasta.mkdir(parents=True, exist_ok=True)
     doc, vcf = pagina(d)

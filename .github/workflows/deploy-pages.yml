@@ -118,11 +118,7 @@ jobs:
             exit 1
           fi
 
-          # Páginas do Aproxima (/c/<cliente>/) são estáticas e ficam fora da contagem do app
-          test "$(find "$artifact_dir" -type f -name 'index.html' -not -path "$artifact_dir/c/*" | wc -l)" = "10"
-          for card in "$artifact_dir"/c/*/; do
-            test -f "$card/index.html" && test -f "$card/contato.vcf" && test -f "$card/qr.svg"
-          done
+          test "$(find "$artifact_dir" -type f -name 'index.html' | wc -l)" = "10"
           test "$(find "$artifact_dir" -type f -name '404.html' | wc -l)" = "1"
           ! find "$artifact_dir" -type d \( -name node_modules -o -name dist \) -print -quit | grep -q .
           echo "Validated artifact: $artifact_dir"

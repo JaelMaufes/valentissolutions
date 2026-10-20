@@ -11,7 +11,7 @@ export { WHATSAPP, whatsappUrl, ANILLE_URL };
 export function Logo() { return <Link href="/" className="brand-logo-link" aria-label="Valentis Solutions — página inicial"><img className="brand-logo-image" src="/assets/marca/valentis-solutions-escuro.svg" width={939} height={441} alt="Valentis Solutions" /></Link>; }
 
 const externo = (href: string) => href.startsWith("http");
-const navItems = [{ href: "/", label: "Início" }, { href: "/trafego-pago", label: "Tráfego pago" }, { href: "/servicos", label: "Serviços" }, { href: "/sistemas", label: "Sistemas" }, { href: "/sobre", label: "Sobre nós" }];
+const navItems = [{ href: "/", label: "Início" }, { href: "/trafego-pago", label: "Tráfego pago" }, { href: "/servicos", label: "Serviços" }, { href: "/sistemas", label: "Sistemas" }, { href: "/aproxima", label: "Aproxima" }, { href: "/sobre", label: "Sobre nós" }];
 
 /* Símbolo cubo-A do Anille (canvas "Logo Anille"), para o atalho do menu. */
 export function AnilleSimbolo({ className = "", id = "m" }: { className?: string; id?: string }) {
