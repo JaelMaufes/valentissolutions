@@ -118,7 +118,8 @@ jobs:
             exit 1
           fi
 
-          test "$(find "$artifact_dir" -type f -name 'index.html' | wc -l)" = "10"
+          # c/: endereço antigo do cartão da Valentis Solutions, só redireciona para c.sovalentis.com
+          test "$(find "$artifact_dir" -type f -name 'index.html' -not -path "$artifact_dir/c/*" | wc -l)" = "10"
           test "$(find "$artifact_dir" -type f -name '404.html' | wc -l)" = "1"
           ! find "$artifact_dir" -type d \( -name node_modules -o -name dist \) -print -quit | grep -q .
           echo "Validated artifact: $artifact_dir"
