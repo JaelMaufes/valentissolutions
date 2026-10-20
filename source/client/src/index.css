@@ -524,6 +524,3 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
   .site-header .nav-link { padding: .55rem .62rem; font-size: .84rem; }
   .site-header-acoes .button-ghost { display: none !important; }
 }
-
-/* Rodapé: dados oficiais da empresa (20/10) */
-.rodape-empresa { display: grid; gap: .25rem; }
