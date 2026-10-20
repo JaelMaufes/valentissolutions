@@ -4,6 +4,7 @@ export const EMPRESA = {
   nomeFantasia: "Valentis Solutions",
   cnpj: "69.710.307/0001-82",
   endereco: "Rua das Estrelas, 168, Jardim Universal, Sarandi-PR, CEP 87114-450",
+  cidade: "Sarandi, PR",
   telefone: "(44) 99898-5343",
   email: "contato@sovalentis.com",
 };
