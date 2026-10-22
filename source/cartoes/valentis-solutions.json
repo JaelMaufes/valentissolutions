@@ -1,7 +1,7 @@
 {
   "slug": "valentis-solutions",
   "titulo": "Valentis Solutions",
-  "descricao": "Atrair, organizar e personalizar. Tráfego pago, Sistema Anille e sistemas sob medida, de Maringá para todo o Brasil.",
+  "descricao": "Atrair, organizar e personalizar. Tráfego pago, Sistema Anive e sistemas sob medida, de Maringá para todo o Brasil.",
   "logo": { "src": "/assets/marca/valentis-solutions-escuro.svg", "largura": 939, "altura": 441, "alt": "Valentis Solutions" },
   "cidade": "Maringá, PR",
   "contato": {
@@ -16,13 +16,13 @@
   "itens": [
     {
       "tipo": "destaque",
-      "logo": { "src": "/assets/anille/anille-logo-branco.svg", "largura": 797, "altura": 280, "alt": "Sistema Anille" },
-      "rotulo": "Conheça o Anille",
+      "logo": { "src": "/assets/anive/anive-logo-branco.svg", "largura": 808, "altura": 280, "alt": "Sistema Anive" },
+      "rotulo": "Conheça o Anive",
       "titulo": "Sistema de Gestão, do funil ao lucro.",
       "texto": "Leads, contratos, cobranças, ordens de serviço e resultado num só lugar.",
       "selo": "Teste grátis por 14 dias, sem cartão",
-      "link": "https://anille.sovalentis.com",
-      "botao": "Conhecer o Anille"
+      "link": "https://anive.sovalentis.com",
+      "botao": "Conhecer o Anive"
     },
     {
       "tipo": "servico",

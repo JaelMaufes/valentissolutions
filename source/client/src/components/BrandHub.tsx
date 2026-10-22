@@ -4,8 +4,8 @@ import { ANILLE_URL } from "@/components/AnilleShowcase";
 
 /* Sistema animado da marca: o cubo da Valentis Solutions no centro e as frentes
    em órbita, ligadas por fluxos de dados. Para o lançamento de um produto, basta
-   trocar o rótulo/ícone de um nó (ex.: "Organizar") nesta lista. O Sistema Anille orbita junto,
-   com o logo oficial (canvas "Logo Anille") e link para anille.sovalentis.com. */
+   trocar o rótulo/ícone de um nó (ex.: "Organizar") nesta lista. O Sistema Anive orbita junto,
+   com o logo oficial (canvas "Logo Anive") e link para anive.sovalentis.com. */
 type HubNode = { label: string; icon: LucideIcon; angle: number };
 
 const nodes: HubNode[] = [
@@ -47,7 +47,7 @@ export default function BrandHub() {
   }, []);
 
   return (
-    <div ref={ref} className="brand-hub" role="group" aria-label="Valentis Solutions: atrair, organizar e evoluir como um sistema conectado, com o Sistema Anille">
+    <div ref={ref} className="brand-hub" role="group" aria-label="Valentis Solutions: atrair, organizar e evoluir como um sistema conectado, com o Sistema Anive">
       <div className="bh-layer bh-back" aria-hidden="true">
         <div className="bh-glow" />
         <div className="bh-ring bh-ring-inner" />
@@ -81,8 +81,8 @@ export default function BrandHub() {
           </div>
         ))}
         <div className="bh-node-pos bh-anille-pos" style={{ "--a": `${ANILLE_ANGULO}deg` } as React.CSSProperties}>
-          <a className="bh-anille" href={ANILLE_URL} aria-label="Conhecer o Sistema Anille, um produto Valentis Solutions">
-            <img src="/assets/anille/anille-logo-tinta.svg" width={797} height={280} alt="" decoding="async" />
+          <a className="bh-anille" href={ANILLE_URL} aria-label="Conhecer o Sistema Anive, um produto Valentis Solutions">
+            <img src="/assets/anive/anive-logo-tinta.svg" width={808} height={280} alt="" decoding="async" />
           </a>
         </div>
       </div>
