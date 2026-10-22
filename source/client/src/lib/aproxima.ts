@@ -4,9 +4,9 @@ import { whatsappUrl } from "@/lib/leadIntegration";
 /*
  * Aproxima — cartão por aproximação (adesivo NFC + página do cliente), por Valentis Solutions.
  *
- * LINKS DE COMPRA: vêm do Catálogo do Sistema Anille (Catálogo > Aproxima > ⋯ > Criar link de compra).
- * A página lê `links_de_venda()` no Supabase do Anille (pública: só links de produção da Valentis Solutions).
- * Cada venda paga pelo link entra sozinha no Anille como cliente, contrato e cobrança paga.
+ * LINKS DE COMPRA: vêm do Catálogo do Sistema Anive (Catálogo > Aproxima > ⋯ > Criar link de compra).
+ * A página lê `links_de_venda()` no Supabase do Anive (pública: só links de produção da Valentis Solutions).
+ * Cada venda paga pelo link entra sozinha no Anive como cliente, contrato e cobrança paga.
  * Sem link (ou se a consulta falhar), "Comprar agora" abre o WhatsApp com o pacote escolhido.
  * Preço: vale o do catálogo quando o link existe; os valores abaixo são só o padrão enquanto carrega.
  */
@@ -15,7 +15,7 @@ const ANILLE_CHAVE_PUBLICA = "sb_publishable_2-oiY_q8qgVBYhgufc5ZNA_sgD6ljBL";
 
 export type PlanoAproxima = {
   id: "individual" | "dupla" | "equipe";
-  catalogo: string; // nome do serviço no Catálogo do Anille
+  catalogo: string; // nome do serviço no Catálogo do Anive
   nome: string;
   preco: number;
   resumo: string;
@@ -61,7 +61,7 @@ export function precoBRL(valor: number) {
   return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-/** Links de compra e preços do catálogo do Anille, por nome do serviço. Vazio enquanto carrega ou se falhar. */
+/** Links de compra e preços do catálogo do Anive, por nome do serviço. Vazio enquanto carrega ou se falhar. */
 export function useLinksVenda(): LinksVenda {
   const [links, setLinks] = useState<LinksVenda>({});
   useEffect(() => {

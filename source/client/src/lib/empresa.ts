@@ -1,4 +1,4 @@
-/* Dados oficiais da empresa (cartão CNPJ e documentos legais 1.1 do Anille). Mudou na Receita, mude aqui. */
+/* Dados oficiais da empresa (cartão CNPJ e documentos legais 1.1 do Anive). Mudou na Receita, mude aqui. */
 export const EMPRESA = {
   razaoSocial: "VALENTIS SOLUTIONS LTDA",
   nomeFantasia: "Valentis Solutions",

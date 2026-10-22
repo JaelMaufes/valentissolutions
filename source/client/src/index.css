@@ -334,12 +334,12 @@
 }
 
 /* =====================================================================
-   Família Valentis Solutions + Anille
+   Família Valentis Solutions + Anive
    - Valentis Solutions: kit da marca (logo claro/escuro, símbolo cubo, favicon e ícones em /assets/marca/).
      Topo e rodapé são escuros: usam o logo na versão "escuro" (palavra em branco).
      Azul do logotipo #315EFA, ciano #01D2F3, moldura do magenta #F500C6 ao azul #3E4DF9, noite #080417.
    - Faixas escuras na noite da Valentis Solutions (#080417).
-   - Vitrine do Sistema Anille na identidade da marca Anille (canvas "Logo Anille"):
+   - Vitrine do Sistema Anive na identidade da marca Anive (canvas "Logo Anive"):
      Noite #07051A, Magenta #FF2FD2, Violeta #6A1BFF, Azul #3B5BFF, Ciano #00E5FF, Tinta #120C33;
      Outfit SemiBold nos títulos, Noto Serif em caixa alta espaçada no descritor.
    ===================================================================== */
@@ -399,7 +399,7 @@ footer .eyebrow { color: #01D2F3; }
 .site-header .button-ghost:hover { border-color: #01D2F3; color: #fff; }
 
 /* =====================================================================
-   Menu do topo (14/10): navegação em cápsula, página atual marcada, atalho do Anille
+   Menu do topo (14/10): navegação em cápsula, página atual marcada, atalho do Anive
    com o símbolo da marca e menu do celular em tela cheia. Linha inferior nas cores do kit.
    ===================================================================== */
 .site-header { border-bottom: 0; background: rgba(8, 4, 23, .95); box-shadow: none; backdrop-filter: blur(18px) saturate(1.4); transition: background .2s ease, box-shadow .2s ease; }
@@ -443,7 +443,7 @@ footer .eyebrow { color: #01D2F3; }
 
 /* =====================================================================
    Separador entre seções (14/10): linha nas cores do kit da Valentis Solutions, aberta
-   no meio para o símbolo. Não entra na vitrine do Anille (tem as linhas da marca Anille)
+   no meio para o símbolo. Não entra na vitrine do Anive (tem as linhas da marca Anive)
    nem na faixa de chamada final.
    ===================================================================== */
 main > section { position: relative; }
@@ -455,7 +455,7 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.anille-vitrine + section)::after { width: 28px; height: 27px; transform: translate(-50%, -50%); background: url("/assets/marca/valentis-solutions-simbolo-cor.svg") center / contain no-repeat; filter: drop-shadow(0 4px 8px rgba(106, 25, 249, .25)); }
 
 /* =====================================================================
-   Hub da marca maior (14/10) e o Sistema Anille em órbita, com o logo oficial e link.
+   Hub da marca maior (14/10) e o Sistema Anive em órbita, com o logo oficial e link.
    ===================================================================== */
 .brand-hub { --hub: min(600px, 92vw); }
 @media (min-width: 1024px) and (max-width: 1239px) { .brand-hub { --hub: min(600px, 46vw); } }
