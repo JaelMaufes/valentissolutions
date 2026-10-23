@@ -470,8 +470,8 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .bh-anille img { display: block; height: max(28px, calc(var(--hub) * .075)); width: auto; max-width: none; }
 .bh-anille:hover, .bh-anille:focus-visible { scale: 1.08; box-shadow: 0 20px 40px rgba(106, 27, 255, .4), 0 0 0 8px rgba(0, 229, 255, .14); }
 .bh-anille:focus-visible { outline: 3px solid #3B4FF0; outline-offset: 3px; }
-.brand-hub:has(.bh-anille:hover, .bh-anille:focus-visible) :is(.bh-orbit, .bh-node, .bh-anille) { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .bh-anille { animation: none !important; } }
+.brand-hub:has(:is(.bh-anille, .bh-box, .bh-aproxima):is(:hover, :focus-visible)) :is(.bh-orbit, .bh-node, .bh-anille, .bh-box, .bh-aproxima) { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .bh-anille, .bh-box, .bh-aproxima, .bh-aproxima-onda { animation: none !important; } }
 
 
 /* =====================================================================
@@ -524,3 +524,56 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
   .site-header .nav-link { padding: .55rem .62rem; font-size: .84rem; }
   .site-header-acoes .button-ghost { display: none !important; }
 }
+
+/* =====================================================================
+   Hub (23/10): Anive Box e Aproxima em órbita junto do Anive, com link.
+   Anive Box diferenciado: selo escuro (noite do Anive) com o logo branco, a palavra BOX em ciano e
+   borda no degradê da marca Anive, na órbita mais externa, ligado ao Anive. Aproxima: cápsula clara
+   com o ícone do adesivo (ondas) nas cores do kit da Valentis Solutions.
+   ===================================================================== */
+.bh-box-pos { --r: .47 !important; z-index: 4; }
+.bh-aproxima-pos { --r: .43 !important; z-index: 4; }
+.bh-link-box { stroke-width: .7; opacity: .75; stroke-dasharray: .6 1.6; }
+.bh-link-aproxima { stroke-width: .7; opacity: .9; }
+.bh-box, .bh-aproxima { position: absolute; left: 0; top: 0; translate: -50% -50%; display: flex; align-items: center; width: max-content; white-space: nowrap; border: 2px solid transparent; border-radius: 999px;
+  animation: bh-spin 70s linear infinite reverse; transition: scale .2s ease, box-shadow .2s ease; }
+.bh-box { gap: max(7px, calc(var(--hub) * .014)); padding: max(7px, calc(var(--hub) * .016)) max(12px, calc(var(--hub) * .026));
+  background: linear-gradient(#07051A, #07051A) padding-box, linear-gradient(120deg, #FF2FD2, #6A1BFF 50%, #00E5FF) border-box;
+  box-shadow: 0 16px 34px rgba(7, 5, 26, .45), 0 0 0 6px rgba(0, 229, 255, .08); }
+.bh-box img { display: block; height: max(22px, calc(var(--hub) * .056)); width: auto; max-width: none; }
+.bh-box-tag { padding-left: max(7px, calc(var(--hub) * .014)); border-left: 1px solid rgba(255, 255, 255, .22); font-family: "Outfit", "DM Sans", sans-serif; font-weight: 600;
+  font-size: max(13px, calc(var(--hub) * .03)); letter-spacing: .16em; text-transform: uppercase; color: #19D3F0; line-height: 1; }
+.bh-aproxima { gap: max(8px, calc(var(--hub) * .015)); padding: max(6px, calc(var(--hub) * .013)) max(14px, calc(var(--hub) * .028)) max(6px, calc(var(--hub) * .013)) max(6px, calc(var(--hub) * .013));
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(120deg, #F500C6, #6A19F9 45%, #3E4DF9 75%, #01D2F3) border-box;
+  box-shadow: 0 14px 30px rgba(69, 49, 130, .2), 0 0 0 5px rgba(245, 0, 198, .06); color: #20183b; }
+.bh-aproxima-icone { position: relative; display: grid; place-items: center; flex: none; width: max(30px, calc(var(--hub) * .062)); height: max(30px, calc(var(--hub) * .062)); border-radius: 50%; color: #fff;
+  background: linear-gradient(135deg, #F500C6, #6A19F9 55%, #315EFA); }
+.bh-aproxima-onda { position: absolute; inset: -5px; border-radius: 50%; border: 2px solid rgba(1, 210, 243, .65); animation: aprox-onda 2.2s ease-out infinite; }
+.bh-aproxima-nome { display: grid; font-weight: 900; font-size: max(13px, calc(var(--hub) * .028)); letter-spacing: -.02em; line-height: 1.1; }
+.bh-aproxima-nome small { font-weight: 700; font-size: max(9.5px, calc(var(--hub) * .017)); letter-spacing: 0; color: #6c6678; }
+:is(.bh-box, .bh-aproxima):hover, :is(.bh-box, .bh-aproxima):focus-visible { scale: 1.08; }
+.bh-box:hover, .bh-box:focus-visible { box-shadow: 0 20px 40px rgba(7, 5, 26, .55), 0 0 0 8px rgba(0, 229, 255, .16); }
+.bh-aproxima:hover, .bh-aproxima:focus-visible { box-shadow: 0 18px 36px rgba(106, 25, 249, .3), 0 0 0 8px rgba(1, 210, 243, .14); }
+:is(.bh-box, .bh-aproxima):focus-visible { outline: 3px solid #3B4FF0; outline-offset: 3px; }
+@media (max-width: 640px) { .bh-box-pos { --r: .455 !important; } .bh-aproxima-nome small { display: none; } }
+
+/* =====================================================================
+   Rolagem com foco na seção atual (aprovado em 23/10). A seção que sai fica mais apagada e um pouco
+   menor, sem sumir (texto legível, links diretos e Ctrl+F funcionam); a próxima entra aparecendo e
+   subindo de leve. Só com animação ligada à rolagem (sem JavaScript); desligado para quem pede menos
+   movimento, em navegadores sem suporte, nas seções de planos e preços e nas que têm formulário.
+   O efeito vai no conteúdo da seção: o separador entre seções continua nítido.
+   ===================================================================== */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    main > section:not(:has(form, input, select, textarea, .aprox-planos, .plans-page-grid, .diagnostic-shell, .result-shell)) > * {
+      animation: foco-sai linear forwards, foco-entra linear backwards;
+      animation-timeline: view(), view();
+      animation-range: exit 0% exit 85%, entry 0% entry 260px;
+      transform-origin: 50% 100%;
+    }
+  }
+}
+@keyframes foco-entra { from { opacity: .35; translate: 0 32px; } to { opacity: 1; translate: 0 0; } }
+@keyframes foco-sai { from { opacity: 1; scale: 1; } to { opacity: .5; scale: .96; } }
+

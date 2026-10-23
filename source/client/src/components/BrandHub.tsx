@@ -1,20 +1,26 @@
 import { useEffect, useRef } from "react";
-import { BarChart3, Layers3, TrendingUp, type LucideIcon } from "lucide-react";
+import { BarChart3, Layers3, Smartphone, TrendingUp, type LucideIcon } from "lucide-react";
+import { Link } from "wouter";
 import { ANILLE_URL } from "@/components/AnilleShowcase";
 
 /* Sistema animado da marca: o cubo da Valentis Solutions no centro e as frentes
    em órbita, ligadas por fluxos de dados. Para o lançamento de um produto, basta
-   trocar o rótulo/ícone de um nó (ex.: "Organizar") nesta lista. O Sistema Anive orbita junto,
-   com o logo oficial (canvas "Logo Anive") e link para anive.sovalentis.com. */
+   trocar o rótulo/ícone de um nó (ex.: "Organizar") nesta lista. Os produtos orbitam junto, com link:
+   Sistema Anive (logo oficial), Anive Box (selo escuro, segmento do Anive para boxes, pré-lançamento)
+   e Aproxima (cartão por aproximação, página /aproxima). */
 type HubNode = { label: string; icon: LucideIcon; angle: number };
 
 const nodes: HubNode[] = [
   { label: "Atrair", icon: BarChart3, angle: 205 },
   { label: "Organizar", icon: Layers3, angle: 330 },
-  { label: "Evoluir", icon: TrendingUp, angle: 95 },
+  { label: "Evoluir", icon: TrendingUp, angle: 112 },
 ];
 
-const ANILLE_ANGULO = 32;
+const ANILLE_ANGULO = 30;
+const BOX_ANGULO = 66;
+const APROXIMA_ANGULO = 268;
+const ANIVE_BOX_URL = `${ANILLE_URL}/box/`;
+const ponta = (angulo: number, r: number) => { const a = (angulo * Math.PI) / 180; return { x1: Math.cos(a) * 15, y1: Math.sin(a) * 15, x2: Math.cos(a) * r, y2: Math.sin(a) * r }; };
 
 const particles = [
   { r: 0.27, speed: 14, delay: 0, size: 6 },
@@ -47,7 +53,7 @@ export default function BrandHub() {
   }, []);
 
   return (
-    <div ref={ref} className="brand-hub" role="group" aria-label="Valentis Solutions: atrair, organizar e evoluir como um sistema conectado, com o Sistema Anive">
+    <div ref={ref} className="brand-hub" role="group" aria-label="Valentis Solutions: atrair, organizar e evoluir como um sistema conectado, com o Sistema Anive, o Anive Box e o Aproxima">
       <div className="bh-layer bh-back" aria-hidden="true">
         <div className="bh-glow" />
         <div className="bh-ring bh-ring-inner" />
@@ -62,6 +68,11 @@ export default function BrandHub() {
               <stop offset=".55" stopColor="#7135e8" />
               <stop offset="1" stopColor="#f000cf" />
             </linearGradient>
+            <linearGradient id="bhAproxima" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stopColor="#F500C6" />
+              <stop offset=".55" stopColor="#6A19F9" />
+              <stop offset="1" stopColor="#01D2F3" />
+            </linearGradient>
             <linearGradient id="bhAnille" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0" stopColor="#FF2FD2" />
               <stop offset=".5" stopColor="#6A1BFF" />
@@ -72,7 +83,9 @@ export default function BrandHub() {
             const a = (angle * Math.PI) / 180;
             return <line key={label} className="bh-link" x1={Math.cos(a) * 15} y1={Math.sin(a) * 15} x2={Math.cos(a) * 36} y2={Math.sin(a) * 36} stroke="url(#bhFlow)" />;
           })}
-          <line className="bh-link bh-link-anille" x1={Math.cos((ANILLE_ANGULO * Math.PI) / 180) * 15} y1={Math.sin((ANILLE_ANGULO * Math.PI) / 180) * 15} x2={Math.cos((ANILLE_ANGULO * Math.PI) / 180) * 38} y2={Math.sin((ANILLE_ANGULO * Math.PI) / 180) * 38} stroke="url(#bhAnille)" />
+          <line className="bh-link bh-link-anille" {...ponta(ANILLE_ANGULO, 38)} stroke="url(#bhAnille)" />
+          <line className="bh-link bh-link-box" {...ponta(BOX_ANGULO, 41)} stroke="url(#bhAnille)" />
+          <line className="bh-link bh-link-aproxima" {...ponta(APROXIMA_ANGULO, 38)} stroke="url(#bhAproxima)" />
         </svg>
         {particles.map((p, i) => <span key={i} aria-hidden="true" className="bh-particle" style={{ "--pr": p.r, "--ps": `${p.speed}s`, "--pd": `${p.delay}s`, "--pz": `${p.size}px` } as React.CSSProperties} />)}
         {nodes.map(({ label, icon: Icon, angle }) => (
@@ -84,6 +97,18 @@ export default function BrandHub() {
           <a className="bh-anille" href={ANILLE_URL} aria-label="Conhecer o Sistema Anive, um produto Valentis Solutions">
             <img src="/assets/anive/anive-logo-tinta.svg" width={808} height={280} alt="" decoding="async" />
           </a>
+        </div>
+        <div className="bh-node-pos bh-box-pos" style={{ "--a": `${BOX_ANGULO}deg` } as React.CSSProperties}>
+          <a className="bh-box" href={ANIVE_BOX_URL} aria-label="Conhecer o Anive Box, sistema para boxes de CrossFit e Hyrox (pré-lançamento)">
+            <img src="/assets/anive/anive-logo-branco.svg" width={808} height={280} alt="" decoding="async" />
+            <span className="bh-box-tag">Box</span>
+          </a>
+        </div>
+        <div className="bh-node-pos bh-aproxima-pos" style={{ "--a": `${APROXIMA_ANGULO}deg` } as React.CSSProperties}>
+          <Link className="bh-aproxima" href="/aproxima" aria-label="Conhecer o Aproxima, cartão de contato por aproximação">
+            <span className="bh-aproxima-icone" aria-hidden="true"><span className="bh-aproxima-onda" /><Smartphone size={15} /></span>
+            <span className="bh-aproxima-nome">Aproxima<small>cartão por aproximação</small></span>
+          </Link>
         </div>
       </div>
 
