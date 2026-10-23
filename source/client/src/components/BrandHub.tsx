@@ -11,13 +11,14 @@ import { ANILLE_URL } from "@/components/AnilleShowcase";
 type HubNode = { label: string; icon: LucideIcon; angle: number };
 
 const nodes: HubNode[] = [
-  { label: "Atrair", icon: BarChart3, angle: 205 },
-  { label: "Organizar", icon: Layers3, angle: 330 },
-  { label: "Evoluir", icon: TrendingUp, angle: 118 },
+  { label: "Atrair", icon: BarChart3, angle: 152 },
+  { label: "Organizar", icon: Layers3, angle: 334 },
+  { label: "Evoluir", icon: TrendingUp, angle: 206 },
 ];
 
+// Ângulos calculados para nenhum item encostar em outro durante a órbita (computador, 1024 px e celular).
 const ANILLE_ANGULO = 30;
-const BOX_ANGULO = 66;
+const BOX_ANGULO = 84;
 const APROXIMA_ANGULO = 268;
 const ANIVE_BOX_URL = `${ANILLE_URL}/box/`;
 const ponta = (angulo: number, r: number) => { const a = (angulo * Math.PI) / 180; return { x1: Math.cos(a) * 15, y1: Math.sin(a) * 15, x2: Math.cos(a) * r, y2: Math.sin(a) * r }; };
