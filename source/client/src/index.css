@@ -555,7 +555,14 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .bh-box:hover, .bh-box:focus-visible { box-shadow: 0 20px 40px rgba(7, 5, 26, .55), 0 0 0 8px rgba(0, 229, 255, .16); }
 .bh-aproxima:hover, .bh-aproxima:focus-visible { box-shadow: 0 18px 36px rgba(106, 25, 249, .3), 0 0 0 8px rgba(1, 210, 243, .14); }
 :is(.bh-box, .bh-aproxima):focus-visible { outline: 3px solid #3B4FF0; outline-offset: 3px; }
-@media (max-width: 640px) { .bh-box-pos { --r: .455 !important; } .bh-aproxima-nome small { display: none; } }
+/* Celular: produtos mais perto do centro e menores, para não passar da borda da tela durante a órbita. */
+@media (max-width: 640px) {
+  .bh-anille-pos { --r: .39 !important; } .bh-box-pos, .bh-aproxima-pos { --r: .4 !important; }
+  .bh-anille { padding: 7px 12px; } .bh-anille img { height: 22px; }
+  .bh-box { padding: 6px 10px; gap: 6px; } .bh-box img { height: 18px; } .bh-box-tag { font-size: 11.5px; padding-left: 6px; }
+  .bh-aproxima { padding: 4px 12px 4px 4px; gap: 7px; } .bh-aproxima-icone { width: 26px; height: 26px; } .bh-aproxima-nome { font-size: 12.5px; }
+  .bh-aproxima-nome small { display: none; }
+}
 
 /* =====================================================================
    Rolagem com foco na seção atual (aprovado em 23/10). A seção que sai fica mais apagada e um pouco

@@ -13,7 +13,7 @@ type HubNode = { label: string; icon: LucideIcon; angle: number };
 const nodes: HubNode[] = [
   { label: "Atrair", icon: BarChart3, angle: 205 },
   { label: "Organizar", icon: Layers3, angle: 330 },
-  { label: "Evoluir", icon: TrendingUp, angle: 112 },
+  { label: "Evoluir", icon: TrendingUp, angle: 118 },
 ];
 
 const ANILLE_ANGULO = 30;
