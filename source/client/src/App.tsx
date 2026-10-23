@@ -24,7 +24,7 @@ function ScrollToTop() {
 
 function Router() {
   return (
-    <WouterRouter base="/">
+    <WouterRouter>
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
