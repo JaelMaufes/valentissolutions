@@ -39,7 +39,7 @@ export default function AnilleShowcase({ id = "anille", compacto = false }: { id
           </ul>
           <a className="anive-box-faixa" href={ANIVE_BOX_URL}>
             <span className="anive-box-selo">Novo</span>
-            <span><strong>Anive Box</strong> para boxes de CrossFit, Hyrox e treino funcional: recepção em 5 botões, aulas e check-in, app do aluno e cobrança recorrente.</span>
+            <img className="anive-box-faixa-logo" src="/assets/anive/anive-box-branco.svg" width="1219" height="280" alt="Anive Box" /><span>para boxes de CrossFit, Hyrox e treino funcional: recepção em 5 botões, aulas e check-in, app do aluno e cobrança recorrente.</span>
             <ArrowRight size={17} aria-hidden="true" />
           </a>
         </div>

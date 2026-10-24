@@ -537,12 +537,10 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .bh-link-aproxima { stroke-width: .7; opacity: .9; }
 .bh-box, .bh-aproxima { position: absolute; left: 0; top: 0; translate: -50% -50%; display: flex; align-items: center; width: max-content; white-space: nowrap; border: 2px solid transparent; border-radius: 999px;
   animation: bh-spin 70s linear infinite reverse; transition: scale .2s ease, box-shadow .2s ease; }
-.bh-box { gap: max(7px, calc(var(--hub) * .014)); padding: max(7px, calc(var(--hub) * .016)) max(12px, calc(var(--hub) * .026));
+.bh-box { gap: 0; padding: max(7px, calc(var(--hub) * .016)) max(12px, calc(var(--hub) * .026));
   background: linear-gradient(#07051A, #07051A) padding-box, linear-gradient(120deg, #FF2FD2, #6A1BFF 50%, #00E5FF) border-box;
   box-shadow: 0 16px 34px rgba(7, 5, 26, .45), 0 0 0 6px rgba(0, 229, 255, .08); }
 .bh-box img { display: block; height: max(22px, calc(var(--hub) * .056)); width: auto; max-width: none; }
-.bh-box-tag { padding-left: max(7px, calc(var(--hub) * .014)); border-left: 1px solid rgba(255, 255, 255, .22); font-family: "Outfit", "DM Sans", sans-serif; font-weight: 600;
-  font-size: max(13px, calc(var(--hub) * .03)); letter-spacing: .16em; text-transform: uppercase; color: #19D3F0; line-height: 1; }
 .bh-aproxima { gap: max(8px, calc(var(--hub) * .015)); padding: max(6px, calc(var(--hub) * .013)) max(14px, calc(var(--hub) * .028)) max(6px, calc(var(--hub) * .013)) max(6px, calc(var(--hub) * .013));
   background: linear-gradient(#fff, #fff) padding-box, linear-gradient(120deg, #F500C6, #6A19F9 45%, #3E4DF9 75%, #01D2F3) border-box;
   box-shadow: 0 14px 30px rgba(69, 49, 130, .2), 0 0 0 5px rgba(245, 0, 198, .06); color: #20183b; }
@@ -561,7 +559,7 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 @media (max-width: 640px) {
   .bh-anille-pos { --r: .37 !important; } .bh-box-pos { --r: .355 !important; } .bh-aproxima-pos { --r: .36 !important; }
   .bh-anille { padding: 7px 12px; } .bh-anille img { height: 22px; }
-  .bh-box { padding: 6px 10px; gap: 6px; } .bh-box img { height: 18px; } .bh-box-tag { font-size: 11.5px; padding-left: 6px; }
+  .bh-box { padding: 6px 10px; } .bh-box img { height: 18px; }
   .bh-aproxima { padding: 4px 12px 4px 4px; gap: 7px; } .bh-aproxima-icone { width: 26px; height: 26px; } .bh-aproxima-nome { font-size: 12.5px; }
   .bh-aproxima-nome small { display: none; }
 }
@@ -596,3 +594,7 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .anive-box-faixa strong { color: #fff; }
 .anive-box-faixa > svg { flex: none; color: #19D3F0; }
 .anive-box-selo { flex: none; padding: .2rem .55rem; border-radius: 999px; background: linear-gradient(90deg, #FF2FD2, #3B5BFF); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+
+/* Logo Anive | BOX no menu e na faixa da vitrine */
+.site-header .nav-anive-box-logo { display: block; height: 17px; width: auto; }
+.anive-box-faixa-logo { flex: none; display: block; height: 22px; width: auto; }
