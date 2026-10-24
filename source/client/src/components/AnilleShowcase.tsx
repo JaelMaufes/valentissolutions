@@ -5,6 +5,8 @@ import { ArrowRight, Check } from "lucide-react";
    títulos e o descritor em Noto Serif. Telas com dados fictícios (Studio Exemplo). */
 export const ANILLE_URL = "https://anive.sovalentis.com";
 export const ANILLE_TESTE_URL = "https://painel.sovalentis.com/?cadastro&plano=essencial";
+export const ANIVE_BOX_URL = "https://anive.sovalentis.com/box/";
+export const ANIVE_BOX_TESTE_URL = "https://painel.sovalentis.com/?cadastro=box&plano=box_pro";
 
 const destaques = [
   "Teste grátis por 14 dias, sem cartão",
@@ -35,6 +37,11 @@ export default function AnilleShowcase({ id = "anille", compacto = false }: { id
           <ul className="anille-destaques">
             {destaques.map(d => <li key={d}><Check size={15} />{d}</li>)}
           </ul>
+          <a className="anive-box-faixa" href={ANIVE_BOX_URL}>
+            <span className="anive-box-selo">Novo</span>
+            <span><strong>Anive Box</strong> para boxes de CrossFit, Hyrox e treino funcional: recepção em 5 botões, aulas e check-in, app do aluno e cobrança recorrente.</span>
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
         </div>
         {!compacto && (
           <figure className="anille-telas">

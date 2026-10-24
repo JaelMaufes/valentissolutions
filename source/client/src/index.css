@@ -586,3 +586,13 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 @keyframes foco-entra { from { opacity: .35; translate: 0 32px; } to { opacity: 1; translate: 0 0; } }
 @keyframes foco-sai { from { opacity: 1; scale: 1; } to { opacity: .5; scale: .96; } }
 
+
+/* Anive Box: atalho no menu, no menu do celular e faixa na vitrine do Anive */
+.site-header .nav-anive-box { padding: .42rem .8rem; margin-left: .1rem; }
+.mobile-anive-box strong { grid-column: 1; font-family: "Outfit", "DM Sans", sans-serif; font-size: 1.2rem; font-weight: 600; color: #fff; }
+.anive-box-faixa { margin-top: 1.4rem; display: flex; align-items: center; gap: .8rem; padding: .9rem 1.05rem; border-radius: 1rem; border: 1.5px solid transparent; color: #D9D4F5; font-size: .92rem; line-height: 1.5;
+  background: linear-gradient(#0d0a26, #0d0a26) padding-box, linear-gradient(120deg, #FF2FD2, #6A1BFF 50%, #00E5FF) border-box; transition: box-shadow .2s ease; }
+.anive-box-faixa:hover { box-shadow: 0 0 0 4px rgba(106, 27, 255, .28); }
+.anive-box-faixa strong { color: #fff; }
+.anive-box-faixa > svg { flex: none; color: #19D3F0; }
+.anive-box-selo { flex: none; padding: .2rem .55rem; border-radius: 999px; background: linear-gradient(90deg, #FF2FD2, #3B5BFF); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
