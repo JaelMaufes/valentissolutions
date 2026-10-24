@@ -6,7 +6,7 @@ import { ANILLE_URL } from "@/components/AnilleShowcase";
 /* Sistema animado da marca: o cubo da Valentis Solutions no centro e as frentes
    em órbita, ligadas por fluxos de dados. Para o lançamento de um produto, basta
    trocar o rótulo/ícone de um nó (ex.: "Organizar") nesta lista. Os produtos orbitam junto, com link:
-   Sistema Anive (logo oficial), Anive Box (selo escuro, segmento do Anive para boxes, pré-lançamento)
+   Sistema Anive (logo oficial), Anive Box (logo Anive | BOX, segmento do Anive para boxes)
    e Aproxima (cartão por aproximação, página /aproxima). */
 type HubNode = { label: string; icon: LucideIcon; angle: number };
 
@@ -100,9 +100,8 @@ export default function BrandHub() {
           </a>
         </div>
         <div className="bh-node-pos bh-box-pos" style={{ "--a": `${BOX_ANGULO}deg` } as React.CSSProperties}>
-          <a className="bh-box" href={ANIVE_BOX_URL} aria-label="Conhecer o Anive Box, sistema para boxes de CrossFit e Hyrox (pré-lançamento)">
-            <img src="/assets/anive/anive-logo-branco.svg" width={808} height={280} alt="" decoding="async" />
-            <span className="bh-box-tag">Box</span>
+          <a className="bh-box" href={ANIVE_BOX_URL} aria-label="Conhecer o Anive Box, sistema para boxes de CrossFit e Hyrox">
+            <img src="/assets/anive/anive-box-branco.svg" width={1219} height={280} alt="" decoding="async" />
           </a>
         </div>
         <div className="bh-node-pos bh-aproxima-pos" style={{ "--a": `${APROXIMA_ANGULO}deg` } as React.CSSProperties}>

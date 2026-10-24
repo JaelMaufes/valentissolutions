@@ -40,7 +40,7 @@ export function Header() {
       <nav className="nav-principal" aria-label="Navegação principal">
         {navItems.filter(item => item.href !== "/").map(item => <Link key={item.href} href={item.href} className="nav-link" aria-current={ativo(item.href) ? "page" : undefined}>{item.label}</Link>)}
         <a href={ANILLE_URL} className="nav-anille" aria-label="Sistema Anive (abre o site do Anive)"><AnilleSimbolo className="nav-anille-simbolo" id="d" /><span>Anive</span><ArrowUpRight size={14} aria-hidden="true" /></a>
-        <a href={ANIVE_BOX_URL} className="nav-anille nav-anive-box" aria-label="Anive Box, para boxes de CrossFit e Hyrox (abre o site do Anive)"><span>Anive Box</span><ArrowUpRight size={14} aria-hidden="true" /></a>
+        <a href={ANIVE_BOX_URL} className="nav-anille nav-anive-box" aria-label="Anive Box, para boxes de CrossFit e Hyrox (abre o site do Anive)"><img className="nav-anive-box-logo" src="/assets/anive/anive-box-branco.svg" width={1219} height={280} alt="Anive Box" /><ArrowUpRight size={14} aria-hidden="true" /></a>
       </nav>
       <div className="site-header-acoes">
         <a target="_blank" rel="noopener noreferrer" className="button button-small button-ghost hidden sm:inline-flex" href={whatsappUrl("Olá! Quero entender como a Valentis Solutions pode ajudar meu negócio.")}>Falar com a Valentis Solutions <ArrowUpRight size={15} /></a>
@@ -56,7 +56,7 @@ export function Header() {
           <ArrowUpRight size={18} aria-hidden="true" />
         </a>
         <a href={ANIVE_BOX_URL} className="mobile-anille mobile-anive-box" onClick={() => setOpen(false)}>
-          <strong>Anive Box</strong>
+          <img src="/assets/anive/anive-box-branco.svg" width="1219" height="280" alt="Anive Box" />
           <span>Para boxes de CrossFit, Hyrox e treino funcional: aulas, check-in, app do aluno e cobrança.</span>
           <ArrowUpRight size={18} aria-hidden="true" />
         </a>
