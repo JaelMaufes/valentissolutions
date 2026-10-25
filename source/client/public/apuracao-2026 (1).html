@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apuração 2º Turno 2026 — Presidente | Valentis Solutions</title>
+  <meta name="description" content="Acompanhe a apuração oficial do segundo turno das Eleições 2026 para Presidente da República. Dados do TSE." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple: #7C3AED;
+      --cyan: #06B6D4;
+      --magenta: #D946EF;
+      --dark: #0F172A;
+      --gray: #64748B;
+      --light: #F8FAFC;
+      --card: rgba(255,255,255,0.85);
+      --border: rgba(124,58,237,0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #F5F3FF 0%, #ECFEFF 50%, #FDF4FF 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-decoration: none;
+    }
+
+    .logo-cube {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--purple), var(--cyan), var(--magenta));
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      color: white;
+    }
+
+    .badge {
+      background: linear-gradient(90deg, var(--purple), var(--magenta));
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .title h1 {
+      font-size: clamp(1.75rem, 5vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(90deg, var(--purple), var(--cyan), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .title p {
+      color: var(--gray);
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: white;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--gray);
+      margin-top: 1rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #22C55E;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.12);
+      margin-bottom: 1.5rem;
+    }
+
+    .candidate {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 0;
+    }
+
+    .candidate + .candidate {
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .candidate-info {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #E0E7FF, #CFFAFE);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 2px solid rgba(124,58,237,0.18);
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .name {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .party {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .pct {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .votes {
+      font-size: 0.8rem;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    .bar-container {
+      height: 10px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 1.25rem 0 0.5rem;
+      display: flex;
+    }
+
+    .bar-lula {
+      background: linear-gradient(90deg, #EF4444, #F97316);
+      height: 100%;
+      transition: width 0.6s ease;
+    }
+
+    .bar-flavio {
+      background: linear-gradient(90deg, #3B82F6, #06B6D4);
+      height: 100%;
+      transition: width 0.6s ease;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .meta-item {
+      background: rgba(124, 58, 237, 0.04);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      text-align: center;
+    }
+
+    .meta-item span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-bottom: 0.15rem;
+    }
+
+    .meta-item strong {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .footer a {
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .update {
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+
+    .data-integrity {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1.35rem;
+      padding: 0.9rem 1rem;
+      background: rgba(15, 23, 42, 0.04);
+      border-radius: 12px;
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+
+    .data-integrity strong { color: var(--dark); }
+    .data-line { display: flex; justify-content: space-between; gap: 0.8rem; }
+    .data-line span:last-child { text-align: right; }
+    .live-ok { color: #15803D !important; }
+    .live-warning { color: #B45309 !important; }
+    .live-error { color: #B91C1C !important; }
+    .section-heading { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-bottom:1rem; }
+    .section-heading h2 { font-size:1.12rem; letter-spacing:-0.02em; }
+    .section-heading small { color:var(--gray); font-size:0.72rem; text-align:right; }
+    .news-list { display:grid; gap:0.85rem; }
+    .news-item { display:block; padding:0.95rem 0; border-top:1px solid rgba(0,0,0,0.07); text-decoration:none; color:inherit; }
+    .news-item:first-child { border-top:0; padding-top:0; }
+    .news-item:hover .news-title { color:var(--purple); }
+    .news-kicker { color:var(--purple); font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; }
+    .news-title { font-weight:700; font-size:0.92rem; line-height:1.35; margin:0.22rem 0; transition:color 0.2s ease; }
+    .news-meta { color:var(--gray); font-size:0.72rem; }
+    .news-empty { color:var(--gray); font-size:0.82rem; }
+    .source-note { font-size:0.72rem; color:var(--gray); line-height:1.45; margin-top:0.9rem; }
+    .source-note a { color:var(--purple); }
+    .official-links { display:flex; flex-wrap:wrap; gap:0.55rem; margin-top:0.9rem; }
+    .official-links a { color:var(--purple); background:rgba(124,58,237,0.08); border-radius:999px; padding:0.38rem 0.7rem; font-size:0.72rem; text-decoration:none; font-weight:600; }
+
+    @media (max-width: 480px) {
+      .candidate { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .votes { text-align: left; }
+      .pct { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="https://sovalentis.com" class="logo">
+      <div class="logo-cube">V</div>
+      Valentis Solutions
+    </a>
+    <span class="badge">Eleições 2026</span>
+  </header>
+
+  <main class="container">
+    <div class="title">
+      <h1>Apuração 2º Turno</h1>
+      <p>Presidente da República · Brasil</p>
+      <div class="status">
+        <span class="dot"></span>
+        <span id="status-text">Apuração em andamento</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="candidate">
+        <div class="candidate-info">
+          <div class="avatar"><img src="/assets/lula-2026.jpg" alt="Foto de Luiz Inácio Lula da Silva" loading="lazy"></div>
+          <div>
+            <div class="name">Lula</div>
+            <div class="party">PT · Luiz Inácio Lula da Silva</div>
+          </div>
+        </div>
+        <div>
+          <div class="pct" id="pct-lula" style="color:#EF4444">57,66%</div>
+          <div class="votes" id="votos-lula">193.574 votos</div>
+        </div>
+      </div>
+
+      <div class="candidate">
+        <div class="candidate-info">
+          <div class="avatar"><img src="/assets/flavio-bolsonaro-2026.jpg" alt="Foto de Flávio Bolsonaro" loading="lazy"></div>
+          <div>
+            <div class="name">Flávio Bolsonaro</div>
+            <div class="party">PL · Flávio Nantes Bolsonaro</div>
+          </div>
+        </div>
+        <div>
+          <div class="pct" id="pct-flavio" style="color:#3B82F6">42,34%</div>
+          <div class="votes" id="votos-flavio">142.169 votos</div>
+        </div>
+      </div>
+
+      <div class="bar-container">
+        <div class="bar-lula" id="bar-lula" style="width:57.66%"></div>
+        <div class="bar-flavio" id="bar-flavio" style="width:42.34%"></div>
+      </div>
+
+      <div class="meta">
+        <div class="meta-item">
+          <span>Seções totalizadas</span>
+          <strong id="secoes">0,25%</strong>
+        </div>
+        <div class="meta-item">
+          <span>Votos válidos</span>
+          <strong id="validos">335.743</strong>
+        </div>
+        <div class="meta-item">
+          <span>Comparecimento</span>
+          <strong id="comparecimento">50,53%</strong>
+        </div>
+        <div class="meta-item">
+          <span>Diferença</span>
+          <strong id="diferenca">51.405 votos</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="data-integrity" aria-live="polite">
+      <div class="data-line"><span>Estado da consulta</span><strong id="live-state" class="live-warning">Aguardando consulta</strong></div>
+      <div class="data-line"><span>Última resposta recebida</span><span id="last-update">Ainda não consultado</span></div>
+      <div class="data-line"><span>Intervalo automático</span><span>15 segundos enquanto a página está aberta</span></div>
+      <div class="data-line"><span>Origem dos números</span><span id="data-source">API pública de resultados · verifique no TSE</span></div>
+    </div>
+
+    <div class="card" id="news-card">
+      <div class="section-heading">
+        <h2>Notícias e comunicados</h2>
+        <small id="news-updated">Atualizando fontes...</small>
+      </div>
+      <div class="news-list" id="news-list" aria-live="polite">
+        <p class="news-empty">Carregando manchetes de fontes identificadas...</p>
+      </div>
+      <p class="source-note">As manchetes são links para as fontes originais e não interferem no cálculo dos votos. O painel pode ficar vazio quando um feed estiver indisponível; isso evita inventar ou repetir notícias antigas.</p>
+      <div class="official-links">
+        <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Resultados oficiais do TSE</a>
+        <a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/divulgacao-dos-resultados-das-eleicoes-2026" target="_blank" rel="noopener noreferrer">Página do TSE</a>
+        <a href="https://www.gov.br/pf/pt-br/assuntos/noticias" target="_blank" rel="noopener noreferrer">Notícias da PF</a>
+      </div>
+    </div>
+
+    <p class="update">Fotos: recortes editoriais da Agência Lupa, usadas apenas como identificação visual dos candidatos. Números e notícias têm fontes e horários próprios.</p>
+
+    <div class="footer">
+      <p>Fonte: Tribunal Superior Eleitoral (TSE)</p>
+      <p style="margin-top:0.4rem">
+        Página criada para <a href="https://sovalentis.com">Valentis Solutions</a>
+      </p>
+    </div>
+  </main>
+
+  <script>
+    const RESULTS_URL = 'https://placardovoto.com/api/public/v1/resultados/2026/2/presidente/br/';
+    const RESULTS_INTERVAL = 15000;
+    const NEWS_INTERVAL = 60000;
+    let resultsTimer;
+    let newsTimer;
+    let requestInFlight = false;
+    let hasLiveData = false;
+    let resultsIntervalMs = 15000;
+
+    function formatNumber(n) {
+      return new Intl.NumberFormat('pt-BR').format(Number(n) || 0);
+    }
+
+    function formatPct(n) {
+      const value = Number(n);
+      return Number.isFinite(value) ? value.toFixed(2).replace('.', ',') + '%' : '—';
+    }
+
+    function formatDate(date) {
+      return new Intl.DateTimeFormat('pt-BR', {
+        dateStyle: 'short', timeStyle: 'medium', timeZone: 'America/Sao_Paulo'
+      }).format(date);
+    }
+
+    function setLiveState(text, className) {
+      const el = document.getElementById('live-state');
+      el.textContent = text;
+      el.className = className;
+      document.getElementById('status-text').textContent = text;
+    }
+
+    function updateUI(data) {
+      if (!data || !data.result || !Array.isArray(data.result.candidates)) {
+        throw new Error('Resposta sem candidatos');
+      }
+
+      const candidates = data.result.candidates;
+      const lula = candidates.find(c => Number(c.number) === 13 || (c.name && c.name.toLowerCase().includes('lula')));
+      const flavio = candidates.find(c => Number(c.number) === 22 || (c.name && c.name.toLowerCase().includes('bolsonaro')));
+
+      if (lula) {
+        document.getElementById('pct-lula').textContent = formatPct(lula.percentage);
+        document.getElementById('votos-lula').textContent = formatNumber(lula.votes) + ' votos';
+        document.getElementById('bar-lula').style.width = `${Number(lula.percentage) || 0}%`;
+      }
+      if (flavio) {
+        document.getElementById('pct-flavio').textContent = formatPct(flavio.percentage);
+        document.getElementById('votos-flavio').textContent = formatNumber(flavio.votes) + ' votos';
+        document.getElementById('bar-flavio').style.width = `${Number(flavio.percentage) || 0}%`;
+      }
+
+      const result = data.result;
+      if (result.sectionsPercentage != null) document.getElementById('secoes').textContent = formatPct(result.sectionsPercentage);
+      if (result.validVotes != null) document.getElementById('validos').textContent = formatNumber(result.validVotes);
+      if (result.attendancePercentage != null) document.getElementById('comparecimento').textContent = formatPct(result.attendancePercentage);
+      if (lula && flavio && lula.votes != null && flavio.votes != null) {
+        document.getElementById('diferenca').textContent = `${formatNumber(Math.abs(Number(lula.votes) - Number(flavio.votes)))} votos`;
+      }
+    }
+
+    async function fetchResults() {
+      if (requestInFlight || document.visibilityState === 'hidden') return;
+      requestInFlight = true;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+      try {
+        const res = await fetch(`${RESULTS_URL}?t=${Date.now()}`, { cache: 'no-store', signal: controller.signal });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        updateUI(data);
+        hasLiveData = true;
+        resultsIntervalMs = 15000;
+        const now = new Date();
+        document.getElementById('last-update').textContent = formatDate(now) + ' (Brasília)';
+        document.getElementById('data-source').textContent = 'API pública consultada · confira no site oficial do TSE';
+        setLiveState('Dados atualizados', 'live-ok');
+      } catch (error) {
+        console.warn('Não foi possível atualizar a apuração:', error);
+        if (error && /HTTP 402/.test(error.message || '')) {
+          resultsIntervalMs = 60000;
+          schedule();
+        }
+        if (hasLiveData) {
+          setLiveState('Sem resposta nova; último dado mantido', 'live-warning');
+          document.getElementById('data-source').textContent = 'Última resposta válida mantida · confirme no TSE';
+        } else {
+          setLiveState('Atualização indisponível', 'live-error');
+          document.getElementById('data-source').textContent = 'API sem resposta válida · valores de referência não confirmados';
+          document.getElementById('last-update').textContent = 'Nenhum resultado ao vivo recebido';
+        }
+      } finally {
+        clearTimeout(timeout);
+        requestInFlight = false;
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>'"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[char]));
+    }
+
+    const newsFeeds = [
+      { label: 'Candidatos', query: 'Lula Flávio Bolsonaro eleições 2026' },
+      { label: 'TSE', query: 'TSE eleições 2026' },
+      { label: 'PF', query: 'Polícia Federal eleições 2026' }
+    ];
+
+    async function fetchFeed(feed) {
+      const rss = `https://news.google.com/rss/search?q=${encodeURIComponent(feed.query)}&hl=pt-BR&gl=BR&ceid=BR:pt-419`;
+      const endpoint = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rss)}`;
+      const response = await fetch(endpoint, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Feed ${feed.label}: HTTP ${response.status}`);
+      const data = await response.json();
+      return (data.items || []).slice(0, 2).map(item => ({ ...item, sourceLabel: feed.label }));
+    }
+
+    function renderNews(items) {
+      const list = document.getElementById('news-list');
+      const safeItems = items.filter(item => /^https?:\/\//i.test(item.link || '')).slice(0, 6);
+      if (!safeItems.length) {
+        list.innerHTML = '<p class="news-empty">Nenhuma manchete disponível agora. Consulte os links oficiais acima.</p>';
+        return;
+      }
+      list.innerHTML = safeItems.map(item => {
+        const date = item.pubDate ? new Date(item.pubDate) : null;
+        const when = date && !Number.isNaN(date.valueOf()) ? formatDate(date) : 'horário não informado';
+        return `<a class="news-item" href="${escapeHtml(item.link)}" target="_blank" rel="noopener noreferrer nofollow"><span class="news-kicker">${escapeHtml(item.sourceLabel)} · fonte original</span><div class="news-title">${escapeHtml(item.title)}</div><div class="news-meta">${escapeHtml(item.author || item.source || 'Publicação original')} · ${escapeHtml(when)}</div></a>`;
+      }).join('');
+    }
+
+    async function fetchNews() {
+      const settled = await Promise.allSettled(newsFeeds.map(fetchFeed));
+      const items = settled.flatMap(result => result.status === 'fulfilled' ? result.value : []);
+      items.sort((a, b) => new Date(b.pubDate || 0) - new Date(a.pubDate || 0));
+      renderNews(items);
+      const okCount = settled.filter(result => result.status === 'fulfilled').length;
+      document.getElementById('news-updated').textContent = `${formatDate(new Date())} · ${okCount}/${newsFeeds.length} fontes consultadas`;
+    }
+
+    function schedule() {
+      clearInterval(resultsTimer);
+      clearInterval(newsTimer);
+      resultsTimer = setInterval(fetchResults, resultsIntervalMs);
+      newsTimer = setInterval(fetchNews, NEWS_INTERVAL);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        fetchResults();
+        fetchNews();
+      }
+    });
+
+    fetchResults();
+    fetchNews();
+    schedule();
+  </script>
+</body>
+</html>
