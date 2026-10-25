@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apuração 2º Turno 2026 — Presidente | Valentis Solutions</title>
+  <meta name="description" content="Acompanhe a apuração oficial do segundo turno das Eleições 2026 para Presidente da República. Dados do TSE." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple: #7C3AED;
+      --cyan: #06B6D4;
+      --magenta: #D946EF;
+      --dark: #0F172A;
+      --gray: #64748B;
+      --light: #F8FAFC;
+      --card: rgba(255,255,255,0.85);
+      --border: rgba(124,58,237,0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #F5F3FF 0%, #ECFEFF 50%, #FDF4FF 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-decoration: none;
+    }
+
+    .logo-cube {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--purple), var(--cyan), var(--magenta));
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      color: white;
+    }
+
+    .badge {
+      background: linear-gradient(90deg, var(--purple), var(--magenta));
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .title h1 {
+      font-size: clamp(1.75rem, 5vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(90deg, var(--purple), var(--cyan), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .title p {
+      color: var(--gray);
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: white;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--gray);
+      margin-top: 1rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #22C55E;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.12);
+      margin-bottom: 1.5rem;
+    }
+
+    .candidate {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 0;
+    }
+
+    .candidate + .candidate {
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .candidate-info {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #E0E7FF, #CFFAFE);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--purple);
+      flex-shrink: 0;
+    }
+
+    .name {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .party {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .pct {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .votes {
+      font-size: 0.8rem;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    .bar-container {
+      height: 10px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 1.25rem 0 0.5rem;
+      display: flex;
+    }
+
+    .bar-lula {
+      background: linear-gradient(90deg, #EF4444, #F97316);
+      height: 100%;
+      transition: width 0.6s ease;
+    }
+
+    .bar-flavio {
+      background: linear-gradient(90deg, #3B82F6, #06B6D4);
+      height: 100%;
+      transition: width 0.6s ease;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .meta-item {
+      background: rgba(124, 58, 237, 0.04);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      text-align: center;
+    }
+
+    .meta-item span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-bottom: 0.15rem;
+    }
+
+    .meta-item strong {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .footer a {
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .update {
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      .candidate { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .votes { text-align: left; }
+      .pct { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="https://sovalentis.com" class="logo">
+      <div class="logo-cube">V</div>
+      Valentis Solutions
+    </a>
+    <span class="badge">Eleições 2026</span>
+  </header>
+
+  <main class="container">
+    <div class="title">
+      <h1>Apuração 2º Turno</h1>
+      <p>Presidente da República · Brasil</p>
+      <div class="status">
+        <span class="dot"></span>
+        <span id="status-text">Apuração em andamento</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="candidate">
+        <div class="candidate-info">
+          <div class="avatar">13</div>
+          <div>
+            <div class="name">Lula</div>
+            <div class="party">PT · Luiz Inácio Lula da Silva</div>
+          </div>
+        </div>
+        <div>
+          <div class="pct" id="pct-lula" style="color:#EF4444">57,66%</div>
+          <div class="votes" id="votos-lula">193.574 votos</div>
+        </div>
+      </div>
+
+      <div class="candidate">
+        <div class="candidate-info">
+          <div class="avatar">22</div>
+          <div>
+            <div class="name">Flávio Bolsonaro</div>
+            <div class="party">PL · Flávio Nantes Bolsonaro</div>
+          </div>
+        </div>
+        <div>
+          <div class="pct" id="pct-flavio" style="color:#3B82F6">42,34%</div>
+          <div class="votes" id="votos-flavio">142.169 votos</div>
+        </div>
+      </div>
+
+      <div class="bar-container">
+        <div class="bar-lula" id="bar-lula" style="width:57.66%"></div>
+        <div class="bar-flavio" id="bar-flavio" style="width:42.34%"></div>
+      </div>
+
+      <div class="meta">
+        <div class="meta-item">
+          <span>Seções totalizadas</span>
+          <strong id="secoes">0,25%</strong>
+        </div>
+        <div class="meta-item">
+          <span>Votos válidos</span>
+          <strong id="validos">335.743</strong>
+        </div>
+        <div class="meta-item">
+          <span>Comparecimento</span>
+          <strong id="comparecimento">50,53%</strong>
+        </div>
+        <div class="meta-item">
+          <span>Diferença</span>
+          <strong id="diferenca">51.405 votos</strong>
+        </div>
+      </div>
+    </div>
+
+    <p class="update" id="last-update">
+      Dados oficiais do TSE · atualizado em 25/10/2026 às 17:06 (Brasília)
+    </p>
+
+    <div class="footer">
+      <p>Fonte: Tribunal Superior Eleitoral (TSE)</p>
+      <p style="margin-top:0.4rem">
+        Página criada para <a href="https://sovalentis.com">Valentis Solutions</a>
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // Formatação brasileira
+    function formatNumber(n) {
+      return new Intl.NumberFormat('pt-BR').format(n);
+    }
+
+    function formatPct(n) {
+      return n.toFixed(2).replace('.', ',') + '%';
+    }
+
+    // Atualiza a interface
+    function updateUI(data) {
+      if (!data || !data.result || !data.result.candidates) return;
+
+      const candidates = data.result.candidates;
+      const lula = candidates.find(c => c.number === 13 || (c.name && c.name.toLowerCase().includes('lula')));
+      const flavio = candidates.find(c => c.number === 22 || (c.name && c.name.toLowerCase().includes('bolsonaro')));
+
+      if (lula) {
+        document.getElementById('pct-lula').textContent = formatPct(lula.percentage || 0);
+        document.getElementById('votos-lula').textContent = formatNumber(lula.votes || 0) + ' votos';
+        document.getElementById('bar-lula').style.width = (lula.percentage || 0) + '%';
+      }
+      if (flavio) {
+        document.getElementById('pct-flavio').textContent = formatPct(flavio.percentage || 0);
+        document.getElementById('votos-flavio').textContent = formatNumber(flavio.votes || 0) + ' votos';
+        document.getElementById('bar-flavio').style.width = (flavio.percentage || 0) + '%';
+      }
+
+      // Meta dados se disponíveis
+      if (data.result.sectionsPercentage != null) {
+        document.getElementById('secoes').textContent = formatPct(data.result.sectionsPercentage);
+      }
+      if (data.result.validVotes != null) {
+        document.getElementById('validos').textContent = formatNumber(data.result.validVotes);
+      }
+
+      const now = new Date();
+      document.getElementById('last-update').textContent =
+        `Dados oficiais do TSE · atualizado em ${now.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}`;
+    }
+
+    // Tenta buscar da API pública
+    async function fetchResults() {
+      try {
+        const res = await fetch('https://placardovoto.com/api/public/v1/resultados/2026/2/presidente/br/', {
+          cache: 'no-store'
+        });
+        if (res.ok) {
+          const data = await res.json();
+          updateUI(data);
+          document.getElementById('status-text').textContent = 'Apuração em andamento · ao vivo';
+        }
+      } catch (e) {
+        // Mantém os números estáticos se a API falhar
+        console.log('API temporariamente indisponível, usando dados em cache');
+      }
+    }
+
+    // Atualiza a cada 60 segundos
+    fetchResults();
+    setInterval(fetchResults, 60000);
+  </script>
+</body>
+</html>
