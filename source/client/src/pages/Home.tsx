@@ -1,8 +1,8 @@
-import { ArrowRight, Check, Code2, Compass, Layers3, MessageCircle, Sparkles, Target, TrendingUp, Workflow } from "lucide-react";
+import { ArrowRight, Check, Code2, Compass, Dumbbell, Layers3, MessageCircle, Sparkles, Target, TrendingUp, Workflow } from "lucide-react";
 import { Link } from "wouter";
 import { Footer, Header, CheckLine, whatsappUrl } from "@/components/MarketingLayout";
 import BrandHub from "@/components/BrandHub";
-import AnilleShowcase, { ANILLE_URL } from "@/components/AnilleShowcase";
+import AnilleShowcase, { ANILLE_URL, ANIVE_BOX_URL } from "@/components/AnilleShowcase";
 
 type Front = { eyebrow: string; title: string; description: string; href: string; icon: typeof Target; tone: string; label: string; externo?: boolean };
 
@@ -60,7 +60,12 @@ export default function Home() {
               <div className="eyebrow mb-6"><span className="eyebrow-dot" />Valentis Solutions · Maringá, PR, para todo o Brasil</div>
               <h1 className="display-title max-w-4xl">Soluções para <span className="gradient-text">atrair, organizar e crescer.</span></h1>
               <p className="hero-copy mt-6 max-w-2xl">Atraímos clientes com tráfego pago e organizamos a operação que vem depois: com o Sistema Anive, nossa plataforma de gestão por assinatura, ou com sistemas feitos sob medida.</p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link className="button button-primary" href="/trafego-pago#diagnostico">Fazer diagnóstico inicial <ArrowRight size={17} /></Link><a className="button button-secondary" href="#anille">Conhecer o Sistema Anive <ArrowRight size={17} /></a></div>
+              <nav className="hero-portas mt-9" aria-label="Escolha pelo seu tipo de negócio">
+                <a className="hero-porta porta-anive" href={ANILLE_URL}><Layers3 size={20} aria-hidden="true" /><span><strong>Tenho uma empresa de serviço</strong><small>Sistema Anive: do funil ao lucro. 14 dias grátis.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <a className="hero-porta porta-box" href={ANIVE_BOX_URL}><Dumbbell size={20} aria-hidden="true" /><span><strong>Tenho um box de treino</strong><small>Anive Box: CrossFit, Hyrox e treino funcional.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <Link className="hero-porta porta-trafego" href="/trafego-pago"><Target size={20} aria-hidden="true" /><span><strong>Quero mais clientes</strong><small>Tráfego pago e páginas para a sua região.</small></span><ArrowRight size={17} aria-hidden="true" /></Link>
+              </nav>
+              <p className="hero-diag mt-4">Não sabe por onde começar? <Link href="/trafego-pago#diagnostico">Faça o diagnóstico inicial</Link></p>
               <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold text-[#69647a]"><span className="flex items-center gap-2"><Check size={15} className="text-[#6A19F9]" />Atendimento direto</span><span className="flex items-center gap-2"><Check size={15} className="text-[#6A19F9]" />Escopo claro</span><span className="flex items-center gap-2"><Check size={15} className="text-[#6A19F9]" />Linguagem sem complicação</span></div>
             </div>
             <div className="reveal reveal-delay-2"><BrandHub /></div>

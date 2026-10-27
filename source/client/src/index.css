@@ -48,6 +48,21 @@
   .hub-node svg { color: #315EFA; }
   .hub-node-one { left: 0; top: 22%; }.hub-node-two { right: 0; top: 53%; }.hub-node-three { left: 10%; bottom: 12%; }
   .fronts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  /* Portas da abertura (27/10): o visitante escolhe pelo tipo de negócio */
+  .hero-portas { display: grid; gap: .65rem; max-width: 36rem; }
+  .hero-porta { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .9rem; border: 1px solid #e2dcef; border-radius: 1rem; padding: .9rem 1.05rem; background: rgba(255,255,255,.88); color: #302449; box-shadow: 0 8px 22px rgba(66,46,120,.07); transition: transform .18s cubic-bezier(.23,1,.32,1), box-shadow .2s ease, border-color .2s ease; }
+  .hero-porta:hover { transform: translateY(-2px); border-color: #c9bdf0; box-shadow: 0 16px 30px rgba(66,46,120,.12); }
+  .hero-porta:focus-visible { outline: 3px solid rgba(124,79,224,.35); outline-offset: 3px; }
+  .hero-porta > svg:first-child { color: #6A19F9; }
+  .porta-box > svg:first-child { color: #0a8fb0; }
+  .porta-trafego > svg:first-child { color: #315EFA; }
+  .hero-porta > svg:last-child { color: #8b7ba7; transition: transform .2s ease; }
+  .hero-porta:hover > svg:last-child { transform: translateX(3px); }
+  .hero-porta strong { display: block; font-size: .98rem; font-weight: 900; letter-spacing: -.02em; }
+  .hero-porta small { display: block; margin-top: .15rem; font-size: .8rem; line-height: 1.45; color: #6d667c; }
+  .hero-diag { font-size: .84rem; color: #69647a; }
+  .hero-diag a { font-weight: 800; color: #5b3fd0; text-decoration: underline; text-underline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { .hero-porta, .hero-porta > svg:last-child { transition: none; } .hero-porta:hover, .hero-porta:hover > svg:last-child { transform: none; } }
   .front-card { position: relative; display: flex; min-height: 330px; flex-direction: column; overflow: hidden; border: 1px solid #e6e1ef; border-radius: 1.4rem; padding: 1.5rem; transition: transform .22s ease, box-shadow .22s ease; }
   .front-card:hover { transform: translateY(-5px); box-shadow: 0 22px 42px rgba(66,46,120,.12); }.front-card-blue { background: linear-gradient(145deg,#f0f5ff,#fff); }.front-card-purple { background: linear-gradient(145deg,#f6f1ff,#fff); }.front-card-pink { background: linear-gradient(145deg,#fff0fb,#fff); }
   .front-icon { display: flex; height: 48px; width: 48px; align-items: center; justify-content: center; border-radius: 1rem; background: #fff; color: #315EFA; box-shadow: 0 8px 20px rgba(66,46,120,.08); }.front-arrow { color: #8b7ba7; transition: transform .2s ease; }.front-card:hover .front-arrow { transform: translate(3px,-3px); }.front-eyebrow { margin-top: 3.3rem; font-size: .68rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; color: #806ba5; }.front-card h3 { margin-top: .65rem; font-size: 1.65rem; font-weight: 900; letter-spacing: -.04em; color: #302449; }.front-description { margin-top: .6rem; font-size: .88rem; line-height: 1.65; color: #70697d; }.front-link { display: inline-flex; align-items: center; gap: .45rem; margin-top: auto; padding-top: 1.5rem; font-size: .78rem; font-weight: 900; color: #315EFA; }
