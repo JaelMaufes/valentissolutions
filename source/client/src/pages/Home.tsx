@@ -58,9 +58,9 @@ export default function Home() {
           <div className="container relative grid items-center gap-12 py-20 lg:grid-cols-[1fr_1fr] lg:py-24">
             <div className="reveal">
               <div className="eyebrow mb-6"><span className="eyebrow-dot" />Valentis Solutions · Maringá, PR, para todo o Brasil</div>
-              <h1 className="display-title max-w-4xl">Soluções para <span className="gradient-text">atrair, organizar e crescer.</span></h1>
-              <p className="hero-copy mt-6 max-w-2xl">Atraímos clientes com tráfego pago e organizamos a operação que vem depois: com o Sistema Anive, nossa plataforma de gestão por assinatura, ou com sistemas feitos sob medida.</p>
-              <nav className="hero-portas mt-9" aria-label="Escolha pelo seu tipo de negócio">
+              <h1 className="display-title hero-title-home max-w-4xl">Soluções para <span className="gradient-text">atrair, organizar e crescer.</span></h1>
+              <p className="hero-copy mt-6 max-w-2xl">Tráfego pago para atrair clientes e sistemas para organizar a operação. Escolha pelo seu negócio:</p>
+              <nav className="hero-portas mt-6" aria-label="Escolha pelo seu tipo de negócio">
                 <a className="hero-porta porta-anive" href={ANILLE_URL}><Layers3 size={20} aria-hidden="true" /><span><strong>Tenho uma empresa de serviço</strong><small>Sistema Anive: do funil ao lucro. 14 dias grátis.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
                 <a className="hero-porta porta-box" href={ANIVE_BOX_URL}><Dumbbell size={20} aria-hidden="true" /><span><strong>Tenho um box de treino</strong><small>Anive Box: CrossFit, Hyrox e treino funcional.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
                 <Link className="hero-porta porta-trafego" href="/trafego-pago"><Target size={20} aria-hidden="true" /><span><strong>Quero mais clientes</strong><small>Tráfego pago e páginas para a sua região.</small></span><ArrowRight size={17} aria-hidden="true" /></Link>

@@ -49,6 +49,7 @@
   .hub-node-one { left: 0; top: 22%; }.hub-node-two { right: 0; top: 53%; }.hub-node-three { left: 10%; bottom: 12%; }
   .fronts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   /* Portas da abertura (27/10): o visitante escolhe pelo tipo de negócio */
+  .hero-title-home { font-size: clamp(2.8rem, 5.6vw, 5.2rem); }
   .hero-portas { display: grid; gap: .65rem; max-width: 36rem; }
   .hero-porta { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .9rem; border: 1px solid #e2dcef; border-radius: 1rem; padding: .9rem 1.05rem; background: rgba(255,255,255,.88); color: #302449; box-shadow: 0 8px 22px rgba(66,46,120,.07); transition: transform .18s cubic-bezier(.23,1,.32,1), box-shadow .2s ease, border-color .2s ease; }
   .hero-porta:hover { transform: translateY(-2px); border-color: #c9bdf0; box-shadow: 0 16px 30px rgba(66,46,120,.12); }
