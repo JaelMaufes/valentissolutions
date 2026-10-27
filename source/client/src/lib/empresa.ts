@@ -5,6 +5,6 @@ export const EMPRESA = {
   cnpj: "69.710.307/0001-82",
   endereco: "Rua das Estrelas, 168, Jardim Universal, Sarandi-PR, CEP 87114-450",
   cidade: "Sarandi, PR",
-  telefone: "(44) 99898-5343",
+  telefone: "(44) 3112-4446",
   email: "contato@sovalentis.com",
 };
