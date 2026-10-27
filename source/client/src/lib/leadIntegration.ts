@@ -1,4 +1,4 @@
-export const WHATSAPP = "https://wa.me/5544998985343";
+export const WHATSAPP = "https://wa.me/554431124446";
 export const STATIC_FORMS_ENDPOINT = "https://api.staticforms.dev/submit";
 
 export function whatsappUrl(message: string) {

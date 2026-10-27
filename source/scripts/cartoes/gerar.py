@@ -91,7 +91,7 @@ def vcard(c: dict, url: str, nota: str) -> str:
         linhas.append(f"TITLE:{v(c['cargo'])}")
     tel = c.get("whatsapp") or ""
     if tel:
-        linhas.append(f"TEL;TYPE=CELL:+{tel}")
+        linhas.append(f"TEL;TYPE=WORK,VOICE:+{tel}")
     if c.get("email"):
         linhas.append(f"EMAIL;TYPE=WORK:{c['email']}")
     if c.get("site"):
