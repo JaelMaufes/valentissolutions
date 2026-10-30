@@ -486,7 +486,7 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .bh-anille img { display: block; height: max(28px, calc(var(--hub) * .075)); width: auto; max-width: none; }
 .bh-anille:hover, .bh-anille:focus-visible { scale: 1.08; box-shadow: 0 20px 40px rgba(106, 27, 255, .4), 0 0 0 8px rgba(0, 229, 255, .14); }
 .bh-anille:focus-visible { outline: 3px solid #3B4FF0; outline-offset: 3px; }
-.brand-hub:has(:is(.bh-anille, .bh-box, .bh-aproxima):is(:hover, :focus-visible)) :is(.bh-orbit, .bh-node, .bh-anille, .bh-box, .bh-aproxima) { animation-play-state: paused; }
+.brand-hub:has(:is(.bh-anille, .bh-box, .bh-aproxima, .bh-node-link):is(:hover, :focus-visible)) :is(.bh-orbit, .bh-node, .bh-anille, .bh-box, .bh-aproxima) { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .bh-anille, .bh-box, .bh-aproxima, .bh-aproxima-onda { animation: none !important; } }
 
 
@@ -547,7 +547,7 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
    borda no degradê da marca Anive, na órbita mais externa, ligado ao Anive. Aproxima: cápsula clara
    com o ícone do adesivo (ondas) nas cores do kit da Valentis Solutions.
    ===================================================================== */
-.bh-box-pos { --r: .47 !important; z-index: 4; }
+.bh-box-pos, .bh-imob-pos { --r: .45 !important; z-index: 4; }
 .bh-aproxima-pos { --r: .43 !important; z-index: 4; }
 .bh-link-box { stroke-width: .7; opacity: .75; stroke-dasharray: .6 1.6; }
 .bh-link-aproxima { stroke-width: .7; opacity: .9; }
@@ -570,10 +570,10 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .bh-aproxima:hover, .bh-aproxima:focus-visible { box-shadow: 0 18px 36px rgba(106, 25, 249, .3), 0 0 0 8px rgba(1, 210, 243, .14); }
 :is(.bh-box, .bh-aproxima):focus-visible { outline: 3px solid #3B4FF0; outline-offset: 3px; }
 /* Entre 1024 e 1365 px (hub ao lado do texto, perto da borda): produtos mais perto do centro, sem sair da tela. */
-@media (min-width: 1024px) and (max-width: 1365px) { .bh-anille-pos { --r: .4 !important; } .bh-box-pos { --r: .41 !important; } .bh-aproxima-pos { --r: .39 !important; } }
+@media (min-width: 1024px) and (max-width: 1365px) { .bh-anille-pos { --r: .4 !important; } .bh-box-pos, .bh-imob-pos { --r: .41 !important; } .bh-aproxima-pos { --r: .39 !important; } }
 /* Celular: produtos mais perto do centro e menores, para não passar da borda da tela durante a órbita. */
 @media (max-width: 640px) {
-  .bh-anille-pos { --r: .37 !important; } .bh-box-pos { --r: .355 !important; } .bh-aproxima-pos { --r: .36 !important; }
+  .bh-anille-pos { --r: .37 !important; } .bh-box-pos, .bh-imob-pos { --r: .355 !important; } .bh-aproxima-pos { --r: .36 !important; }
   .bh-anille { padding: 7px 12px; } .bh-anille img { height: 22px; }
   .bh-box { padding: 6px 10px; } .bh-box img { height: 18px; }
   .bh-aproxima { padding: 4px 12px 4px 4px; gap: 7px; } .bh-aproxima-icone { width: 26px; height: 26px; } .bh-aproxima-nome { font-size: 12.5px; }
@@ -614,3 +614,33 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 /* Logo Anive | BOX no menu e na faixa da vitrine */
 .site-header .nav-anive-box-logo { display: block; height: 17px; width: auto; }
 .anive-box-faixa-logo { flex: none; display: block; height: 22px; width: auto; }
+
+/* ---------- 30/10: Anive Imob, menu Anive e órbita do cubo ---------- */
+.bh-trafego-pos { z-index: 4; }
+.bh-node-link { text-decoration: none; cursor: pointer; transition: scale .2s ease, box-shadow .2s ease; }
+.bh-node-link:hover, .bh-node-link:focus-visible { scale: 1.08; box-shadow: 0 18px 36px rgba(49, 94, 250, .25), 0 0 0 8px rgba(49, 94, 250, .12); }
+.bh-node-link:focus-visible { outline: 3px solid #3B4FF0; outline-offset: 3px; }
+.bh-imob { background: linear-gradient(#07051A, #07051A) padding-box, linear-gradient(120deg, #FF2FD2, #6A1BFF 55%, #FF5CE8) border-box; }
+.bh-imob:hover, .bh-imob:focus-visible { box-shadow: 0 20px 40px rgba(7, 5, 26, .55), 0 0 0 8px rgba(255, 47, 210, .16); }
+
+/* Menu "Anive" no topo: um botão abre o Sistema Anive e as edições por nicho */
+.nav-produtos { position: relative; }
+.nav-produtos > summary { list-style: none; cursor: pointer; }
+.nav-produtos > summary::-webkit-details-marker { display: none; }
+.nav-produtos > summary > svg:last-child { color: #19D3F0; transition: rotate .2s ease; }
+.nav-produtos[open] > summary > svg:last-child { rotate: 180deg; }
+.nav-produtos-painel { position: absolute; right: 0; top: calc(100% + 12px); z-index: 60; display: grid; gap: .35rem; width: 340px; padding: .6rem; border-radius: 1.1rem; background: #07051A; border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 26px 50px rgba(7, 5, 26, .45); }
+.nav-produtos-painel a { display: grid; gap: .3rem; padding: .75rem .85rem; border-radius: .8rem; color: #A9A3CF; font-size: .8rem; line-height: 1.4; text-decoration: none; }
+.nav-produtos-painel a:hover, .nav-produtos-painel a:focus-visible { background: rgba(255, 255, 255, .07); color: #fff; }
+.nav-produtos-painel a:focus-visible { outline: 3px solid #01D2F3; outline-offset: -3px; }
+.nav-produtos-painel img { display: block; height: 22px; width: auto; }
+.nav-produtos-painel em { margin-left: .35rem; padding: .1rem .45rem; border-radius: 999px; background: linear-gradient(90deg, #FF2FD2, #3B5BFF); color: #fff; font-size: .62rem; font-style: normal; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+
+/* Portas da abertura: 4 caminhos em duas colunas a partir do tablet */
+@media (min-width: 640px) { .hero-portas { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 40rem; } .hero-porta { grid-template-columns: auto 1fr; } .hero-porta > svg:last-child { display: none; } }
+.porta-imob > svg:first-child { color: #C2189F; }
+
+/* Vitrine do Anive: as duas edições por nicho */
+.anive-edicoes-titulo { margin-top: 1.6rem; font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #8F89B8; }
+.anive-edicoes-titulo + .anive-box-faixa { margin-top: .6rem; }
+.anive-imob-faixa { margin-top: .6rem; }

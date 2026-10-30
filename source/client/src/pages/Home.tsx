@@ -1,8 +1,8 @@
-import { ArrowRight, Check, Code2, Compass, Dumbbell, Layers3, MessageCircle, Sparkles, Target, TrendingUp, Workflow } from "lucide-react";
+import { ArrowRight, Building2, Check, Code2, Compass, Dumbbell, Layers3, MessageCircle, Sparkles, Target, TrendingUp, Workflow } from "lucide-react";
 import { Link } from "wouter";
 import { Footer, Header, CheckLine, whatsappUrl } from "@/components/MarketingLayout";
 import BrandHub from "@/components/BrandHub";
-import AnilleShowcase, { ANILLE_URL, ANIVE_BOX_URL } from "@/components/AnilleShowcase";
+import AnilleShowcase, { ANILLE_URL, ANIVE_BOX_URL, ANIVE_IMOB_URL } from "@/components/AnilleShowcase";
 
 type Front = { eyebrow: string; title: string; description: string; href: string; icon: typeof Target; tone: string; label: string; externo?: boolean };
 
@@ -61,8 +61,9 @@ export default function Home() {
               <h1 className="display-title hero-title-home max-w-4xl">Soluções para <span className="gradient-text">atrair, organizar e crescer.</span></h1>
               <p className="hero-copy mt-6 max-w-2xl">Tráfego pago para atrair clientes e sistemas para organizar a operação. Escolha pelo seu negócio:</p>
               <nav className="hero-portas mt-6" aria-label="Escolha pelo seu tipo de negócio">
-                <a className="hero-porta porta-anive" href={ANILLE_URL}><Layers3 size={20} aria-hidden="true" /><span><strong>Tenho uma empresa de serviço</strong><small>Sistema Anive: do funil ao lucro. 14 dias grátis.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
-                <a className="hero-porta porta-box" href={ANIVE_BOX_URL}><Dumbbell size={20} aria-hidden="true" /><span><strong>Tenho um box de treino</strong><small>Anive Box: CrossFit, Hyrox e treino funcional.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <a className="hero-porta porta-anive" href={ANILLE_URL}><Layers3 size={20} aria-hidden="true" /><span><strong>Tenho uma empresa de serviço</strong><small>Sistema Anive: do funil ao lucro, 14 dias grátis.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <a className="hero-porta porta-box" href={ANIVE_BOX_URL}><Dumbbell size={20} aria-hidden="true" /><span><strong>Tenho um box ou academia</strong><small>Anive Box: aulas, check-in e cobrança.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <a className="hero-porta porta-imob" href={ANIVE_IMOB_URL}><Building2 size={20} aria-hidden="true" /><span><strong>Tenho uma imobiliária</strong><small>Anive Imob: aluguel, repasse por Pix e vendas.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
                 <Link className="hero-porta porta-trafego" href="/trafego-pago"><Target size={20} aria-hidden="true" /><span><strong>Quero mais clientes</strong><small>Tráfego pago e páginas para a sua região.</small></span><ArrowRight size={17} aria-hidden="true" /></Link>
               </nav>
               <p className="hero-diag mt-4">Não sabe por onde começar? <Link href="/trafego-pago#diagnostico">Faça o diagnóstico inicial</Link></p>

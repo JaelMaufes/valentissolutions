@@ -7,6 +7,7 @@ export const ANILLE_URL = "https://anive.sovalentis.com";
 export const ANILLE_TESTE_URL = "https://painel.sovalentis.com/?cadastro&plano=essencial";
 export const ANIVE_BOX_URL = "https://anive.sovalentis.com/box/";
 export const ANIVE_BOX_TESTE_URL = "https://painel.sovalentis.com/?cadastro=box&plano=box_pro";
+export const ANIVE_IMOB_URL = "https://anive.sovalentis.com/imob/";
 
 const destaques = [
   "Teste grátis por 14 dias, sem cartão",
@@ -37,9 +38,14 @@ export default function AnilleShowcase({ id = "anille", compacto = false }: { id
           <ul className="anille-destaques">
             {destaques.map(d => <li key={d}><Check size={15} />{d}</li>)}
           </ul>
+          <p className="anive-edicoes-titulo">Edições do Anive por nicho</p>
           <a className="anive-box-faixa" href={ANIVE_BOX_URL}>
+            <img className="anive-box-faixa-logo" src="/assets/anive/anive-box-branco.svg" width="1219" height="280" alt="Anive Box" /><span>para boxes, academias e estúdios: aulas e check-in, app do aluno e cobrança recorrente.</span>
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <a className="anive-box-faixa anive-imob-faixa" href={ANIVE_IMOB_URL}>
             <span className="anive-box-selo">Novo</span>
-            <img className="anive-box-faixa-logo" src="/assets/anive/anive-box-branco.svg" width="1219" height="280" alt="Anive Box" /><span>para boxes de CrossFit, Hyrox e treino funcional: recepção em 5 botões, aulas e check-in, app do aluno e cobrança recorrente.</span>
+            <img className="anive-box-faixa-logo" src="/assets/anive/anive-imob-branco.svg" width="1240" height="280" alt="Anive Imob" /><span>para imobiliárias e corretores: cobrança do aluguel, repasse ao proprietário por Pix, vendas e comissões.</span>
             <ArrowRight size={17} aria-hidden="true" />
           </a>
         </div>
