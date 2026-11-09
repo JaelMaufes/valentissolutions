@@ -8,6 +8,7 @@ export const ANILLE_TESTE_URL = "https://painel.sovalentis.com/?cadastro&plano=e
 export const ANIVE_BOX_URL = "https://anive.sovalentis.com/box/";
 export const ANIVE_BOX_TESTE_URL = "https://painel.sovalentis.com/?cadastro=box&plano=box_pro";
 export const ANIVE_IMOB_URL = "https://anive.sovalentis.com/imob/";
+export const ANIVE_ESCOLA_URL = "https://anive.sovalentis.com/escola/";
 
 const destaques = [
   "Teste grátis por 14 dias, sem cartão",
@@ -44,8 +45,12 @@ export default function AnilleShowcase({ id = "anille", compacto = false }: { id
             <ArrowRight size={17} aria-hidden="true" />
           </a>
           <a className="anive-box-faixa anive-imob-faixa" href={ANIVE_IMOB_URL}>
-            <span className="anive-box-selo">Novo</span>
             <img className="anive-box-faixa-logo" src="/assets/anive/anive-imob-branco.svg" width="1240" height="280" alt="Anive Imob" /><span>para imobiliárias e corretores: cobrança do aluguel, repasse ao proprietário por Pix, vendas e comissões.</span>
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <a className="anive-box-faixa anive-escola-faixa" href={ANIVE_ESCOLA_URL}>
+            <span className="anive-box-selo">Novo</span>
+            <img className="anive-box-faixa-logo" src="/assets/anive/anive-escola-branco.svg" width="1530" height="280" alt="Anive Escola" /><span>para escolas de música e de dança, bandas e projetos sociais: chamada, partituras por naipe, instrumentos e prestação de contas.</span>
             <ArrowRight size={17} aria-hidden="true" />
           </a>
         </div>
