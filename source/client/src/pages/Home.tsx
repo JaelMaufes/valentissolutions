@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, Check, Code2, Compass, Dumbbell, Layers3, MessageCircle, Sparkles, Target, TrendingUp, Workflow, Music } from "lucide-react";
+import { ArrowRight, Building2, Code2, Compass, Dumbbell, Layers3, MessageCircle, Sparkles, Target, TrendingUp, Workflow, Music } from "lucide-react";
 import { Link } from "wouter";
 import { Footer, Header, CheckLine, whatsappUrl } from "@/components/MarketingLayout";
 import BrandHub from "@/components/BrandHub";
@@ -59,16 +59,16 @@ export default function Home() {
             <div className="reveal">
               <div className="eyebrow mb-6"><span className="eyebrow-dot" />Valentis Solutions · Maringá, PR, para todo o Brasil</div>
               <h1 className="display-title hero-title-home max-w-4xl">Soluções para <span className="gradient-text">atrair, organizar e crescer.</span></h1>
-              <p className="hero-copy mt-6 max-w-2xl">Tráfego pago para atrair clientes e sistemas para organizar a operação. Escolha pelo seu negócio:</p>
-              <nav className="hero-portas mt-6" aria-label="Escolha pelo seu tipo de negócio">
-                <a className="hero-porta porta-anive" href={ANILLE_URL}><Layers3 size={20} aria-hidden="true" /><span><strong>Tenho uma empresa de serviço</strong><small>Sistema Anive: do funil ao lucro, 14 dias grátis.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
-                <a className="hero-porta porta-box" href={ANIVE_BOX_URL}><Dumbbell size={20} aria-hidden="true" /><span><strong>Tenho um box ou academia</strong><small>Anive Box: aulas, check-in e cobrança.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
-                <a className="hero-porta porta-imob" href={ANIVE_IMOB_URL}><Building2 size={20} aria-hidden="true" /><span><strong>Tenho uma imobiliária</strong><small>Anive Imob: aluguel, repasse por Pix e vendas.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
-                <a className="hero-porta porta-escola" href={ANIVE_ESCOLA_URL}><Music size={20} aria-hidden="true" /><span><strong>Tenho uma escola ou projeto</strong><small>Anive Escola: chamada, partituras e prestação de contas.</small></span><ArrowRight size={17} aria-hidden="true" /></a>
-                <Link className="hero-porta porta-trafego" href="/trafego-pago"><Target size={20} aria-hidden="true" /><span><strong>Quero mais clientes</strong><small>Tráfego pago e páginas para a sua região.</small></span><ArrowRight size={17} aria-hidden="true" /></Link>
+              <p className="hero-escolha mt-8">Escolha pelo seu negócio</p>
+              <nav className="hero-portas mt-3" aria-label="Escolha pelo seu tipo de negócio">
+                <a className="hero-porta porta-anive" href={ANILLE_URL}><Layers3 size={20} aria-hidden="true" /><span><strong>Empresa de serviço</strong></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <a className="hero-porta porta-box" href={ANIVE_BOX_URL}><Dumbbell size={20} aria-hidden="true" /><span><strong>Box ou academia</strong></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <a className="hero-porta porta-imob" href={ANIVE_IMOB_URL}><Building2 size={20} aria-hidden="true" /><span><strong>Imobiliária</strong></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <a className="hero-porta porta-escola" href={ANIVE_ESCOLA_URL}><Music size={20} aria-hidden="true" /><span><strong>Escola ou projeto social</strong></span><ArrowRight size={17} aria-hidden="true" /></a>
+                <Link className="hero-porta porta-trafego" href="/trafego-pago"><Target size={20} aria-hidden="true" /><span><strong>Quero mais clientes</strong></span><ArrowRight size={17} aria-hidden="true" /></Link>
               </nav>
               <p className="hero-diag mt-4">Não sabe por onde começar? <Link href="/trafego-pago#diagnostico">Faça o diagnóstico inicial</Link></p>
-              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold text-[#69647a]"><span className="flex items-center gap-2"><Check size={15} className="text-[#6A19F9]" />Atendimento direto</span><span className="flex items-center gap-2"><Check size={15} className="text-[#6A19F9]" />Escopo claro</span><span className="flex items-center gap-2"><Check size={15} className="text-[#6A19F9]" />Linguagem sem complicação</span></div>
+              
             </div>
             <div className="reveal reveal-delay-2"><BrandHub /></div>
           </div>
