@@ -657,7 +657,7 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .bh-orbitas .bh-orb { border: 1px solid rgba(106, 27, 255, .16); background: none; box-shadow: none; animation: none; }
 .bh-orbitas .bh-orb-int { width: 54%; height: 54%; background: radial-gradient(circle, rgba(255, 255, 255, .7), rgba(240, 234, 255, .25) 70%); border-color: rgba(106, 27, 255, .2); }
 .bh-orbitas .bh-orb-ext { width: 88%; height: 88%; border-color: rgba(59, 91, 255, .18); box-shadow: inset 0 0 60px rgba(106, 27, 255, .04); }
-.bh-orbitas .bh-cube-wrap { width: 26%; }
+.bh-orbitas .bh-cube-wrap { width: 24%; }
 .bh-orbitas .bh-node-pos { z-index: 4; }
 .bh-orbitas .bh-pos-ext { --r: .44; }
 .bh-orbitas .bh-pos-int { --r: .27; }
@@ -675,12 +675,12 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 /* Celular: órbitas mais fechadas e os serviços da órbita interna só com o ícone (o nome fica no aria-label) */
 @media (max-width: 640px) {
   .bh-orbitas .bh-pos-ext { --r: .355; }
-  .bh-orbitas .bh-pos-int { --r: .225; }
-  .bh-orbitas .bh-lua-int { --pr: .225; }
+  .bh-orbitas .bh-pos-int { --r: .205; }
+  .bh-orbitas .bh-lua-int { --pr: .205; }
   .bh-orbitas .bh-lua-ext { --pr: .355; }
-  .bh-orbitas .bh-orb-int { width: 45%; height: 45%; }
+  .bh-orbitas .bh-orb-int { width: 41%; height: 41%; }
   .bh-orbitas .bh-orb-ext { width: 71%; height: 71%; }
-  .bh-orbitas .bh-cube-wrap { width: 24%; }
+  .bh-orbitas .bh-cube-wrap { width: 21%; }
   .bh-orbitas .bh-int > span:not(.bh-aproxima-icone), .bh-orbitas .bh-node.bh-int > span { display: none; }
   .bh-orbitas .bh-node.bh-int { padding: 9px; }
   .bh-orbitas .bh-aproxima.bh-int { padding: 4px; }

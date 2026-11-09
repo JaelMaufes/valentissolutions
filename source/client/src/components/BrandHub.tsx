@@ -6,9 +6,10 @@ import { ANILLE_URL, ANIVE_BOX_URL, ANIVE_ESCOLA_URL, ANIVE_IMOB_URL } from "@/c
 /* Sistema de órbitas da marca (09/11): o cubo da Valentis Solutions no centro, como um sol, e duas órbitas
    de linha fina, sem tracejado. Na órbita interna, os serviços da Valentis Solutions (tráfego pago e Aproxima);
    na externa, a família Anive (Sistema Anive, Anive Box, Anive Imob e Anive Escola), a 90° um do outro.
+   Folga conferida girando a órbita inteira em 1366, 1280, 1024 e 390 px.
    As duas órbitas giram juntas e os itens internos ficam a 45° dos externos, para nada se encostar em nenhum
    momento (computador, 1024 px e celular). Produto novo: incluir na órbita certa e redistribuir os ângulos. */
-const EXTERNA = { anive: 0, box: 90, imob: 180, escola: 270 };
+const EXTERNA = { escola: 0, imob: 90, anive: 180, box: 270 };  // o Aproxima (o selo interno mais largo) passa entre os selos mais estreitos
 const INTERNA = { trafego: 45, aproxima: 225 };
 
 const luas = [
