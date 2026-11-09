@@ -1,17 +1,19 @@
 import { useEffect, useRef } from "react";
 import { BarChart3, Smartphone } from "lucide-react";
 import { Link } from "wouter";
-import { ANILLE_URL, ANIVE_BOX_URL, ANIVE_IMOB_URL } from "@/components/AnilleShowcase";
+import { ANILLE_URL, ANIVE_BOX_URL, ANIVE_ESCOLA_URL, ANIVE_IMOB_URL } from "@/components/AnilleShowcase";
 
-/* Sistema animado da marca (30/10): o cubo da Valentis Solutions no centro e, em órbita, tudo o que o
-   visitante pode contratar, cada item com link: a família Anive (Sistema Anive, Anive Box e Anive Imob),
-   o Aproxima e o tráfego pago. Os 5 itens ficam a 72° um do outro, para nenhum encostar no outro durante a
-   órbita (computador, 1024 px e celular). Produto novo: incluir aqui e redistribuir os ângulos. */
+/* Sistema animado da marca (09/11): o cubo da Valentis Solutions no centro e, em órbita, tudo o que o
+   visitante pode contratar, cada item com link. A família Anive fica junta, em sequência (Sistema Anive,
+   Anive Box, Anive Imob e Anive Escola, ligados ao cubo pelo degradê do Anive), seguida dos serviços da
+   Valentis Solutions (Aproxima e tráfego pago). Os 6 itens ficam a 60° um do outro, para nenhum encostar no
+   outro durante a órbita (computador, 1024 px e celular). Produto novo: incluir aqui e redistribuir os ângulos. */
 const ANILLE_ANGULO = 30;
-const BOX_ANGULO = 102;
-const IMOB_ANGULO = 174;
-const APROXIMA_ANGULO = 246;
-const TRAFEGO_ANGULO = 318;
+const BOX_ANGULO = 90;
+const IMOB_ANGULO = 150;
+const ESCOLA_ANGULO = 210;
+const APROXIMA_ANGULO = 270;
+const TRAFEGO_ANGULO = 330;
 const ponta = (angulo: number, r: number) => { const a = (angulo * Math.PI) / 180; return { x1: Math.cos(a) * 15, y1: Math.sin(a) * 15, x2: Math.cos(a) * r, y2: Math.sin(a) * r }; };
 
 const particles = [
@@ -45,7 +47,7 @@ export default function BrandHub() {
   }, []);
 
   return (
-    <div ref={ref} className="brand-hub" role="group" aria-label="Valentis Solutions e o que ela oferece: Sistema Anive, Anive Box, Anive Imob, Aproxima e tráfego pago">
+    <div ref={ref} className="brand-hub" role="group" aria-label="Valentis Solutions e o que ela oferece: Sistema Anive, Anive Box, Anive Imob, Anive Escola, Aproxima e tráfego pago">
       <div className="bh-layer bh-back" aria-hidden="true">
         <div className="bh-glow" />
         <div className="bh-ring bh-ring-inner" />
@@ -75,6 +77,7 @@ export default function BrandHub() {
           <line className="bh-link bh-link-anille" {...ponta(ANILLE_ANGULO, 38)} stroke="url(#bhAnille)" />
           <line className="bh-link bh-link-box" {...ponta(BOX_ANGULO, 40)} stroke="url(#bhAnille)" />
           <line className="bh-link bh-link-box" {...ponta(IMOB_ANGULO, 40)} stroke="url(#bhAnille)" />
+          <line className="bh-link bh-link-box" {...ponta(ESCOLA_ANGULO, 40)} stroke="url(#bhAnille)" />
           <line className="bh-link bh-link-aproxima" {...ponta(APROXIMA_ANGULO, 38)} stroke="url(#bhAproxima)" />
         </svg>
         {particles.map((p, i) => <span key={i} aria-hidden="true" className="bh-particle" style={{ "--pr": p.r, "--ps": `${p.speed}s`, "--pd": `${p.delay}s`, "--pz": `${p.size}px` } as React.CSSProperties} />)}
@@ -94,6 +97,11 @@ export default function BrandHub() {
         <div className="bh-node-pos bh-imob-pos" style={{ "--a": `${IMOB_ANGULO}deg` } as React.CSSProperties}>
           <a className="bh-box bh-imob" href={ANIVE_IMOB_URL} aria-label="Conhecer o Anive Imob, sistema para imobiliárias e corretores">
             <img src="/assets/anive/anive-imob-branco.svg" width={1240} height={280} alt="" decoding="async" />
+          </a>
+        </div>
+        <div className="bh-node-pos bh-escola-pos" style={{ "--a": `${ESCOLA_ANGULO}deg` } as React.CSSProperties}>
+          <a className="bh-box bh-escola" href={ANIVE_ESCOLA_URL} aria-label="Conhecer o Anive Escola, sistema para escolas de música, bandas e projetos sociais">
+            <img src="/assets/anive/anive-escola-branco.svg" width={1530} height={280} alt="" decoding="async" />
           </a>
         </div>
         <div className="bh-node-pos bh-aproxima-pos" style={{ "--a": `${APROXIMA_ANGULO}deg` } as React.CSSProperties}>
