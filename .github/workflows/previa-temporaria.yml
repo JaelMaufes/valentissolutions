@@ -1,0 +1,31 @@
+# Temporário: compila a branch e publica o resultado em previa/site-compilado para conferência. Apagar depois.
+name: Prévia temporária (apagar)
+on:
+  push:
+    branches: [previa/compilar]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: source
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: source/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Publicar em previa/site-compilado
+        run: |
+          cd dist/public
+          git init -q && git checkout -q -b previa/site-compilado
+          git add -A && git -c user.name=ci -c user.email=ci@local commit -qm previa
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previa/site-compilado
