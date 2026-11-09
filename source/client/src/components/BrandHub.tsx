@@ -3,25 +3,22 @@ import { BarChart3, Smartphone } from "lucide-react";
 import { Link } from "wouter";
 import { ANILLE_URL, ANIVE_BOX_URL, ANIVE_ESCOLA_URL, ANIVE_IMOB_URL } from "@/components/AnilleShowcase";
 
-/* Sistema animado da marca (09/11): o cubo da Valentis Solutions no centro e, em órbita, tudo o que o
-   visitante pode contratar, cada item com link. A família Anive fica junta, em sequência (Sistema Anive,
-   Anive Box, Anive Imob e Anive Escola, ligados ao cubo pelo degradê do Anive), seguida dos serviços da
-   Valentis Solutions (Aproxima e tráfego pago). Os 6 itens ficam a 60° um do outro, para nenhum encostar no
-   outro durante a órbita (computador, 1024 px e celular). Produto novo: incluir aqui e redistribuir os ângulos. */
-const ANILLE_ANGULO = 30;
-const BOX_ANGULO = 90;
-const IMOB_ANGULO = 150;
-const ESCOLA_ANGULO = 210;
-const APROXIMA_ANGULO = 270;
-const TRAFEGO_ANGULO = 330;
-const ponta = (angulo: number, r: number) => { const a = (angulo * Math.PI) / 180; return { x1: Math.cos(a) * 15, y1: Math.sin(a) * 15, x2: Math.cos(a) * r, y2: Math.sin(a) * r }; };
+/* Sistema de órbitas da marca (09/11): o cubo da Valentis Solutions no centro, como um sol, e duas órbitas
+   de linha fina, sem tracejado. Na órbita interna, os serviços da Valentis Solutions (tráfego pago e Aproxima);
+   na externa, a família Anive (Sistema Anive, Anive Box, Anive Imob e Anive Escola), a 90° um do outro.
+   Folga conferida girando a órbita inteira em 1366, 1280, 1024 e 390 px.
+   As duas órbitas giram juntas e os itens internos ficam a 45° dos externos, para nada se encostar em nenhum
+   momento (computador, 1024 px e celular). Produto novo: incluir na órbita certa e redistribuir os ângulos. */
+const EXTERNA = { escola: 0, imob: 90, anive: 180, box: 270 };  // o Aproxima (o selo interno mais largo) passa entre os selos mais estreitos
+const INTERNA = { trafego: 45, aproxima: 225 };
 
-const particles = [
-  { r: 0.27, speed: 14, delay: 0, size: 6 },
-  { r: 0.27, speed: 14, delay: -7, size: 4 },
-  { r: 0.47, speed: 26, delay: -4, size: 5 },
-  { r: 0.47, speed: 26, delay: -17, size: 3 },
+const luas = [
+  { orbita: "int", speed: 18, delay: 0, size: 6 },
+  { orbita: "ext", speed: 34, delay: -12, size: 5 },
+  { orbita: "ext", speed: 34, delay: -29, size: 4 },
 ];
+
+const pos = (angulo: number, orbita: "ext" | "int") => ({ className: `bh-node-pos bh-pos-${orbita}`, style: { "--a": `${angulo}deg` } as React.CSSProperties });
 
 export default function BrandHub() {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,67 +44,42 @@ export default function BrandHub() {
   }, []);
 
   return (
-    <div ref={ref} className="brand-hub" role="group" aria-label="Valentis Solutions e o que ela oferece: Sistema Anive, Anive Box, Anive Imob, Anive Escola, Aproxima e tráfego pago">
+    <div ref={ref} className="brand-hub bh-orbitas" role="group" aria-label="Valentis Solutions e o que ela oferece: Sistema Anive, Anive Box, Anive Imob, Anive Escola, Aproxima e tráfego pago">
       <div className="bh-layer bh-back" aria-hidden="true">
         <div className="bh-glow" />
-        <div className="bh-ring bh-ring-inner" />
-        <div className="bh-ring bh-ring-outer" />
+        <div className="bh-ring bh-orb bh-orb-int" />
+        <div className="bh-ring bh-orb bh-orb-ext" />
       </div>
 
       <div className="bh-orbit">
-        <svg className="bh-links" viewBox="-50 -50 100 100" aria-hidden="true">
-          <defs>
-            <linearGradient id="bhFlow" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#11d9ff" />
-              <stop offset=".55" stopColor="#7135e8" />
-              <stop offset="1" stopColor="#f000cf" />
-            </linearGradient>
-            <linearGradient id="bhAproxima" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#F500C6" />
-              <stop offset=".55" stopColor="#6A19F9" />
-              <stop offset="1" stopColor="#01D2F3" />
-            </linearGradient>
-            <linearGradient id="bhAnille" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#FF2FD2" />
-              <stop offset=".5" stopColor="#6A1BFF" />
-              <stop offset="1" stopColor="#00E5FF" />
-            </linearGradient>
-          </defs>
-          <line className="bh-link" {...ponta(TRAFEGO_ANGULO, 36)} stroke="url(#bhFlow)" />
-          <line className="bh-link bh-link-anille" {...ponta(ANILLE_ANGULO, 38)} stroke="url(#bhAnille)" />
-          <line className="bh-link bh-link-box" {...ponta(BOX_ANGULO, 40)} stroke="url(#bhAnille)" />
-          <line className="bh-link bh-link-box" {...ponta(IMOB_ANGULO, 40)} stroke="url(#bhAnille)" />
-          <line className="bh-link bh-link-box" {...ponta(ESCOLA_ANGULO, 40)} stroke="url(#bhAnille)" />
-          <line className="bh-link bh-link-aproxima" {...ponta(APROXIMA_ANGULO, 38)} stroke="url(#bhAproxima)" />
-        </svg>
-        {particles.map((p, i) => <span key={i} aria-hidden="true" className="bh-particle" style={{ "--pr": p.r, "--ps": `${p.speed}s`, "--pd": `${p.delay}s`, "--pz": `${p.size}px` } as React.CSSProperties} />)}
-        <div className="bh-node-pos bh-trafego-pos" style={{ "--a": `${TRAFEGO_ANGULO}deg` } as React.CSSProperties}>
-          <Link className="bh-node bh-node-link" href="/trafego-pago" aria-label="Conhecer o tráfego pago da Valentis Solutions"><BarChart3 size={16} aria-hidden="true" /><span>Tráfego pago</span></Link>
-        </div>
-        <div className="bh-node-pos bh-anille-pos" style={{ "--a": `${ANILLE_ANGULO}deg` } as React.CSSProperties}>
+        {luas.map((p, i) => <span key={i} aria-hidden="true" className={`bh-particle bh-lua-${p.orbita}`} style={{ "--ps": `${p.speed}s`, "--pd": `${p.delay}s`, "--pz": `${p.size}px` } as React.CSSProperties} />)}
+        <div {...pos(EXTERNA.anive, "ext")}>
           <a className="bh-anille" href={ANILLE_URL} aria-label="Conhecer o Sistema Anive, um produto Valentis Solutions">
             <img src="/assets/anive/anive-logo-tinta.svg" width={808} height={280} alt="" decoding="async" />
           </a>
         </div>
-        <div className="bh-node-pos bh-box-pos" style={{ "--a": `${BOX_ANGULO}deg` } as React.CSSProperties}>
+        <div {...pos(EXTERNA.box, "ext")}>
           <a className="bh-box" href={ANIVE_BOX_URL} aria-label="Conhecer o Anive Box, sistema para boxes, academias e estúdios">
             <img src="/assets/anive/anive-box-branco.svg" width={1219} height={280} alt="" decoding="async" />
           </a>
         </div>
-        <div className="bh-node-pos bh-imob-pos" style={{ "--a": `${IMOB_ANGULO}deg` } as React.CSSProperties}>
+        <div {...pos(EXTERNA.imob, "ext")}>
           <a className="bh-box bh-imob" href={ANIVE_IMOB_URL} aria-label="Conhecer o Anive Imob, sistema para imobiliárias e corretores">
             <img src="/assets/anive/anive-imob-branco.svg" width={1240} height={280} alt="" decoding="async" />
           </a>
         </div>
-        <div className="bh-node-pos bh-escola-pos" style={{ "--a": `${ESCOLA_ANGULO}deg` } as React.CSSProperties}>
+        <div {...pos(EXTERNA.escola, "ext")}>
           <a className="bh-box bh-escola" href={ANIVE_ESCOLA_URL} aria-label="Conhecer o Anive Escola, sistema para escolas de música, bandas e projetos sociais">
             <img src="/assets/anive/anive-escola-branco.svg" width={1530} height={280} alt="" decoding="async" />
           </a>
         </div>
-        <div className="bh-node-pos bh-aproxima-pos" style={{ "--a": `${APROXIMA_ANGULO}deg` } as React.CSSProperties}>
-          <Link className="bh-aproxima" href="/aproxima" aria-label="Conhecer o Aproxima, cartão de contato por aproximação">
+        <div {...pos(INTERNA.trafego, "int")}>
+          <Link className="bh-node bh-node-link bh-int" href="/trafego-pago" aria-label="Conhecer o tráfego pago da Valentis Solutions"><BarChart3 size={16} aria-hidden="true" /><span>Tráfego pago</span></Link>
+        </div>
+        <div {...pos(INTERNA.aproxima, "int")}>
+          <Link className="bh-aproxima bh-int" href="/aproxima" aria-label="Conhecer o Aproxima, cartão de contato por aproximação">
             <span className="bh-aproxima-icone" aria-hidden="true"><span className="bh-aproxima-onda" /><Smartphone size={15} /></span>
-            <span className="bh-aproxima-nome">Aproxima<small>cartão por aproximação</small></span>
+            <span className="bh-aproxima-nome">Aproxima</span>
           </Link>
         </div>
       </div>
