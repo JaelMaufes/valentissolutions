@@ -655,14 +655,17 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
    Interna (serviços da Valentis Solutions) a 28% do tamanho; externa (família Anive) a 43%; cubo menor, como o sol. */
 .bh-orbitas::before { display: none; }
 .bh-orbitas .bh-orb { border: 1px solid rgba(106, 27, 255, .16); background: none; box-shadow: none; animation: none; }
-.bh-orbitas .bh-orb-int { width: 56%; height: 56%; background: radial-gradient(circle, rgba(255, 255, 255, .7), rgba(240, 234, 255, .25) 70%); border-color: rgba(106, 27, 255, .2); }
-.bh-orbitas .bh-orb-ext { width: 86%; height: 86%; border-color: rgba(59, 91, 255, .18); box-shadow: inset 0 0 60px rgba(106, 27, 255, .04); }
+.bh-orbitas .bh-orb-int { width: 54%; height: 54%; background: radial-gradient(circle, rgba(255, 255, 255, .7), rgba(240, 234, 255, .25) 70%); border-color: rgba(106, 27, 255, .2); }
+.bh-orbitas .bh-orb-ext { width: 88%; height: 88%; border-color: rgba(59, 91, 255, .18); box-shadow: inset 0 0 60px rgba(106, 27, 255, .04); }
 .bh-orbitas .bh-cube-wrap { width: 26%; }
 .bh-orbitas .bh-node-pos { z-index: 4; }
-.bh-orbitas .bh-pos-ext { --r: .43; }
-.bh-orbitas .bh-pos-int { --r: .28; }
-.bh-orbitas .bh-lua-int { --pr: .28; }
-.bh-orbitas .bh-lua-ext { --pr: .43; }
+.bh-orbitas .bh-pos-ext { --r: .44; }
+.bh-orbitas .bh-pos-int { --r: .27; }
+.bh-orbitas .bh-lua-int { --pr: .27; }
+.bh-orbitas .bh-lua-ext { --pr: .44; }
+/* Selos da família Anive um pouco menores, para a órbita interna passar entre eles com folga */
+.bh-orbitas .bh-box img { height: max(20px, calc(var(--hub) * .046)); }
+.bh-orbitas .bh-anille img { height: max(26px, calc(var(--hub) * .064)); }
 .bh-orbitas .bh-orbit { animation-duration: 90s; }
 .bh-orbitas :is(.bh-anille, .bh-box, .bh-aproxima, .bh-node) { animation-duration: 90s; }
 .bh-orbitas .bh-particle { background: linear-gradient(135deg, #01D2F3, #6A19F9); box-shadow: 0 0 12px rgba(106, 25, 249, .45); }
