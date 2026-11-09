@@ -671,7 +671,7 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .bh-orbitas .bh-particle { background: linear-gradient(135deg, #01D2F3, #6A19F9); box-shadow: 0 0 12px rgba(106, 25, 249, .45); }
 .bh-orbitas .bh-int { padding-top: 6px; padding-bottom: 6px; }
 .bh-orbitas .bh-aproxima-nome { font-size: max(13px, calc(var(--hub) * .025)); }
-@media (min-width: 1024px) and (max-width: 1365px) { .bh-orbitas .bh-pos-ext { --r: .42; } .bh-orbitas .bh-orb-ext { width: 84%; height: 84%; } .bh-orbitas .bh-lua-ext { --pr: .42; } }
+@media (min-width: 1024px) and (max-width: 1365px) { .bh-orbitas .bh-pos-int { --r: .24; } .bh-orbitas .bh-orb-int { width: 48%; height: 48%; } .bh-orbitas .bh-lua-int { --pr: .24; } .bh-orbitas .bh-cube-wrap { width: 22%; } }
 /* Celular: órbitas mais fechadas e os serviços da órbita interna só com o ícone (o nome fica no aria-label) */
 @media (max-width: 640px) {
   .bh-orbitas .bh-pos-ext { --r: .355; }
