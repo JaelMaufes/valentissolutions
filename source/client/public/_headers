@@ -1,0 +1,19 @@
+# Cabeçalhos do sovalentis.com no Cloudflare Pages (o GitHub Pages não permitia).
+# A política de conteúdo completa começa em "só relatório" (Report-Only): mostra no console do navegador o que
+# seria barrado, sem quebrar o Google Ads nem o formulário. Depois de 1 a 2 semanas sem avisos, troque o nome para
+# Content-Security-Policy (assunto seguranca).
+/*
+  Content-Security-Policy: frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.staticforms.dev https://tfrfatehckwpctypdudt.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://cloudflareinsights.com; frame-src https://www.googletagmanager.com https://td.doubleclick.net; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000
+  Cross-Origin-Opener-Policy: same-origin
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+https://*.:project.pages.dev/*
+  X-Robots-Tag: noindex
