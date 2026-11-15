@@ -113,6 +113,11 @@ jobs:
             exit 1
           fi
 
+          if grep -RIlE 'manus-runtime|__manus__|data-loc|%VITE_' "$artifact_dir"; then
+            echo "Editor tooling or source map markers found"
+            exit 1
+          fi
+
           if find "$artifact_dir" -type f \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' \) -print -quit | grep -q .; then
             echo "Forbidden secret-like file found"
             exit 1

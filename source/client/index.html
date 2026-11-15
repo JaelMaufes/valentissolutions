@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Proteções possíveis no GitHub Pages (sem cabeçalhos próprios): sem plugins, sem troca do endereço base, só https. -->
+    <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- O site não pode ser aberto dentro de outra página (golpe de clique por cima). -->
+    <style id="anti-moldura">html{display:none}</style>
+    <script>if (window.top === window.self) { document.getElementById('anti-moldura').remove(); } else { window.top.location = window.self.location.href; }</script>
     <meta name="description" content="Tráfego pago, Sistema Anive para empresas de serviço, Anive Box para academias, Anive Imob para imobiliárias, Anive Escola para escolas de música e projetos e sistemas sob medida. Maringá-PR, todo o Brasil." />
     <meta name="theme-color" content="#080417" />
     <meta property="og:title" content="Valentis Solutions — Soluções para atrair, organizar e crescer" />
@@ -70,6 +76,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 </html>

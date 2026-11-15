@@ -21,6 +21,11 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
       - run: pnpm build
+      - name: Conferir que o site publicado não leva ferramentas do editor nem mapa do código
+        run: |
+          if grep -RIlE 'manus-runtime|__manus__|data-loc|%VITE_' dist/public; then echo "Ferramenta do editor ou marca do código no site publicado"; exit 1; fi
+          test ! -e dist/public/__manus__
+          grep -q 'anti-moldura' dist/public/index.html
       - name: Conferir o link do Anive no resultado
         run: grep -rq "anive.sovalentis.com" dist/public/assets/
       - name: Guardar o site compilado para conferência (3 dias)
