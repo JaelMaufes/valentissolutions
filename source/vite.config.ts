@@ -203,11 +203,13 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+// Ferramentas do editor (marcas de arquivo e linha, runtime e coletor do Manus) só no ambiente de desenvolvimento:
+// no site publicado elas mostravam a estrutura do código-fonte e aceitavam mensagens de qualquer página.
+const ferramentasDeEdicao = [jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   base: "/",
-  plugins,
+  plugins: [react(), tailwindcss(), ...(command === "serve" ? ferramentasDeEdicao : [])],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -239,4 +241,4 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
-});
+}));
