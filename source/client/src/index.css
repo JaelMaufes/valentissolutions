@@ -625,6 +625,7 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 .bh-escola { background: linear-gradient(#07051A, #07051A) padding-box, linear-gradient(120deg, #A99BFF, #6A1BFF 55%, #3B5BFF) border-box; }
 .bh-escola:hover, .bh-escola:focus-visible { box-shadow: 0 20px 40px rgba(7, 5, 26, .55), 0 0 0 8px rgba(106, 27, 255, .18); }
 .anive-escola-faixa { margin-top: .6rem; }
+.anive-vistoria-faixa { margin-top: .6rem; }
 
 /* Menu "Anive" no topo: um botão abre o Sistema Anive e as edições por nicho */
 .nav-produtos { position: relative; }
@@ -643,8 +644,9 @@ main > section:not(:first-child):not(.anille-vitrine):not(.cta-section):not(.ani
 @media (min-width: 640px) { .hero-portas { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 40rem; } .hero-porta { grid-template-columns: auto 1fr; } .hero-porta > svg:last-child { display: none; } }
 .porta-imob > svg:first-child { color: #C2189F; }
 .porta-escola > svg:first-child { color: #5B2BE0; }
+.porta-vistoria > svg:first-child { color: #2F4BE0; }
 /* 09/11: as 4 portas dos sistemas em 2 × 2 e "Quero mais clientes" na linha inteira, como saída para quem não procura sistema */
-@media (min-width: 640px) { .porta-trafego { grid-column: 1 / -1; } }
+/* 17/11: com o Anive Vistoria, são 6 portas em 3 linhas de 2; o tráfego deixou de ocupar a linha inteira. */
 
 /* Vitrine do Anive: as duas edições por nicho */
 .anive-edicoes-titulo { margin-top: 1.6rem; font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #8F89B8; }

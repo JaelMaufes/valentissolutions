@@ -1,16 +1,16 @@
 import { useEffect, useRef } from "react";
 import { BarChart3, Smartphone } from "lucide-react";
 import { Link } from "wouter";
-import { ANILLE_URL, ANIVE_BOX_URL, ANIVE_ESCOLA_URL, ANIVE_IMOB_URL } from "@/components/AnilleShowcase";
+import { ANILLE_URL, ANIVE_BOX_URL, ANIVE_ESCOLA_URL, ANIVE_IMOB_URL, ANIVE_VISTORIA_URL } from "@/components/AnilleShowcase";
 
 /* Sistema de órbitas da marca (09/11): o cubo da Valentis Solutions no centro, como um sol, e duas órbitas
    de linha fina, sem tracejado. Na órbita interna, os serviços da Valentis Solutions (tráfego pago e Aproxima);
-   na externa, a família Anive (Sistema Anive, Anive Box, Anive Imob e Anive Escola), a 90° um do outro.
+   na externa, a família Anive (Sistema Anive, Anive Box, Anive Imob, Anive Escola e Anive Vistoria), a 72° um do outro (17/11).
    Folga conferida girando a órbita inteira em 1366, 1280, 1024 e 390 px.
    As duas órbitas giram juntas e os itens internos ficam a 45° dos externos, para nada se encostar em nenhum
    momento (computador, 1024 px e celular). Produto novo: incluir na órbita certa e redistribuir os ângulos. */
-const EXTERNA = { escola: 0, imob: 90, anive: 180, box: 270 };  // o Aproxima (o selo interno mais largo) passa entre os selos mais estreitos
-const INTERNA = { trafego: 45, aproxima: 225 };
+const EXTERNA = { escola: 36, vistoria: 108, anive: 180, box: 252, imob: 324 };  // o Aproxima (o selo interno mais largo) passa entre o Box e o Imob, os selos mais estreitos
+const INTERNA = { trafego: 144, aproxima: 288 };
 
 const luas = [
   { orbita: "int", speed: 18, delay: 0, size: 6 },
@@ -44,7 +44,7 @@ export default function BrandHub() {
   }, []);
 
   return (
-    <div ref={ref} className="brand-hub bh-orbitas" role="group" aria-label="Valentis Solutions e o que ela oferece: Sistema Anive, Anive Box, Anive Imob, Anive Escola, Aproxima e tráfego pago">
+    <div ref={ref} className="brand-hub bh-orbitas" role="group" aria-label="Valentis Solutions e o que ela oferece: Sistema Anive, Anive Box, Anive Imob, Anive Escola, Anive Vistoria, Aproxima e tráfego pago">
       <div className="bh-layer bh-back" aria-hidden="true">
         <div className="bh-glow" />
         <div className="bh-ring bh-orb bh-orb-int" />
@@ -71,6 +71,11 @@ export default function BrandHub() {
         <div {...pos(EXTERNA.escola, "ext")}>
           <a className="bh-box bh-escola" href={ANIVE_ESCOLA_URL} aria-label="Conhecer o Anive Escola, sistema para escolas de música, bandas e projetos sociais">
             <img src="/assets/anive/anive-escola-branco.svg" width={1530} height={280} alt="" decoding="async" />
+          </a>
+        </div>
+        <div {...pos(EXTERNA.vistoria, "ext")}>
+          <a className="bh-box bh-escola bh-vistoria" href={ANIVE_VISTORIA_URL} aria-label="Conhecer o Anive Vistoria, vistoria de imóveis com IA">
+            <img src="/assets/anive/anive-vistoria-branco.svg" width={1530} height={280} alt="" decoding="async" />
           </a>
         </div>
         <div {...pos(INTERNA.trafego, "int")}>
