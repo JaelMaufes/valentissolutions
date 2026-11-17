@@ -9,6 +9,7 @@ export const ANIVE_BOX_URL = "https://anive.sovalentis.com/box/";
 export const ANIVE_BOX_TESTE_URL = "https://painel.sovalentis.com/?cadastro=box&plano=box_pro";
 export const ANIVE_IMOB_URL = "https://anive.sovalentis.com/imob/";
 export const ANIVE_ESCOLA_URL = "https://anive.sovalentis.com/escola/";
+export const ANIVE_VISTORIA_URL = "https://anive.sovalentis.com/vistoria/";
 
 const destaques = [
   "Teste grátis por 14 dias, sem cartão",
@@ -49,8 +50,12 @@ export default function AnilleShowcase({ id = "anille", compacto = false }: { id
             <ArrowRight size={17} aria-hidden="true" />
           </a>
           <a className="anive-box-faixa anive-escola-faixa" href={ANIVE_ESCOLA_URL}>
-            <span className="anive-box-selo">Novo</span>
             <img className="anive-box-faixa-logo" src="/assets/anive/anive-escola-branco.svg" width="1530" height="280" alt="Anive Escola" /><span>para escolas de música e de dança, bandas e projetos sociais: chamada, partituras por naipe, instrumentos e prestação de contas.</span>
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <a className="anive-box-faixa anive-vistoria-faixa" href={ANIVE_VISTORIA_URL}>
+            <span className="anive-box-selo">Novo</span>
+            <img className="anive-box-faixa-logo" src="/assets/anive/anive-vistoria-branco.svg" width="1530" height="280" alt="Anive Vistoria" /><span>vistoria de imóveis com IA para imobiliárias, corretores e vistoriadores: laudo pronto no celular e o inquilino responde e assina pelo link.</span>
             <ArrowRight size={17} aria-hidden="true" />
           </a>
         </div>
