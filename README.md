@@ -1,37 +1,41 @@
-# Valentis Solutions
+# valentissolutions — Site da Valentis Solutions
 
-Site institucional da Valentis Solutions. Os arquivos publicados na raiz deste repositório continuam sendo o build atualmente utilizado pelo site em `sovalentis.com`.
+Site institucional da **Valentis Solutions** em `sovalentis.com` (React + Vite), com a vitrine do Sistema Anive e das edições, o Aproxima e os cartões por aproximação em `c.sovalentis.com`.
+Repositórios irmãos: `vs-painel` (o sistema, `painel.sovalentis.com`) e `anille-site` (portal do Anive, `anive.sovalentis.com`).
 
-## Código-fonte
+## Pastas
+```
+source/                    projeto (todo o código fica aqui; a raiz só tem este README e os workflows)
+  client/index.html        HTML base, SEO e dados estruturados da empresa
+  client/src/pages/        uma página por rota (Home, Services, Systems "Sob medida", About, Aproxima, Diagnostic, Plans, TrafegoPago, Legal)
+  client/src/components/   MarketingLayout (topo, menu, rodapé), BrandHub (cubo com as órbitas), AnilleShowcase (vitrine do Anive) e componentes de interface
+  client/src/lib/          empresa.ts (dados oficiais, fonte única), aproxima.ts (pacotes; preços e links vêm do Catálogo do Anive), leadIntegration.ts (formulário de diagnóstico)
+  client/src/index.css     estilos e blocos por assunto (hub, menu, vitrine, Aproxima, rolagem)
+  client/public/           arquivos copiados como estão: assets/marca (kit da marca), assets/anive (logos das edições e imagens da vitrine), _headers, _redirects, CNAME, robots.txt, sitemap.xml
+  cartoes/                 cartões do Aproxima (um .json por cliente; publico/ é o site c.sovalentis.com, sem build)
+  scripts/cartoes/         gerar.py: gera a página de um cartão (passo a passo em cartoes/LEIA-ME.md)
+  server/                  servidor de compatibilidade do build (não é usado na publicação estática)
+```
 
-O código-fonte completo React/Vite foi preservado em [`source/`](./source/). A pasta mantém a estrutura original do projeto, incluindo `client/`, `server/`, `shared/`, `package.json`, `vite.config.ts`, `tsconfig.json` e `pnpm-lock.yaml`.
-
-## Desenvolvimento local
-
-Requisitos: Node.js e pnpm.
-
+## Comandos
 ```bash
 cd source
 pnpm install --frozen-lockfile
-pnpm dev
+pnpm dev       # desenvolvimento
+pnpm check     # TypeScript
+pnpm build     # gera source/dist/public
 ```
 
-O servidor de desenvolvimento é iniciado pelo script `dev` do `package.json` e fica disponível no endereço informado pelo Vite.
+## Publicação
+- **Hoje:** GitHub Actions (`.github/workflows/deploy-pages.yml`) compila `source/` a cada push no `main`, confere o pacote (rotas, CNAME, sem ferramentas do editor) e publica no GitHub Pages com o domínio `sovalentis.com`. A raiz do repositório não é publicada.
+- **Todo PR:** `.github/workflows/verificar-build.yml` (TypeScript e build).
+- **Migração para o Cloudflare Pages** (decidida em 15/11, roteiro `roteiros/sovalentis-cloudflare.md` do projeto): build `cd source && pnpm install --frozen-lockfile && pnpm build`, saída `source/dist/public`; cabeçalhos em `client/public/_headers`. Depois do domínio no Cloudflare, sai o `deploy-pages.yml` e o repositório fica privado.
+- **Cartões `c.sovalentis.com`:** projeto próprio no Cloudflare Pages, sem build, saída `source/cartoes/publico`.
 
-## Build de produção
+## Regras
+- Empresa sempre "Valentis Solutions", nunca só "Valentis". Telefone e WhatsApp únicos: (44) 3112-4446 (em `lib/empresa.ts`).
+- Marca da Valentis Solutions pelo kit (`client/public/assets/marca/`); peças do Anive pelo canvas "Logo Anive".
+- Preços do Anive só no portal `anive.sovalentis.com`; preços do Aproxima vêm do Catálogo do Anive (`links_de_venda()`).
+- Item novo no menu do topo: conferir entre 1024 e 1366 px (o menu não pode quebrar em duas linhas). Produto novo no cubo: redistribuir os ângulos em `BrandHub.tsx`.
 
-O comando de build utilizado pelo projeto é:
-
-```bash
-cd source
-pnpm install --frozen-lockfile
-pnpm build
-```
-
-O script executa `vite build` e empacota o servidor de compatibilidade com esbuild. O resultado final é gerado em `source/dist/`.
-
-## Deploy atual
-
-O deploy público atual é feito pelo conteúdo compilado publicado na raiz do repositório, utilizando GitHub Pages e o domínio personalizado `sovalentis.com`. As páginas compiladas, `CNAME`, `404.html`, `_redirects.txt`, `robots.txt`, `sitemap.xml` e os diretórios de rota permanecem na raiz para não interromper a versão atualmente publicada.
-
-A migração desta branch adiciona o código-fonte em `source/` sem substituir os arquivos publicados. O build do projeto-fonte deve ser validado localmente antes de qualquer decisão de publicação. Esta branch não altera automaticamente a `main`, não faz merge e não dispara novo deploy por si só.
+Licença: proprietária, todos os direitos reservados à Valentis Solutions.
